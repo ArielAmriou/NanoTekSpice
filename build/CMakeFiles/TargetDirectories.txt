@@ -1,0 +1,3 @@
+/home/ariel/Tek2/OOP/NanoTekSpice/build/CMakeFiles/NanoTekSpice.dir
+/home/ariel/Tek2/OOP/NanoTekSpice/build/CMakeFiles/edit_cache.dir
+/home/ariel/Tek2/OOP/NanoTekSpice/build/CMakeFiles/rebuild_cache.dir

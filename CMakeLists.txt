@@ -15,7 +15,7 @@ set(HEADERS
     include/NanoTekSpice.hpp
     )
 
-add_executable(NanoTekSpice ${SRCS} ${HEADERS})
+add_executable(nanotekspice ${SRCS} ${HEADERS})
 
 add_executable(tests_run ${SRCS_TESTS})
 target_link_libraries(tests_run criterion)

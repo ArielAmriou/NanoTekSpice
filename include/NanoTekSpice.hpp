@@ -5,13 +5,13 @@
 ** NanoTekSpice
 */
 
-#pragma once
+#ifndef NANOTEKSPICE_HPP
+    #define NANOTEKSPICE_HPP
 
-class NanoTekSpice {
-    public:
-        NanoTekSpice();
-        ~NanoTekSpice();
+#include <ostream>
+#include <iostream>
 
-    protected:
-    private:
-};
+constexpr int EPISUCCESS = 0;
+constexpr int EPIERROR = 84;
+
+#endif

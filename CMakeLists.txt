@@ -12,7 +12,7 @@ set(SRCS_TESTS
     )
     
 set(HEADERS
-    include/NanoTekSpice.hpp
+    include/
     )
 
 add_executable(nanotekspice ${SRCS} ${HEADERS})

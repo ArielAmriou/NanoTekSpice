@@ -72,6 +72,39 @@ build NanoTekSpice: CXX_EXECUTABLE_LINKER__NanoTekSpice_Debug CMakeFiles/NanoTek
   TARGET_FILE = NanoTekSpice
   TARGET_PDB = NanoTekSpice.dbg
 
+# =============================================================================
+# Object build statements for EXECUTABLE target tests_run
+
+
+#############################################
+# Order-only phony target for tests_run
+
+build cmake_object_order_depends_target_tests_run: phony || CMakeFiles/tests_run.dir
+
+build CMakeFiles/tests_run.dir/tests/tests_init.cpp.o: CXX_COMPILER__tests_run_unscanned_Debug /home/ariel/Tek2/OOP/NanoTekSpice/tests/tests_init.cpp || cmake_object_order_depends_target_tests_run
+  DEP_FILE = CMakeFiles/tests_run.dir/tests/tests_init.cpp.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/tests_run.dir
+  OBJECT_FILE_DIR = CMakeFiles/tests_run.dir/tests
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target tests_run
+
+
+#############################################
+# Link the executable tests_run
+
+build tests_run: CXX_EXECUTABLE_LINKER__tests_run_Debug CMakeFiles/tests_run.dir/tests/tests_init.cpp.o
+  FLAGS = -g
+  LINK_FLAGS = -rdynamic
+  LINK_LIBRARIES = -lcriterion
+  OBJECT_DIR = CMakeFiles/tests_run.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = tests_run
+  TARGET_PDB = tests_run.dbg
+
 
 #############################################
 # Utility command for edit_cache
@@ -106,7 +139,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/ariel/Tek2/OOP/NanoTekSpice/build
 
-build all: phony NanoTekSpice
+build all: phony NanoTekSpice tests_run
 
 # =============================================================================
 # Unknown Build Time Dependencies.

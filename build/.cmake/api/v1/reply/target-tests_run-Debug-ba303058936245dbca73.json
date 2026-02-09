@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "NanoTekSpice"
+			"path" : "tests_run"
 		}
 	],
 	"backtrace" : 1,
@@ -10,7 +10,8 @@
 	{
 		"commands" : 
 		[
-			"add_executable"
+			"add_executable",
+			"target_link_libraries"
 		],
 		"files" : 
 		[
@@ -24,7 +25,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 14,
+				"line" : 20,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 21,
 				"parent" : 0
 			}
 		]
@@ -45,7 +52,7 @@
 			]
 		}
 	],
-	"id" : "NanoTekSpice::@6890427a1f51a3e7e1df",
+	"id" : "tests_run::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -57,12 +64,17 @@
 			{
 				"fragment" : "-rdynamic",
 				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lcriterion",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
-	"name" : "NanoTekSpice",
-	"nameOnDisk" : "NanoTekSpice",
+	"name" : "tests_run",
+	"nameOnDisk" : "tests_run",
 	"paths" : 
 	{
 		"build" : ".",
@@ -76,13 +88,6 @@
 			[
 				0
 			]
-		},
-		{
-			"name" : "Header Files",
-			"sourceIndexes" : 
-			[
-				1
-			]
 		}
 	],
 	"sources" : 
@@ -90,13 +95,8 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/Main.cpp",
+			"path" : "tests/tests_init.cpp",
 			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "include/NanoTekSpice.hpp",
-			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

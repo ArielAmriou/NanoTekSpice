@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,7 +31,8 @@
 					"name" : "NanoTekSpice",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -39,8 +41,15 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "NanoTekSpice::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-NanoTekSpice-Debug-0a33dd020a9add7ce127.json",
+					"jsonFile" : "target-NanoTekSpice-Debug-3003038ab471571e1c2b.json",
 					"name" : "NanoTekSpice",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "tests_run::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-tests_run-Debug-ba303058936245dbca73.json",
+					"name" : "tests_run",
 					"projectIndex" : 0
 				}
 			]

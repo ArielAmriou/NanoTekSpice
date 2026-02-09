@@ -1,4 +1,0 @@
-/home/ariel/Tek2/OOP/NanoTekSpice/CMakeFiles/NanoTekSpice.dir
-/home/ariel/Tek2/OOP/NanoTekSpice/CMakeFiles/tests_run.dir
-/home/ariel/Tek2/OOP/NanoTekSpice/CMakeFiles/edit_cache.dir
-/home/ariel/Tek2/OOP/NanoTekSpice/CMakeFiles/rebuild_cache.dir

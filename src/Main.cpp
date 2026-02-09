@@ -5,7 +5,17 @@
 ** Main
 */
 
-int main(void)
+#include "NanoTekSpice.hpp"
+#include "Parsing.hpp"
+
+int main(int ac, char **av)
 {
-    return 0;
+    if (ac != NBARGS)
+        return EPIERROR;
+    try {
+        nts::parsing(av[1]);
+    } catch (std::exception &e){
+        return EPIERROR;
+    }
+    return EPISUCCESS;
 }

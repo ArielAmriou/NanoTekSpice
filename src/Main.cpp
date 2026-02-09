@@ -7,9 +7,21 @@
 
 #include "Input.hpp"
 #include <memory>
+#include "ComponentFactory.hpp"
 
-int main(void)
+#include "NanoTekSpice.hpp"
+#include "Parsing.hpp"
+
+int main(int ac, char **av)
 {
-    std::unique_ptr<nts::IComponent> = new nts::Input();
-    return 0;
+    //std::unique_ptr<nts::IComponent> a = nts::ComponentFactory::createComponent("input");
+    //a->getPinMode(0);
+    if (ac != NBARGS)
+        return EPIERROR;
+    try {
+        nts::parsing(av[1]);
+    } catch (std::exception &e){
+        return EPIERROR;
+    }
+    return EPISUCCESS;
 }

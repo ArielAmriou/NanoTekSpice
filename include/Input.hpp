@@ -10,15 +10,17 @@
 
 #include "AComponent.hpp"
 
-constexpr std::vector<std::pair<std::optional<nts::IComponent &>, nts::Mode>> DEFAULT = {
-    {{}, nts::Output}
-};
-
 namespace nts {
     class Input: public AComponent {
         public:
             Input();
+            ~Input() = default;
+            virtual nts::Tristate compute(std::size_t pin) noexcept;
     };
 }
+
+static const std::vector<std::pair<std::string, nts::Mode>> DEFAULT = {
+    {"", nts::OutputMode}
+};
 
 #endif /* !COMPONENTINPUT_HPP_ */

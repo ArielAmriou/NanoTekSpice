@@ -16,11 +16,12 @@
 namespace nts {
     class AComponent: public IComponent {
         public:
+            AComponent() = default;
             void simulate(std::size_t tick) noexcept;
             void setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin) noexcept;
             nts::Mode getPinMode(std::size_t pin);
         protected:
-            std::vector<std::pair<std::optional<nts::IComponent &>, nts::Mode>> _pins;
+            std::vector<std::pair<std::string, nts::Mode>> _pins;
             std::size_t _nbPins;
     };
 }

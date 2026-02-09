@@ -11,3 +11,7 @@ nts::Input::Input() {
     this->_pins = DEFAULT;
     this->_nbPins = this->_pins.size();
 }
+
+nts::Tristate nts::Input::compute(std::size_t pin) noexcept {
+    return nts::Undefined;
+}

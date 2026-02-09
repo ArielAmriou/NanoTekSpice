@@ -18,8 +18,8 @@ namespace nts {
         False = false
     };
     enum Mode {
-        Output,
-        Input
+        OutputMode,
+        InputMode
     };
     class IComponent {
         public :

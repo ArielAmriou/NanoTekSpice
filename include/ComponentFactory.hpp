@@ -18,11 +18,6 @@ namespace nts {
         public:
             typedef std::function<std::unique_ptr<nts::IComponent>(void)> componentCreator;
             static std::unique_ptr<nts::IComponent> createComponent(const std::string &type);
-
-            class UnknownComponentException : public std::exception {
-                public:
-                    const char *what() const noexcept override { return "Unkown component"; };
-            };
         private:
             static const std::unordered_map<std::string, componentCreator> componentFactories;
     };

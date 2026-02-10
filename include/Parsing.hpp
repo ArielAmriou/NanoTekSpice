@@ -13,28 +13,46 @@
 
 namespace nts {
 
-    void parsing(std::string);
-
     enum Error {
         WRONG_EXTENSION,
+        NO_STATEMENTS,
+        LEXICALORSYNTATIC,
+        LINKINVALID,
+        NOCHIPSETS,
         NB_ERROR
     };
 
-    static const std::array<const char *, nts::NB_ERROR> ERROR_MSG = {
-        "Wong file extension.",
+    static const std::array<const std::string, nts::Error::NB_ERROR> ERROR_MSG = {
+        "Wrong file extension.",
+        "No statement chipsets or links.",
+        "Lexical or syntactic errors.",
+        "Link is not valid.",
+        "No chipsets in the circuit."
     };
 
-    class OpenFailureException : public std::exception {
+    class Parsing {
         public:
-            const char *what() const throw() {return "No such file.";};
-    };
+            void parsing(std::string &);
 
-    class ParsingException : public std::exception {
-        public:
-            ParsingException(Error e) : _e(e) {};
-            const char *what() const throw() {return ERROR_MSG[_e];};
+            
+            class OpenFailureException : public std::exception {
+                public:
+                    const char *what() const throw() {return "No such file.";};
+            };
+
+            class ParsingException : public std::exception {
+                public:
+                    ParsingException(Error e) : _e(e) {};
+                    const char *what() const throw() {return nts::ERROR_MSG[_e].c_str();};
+                private:
+                    Error _e;
+            };
         private:
-            Error _e;
+            void parsingLink(std::string &str);
+            std::pair<std::string, std::size_t> isLink(std::string link);
+            void parsingChipset(std::string &str);
+            void removeComment(std::string &str);
+            void parsingLine(std::string &str, bool &chipsets, bool &links);
     };
 }
 

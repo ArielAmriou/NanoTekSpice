@@ -11,6 +11,8 @@
 #include <ostream>
 #include <iostream>
 
+#define DEBUG(value) std::cout << "\e[0;35m" << "DEBUG: " <<  "\e[0;37m" << "\t" << value << std::endl;
+
 constexpr int EPISUCCESS = 0;
 constexpr int EPIERROR = 84;
 constexpr int NBARGS = 2;

@@ -25,7 +25,8 @@ static const char *test_main(const char *file)
     try {
         nts::Parsing parser;
         std::string namefile = path;
-        parser.parsing(namefile);
+        std::map<std::string, std::unique_ptr<nts::IComponent>> map;
+        parser.parsing(namefile, map);
     } catch (std::exception &e) {
         return e.what();
     }
@@ -37,10 +38,10 @@ Test(ParsingTest, linkInvalid)
     cr_assert_str_eq(test_main("linkInvalid.nts"), "Link is not valid.");
 }
 
-// Test(ParsingTest, noChipsets)
-// {
-//     cr_assert_str_eq(test_main("noChipsets.nts"), "No chipsets in the circuit.");
-// }
+Test(ParsingTest, noChipsets)
+{
+    cr_assert_str_eq(test_main("noChipsets.nts"), "No chipsets in the circuit.");
+}
 
 Test(ParsingTest, noLinks)
 {
@@ -65,4 +66,9 @@ Test(ParsingTest, wrongExtension)
 Test(ParsingTest, noFile)
 {
     cr_assert_str_eq(test_main("no.nts"), "No such file.");
+}
+
+Test(ParsingTest, multipleCpnName)
+{
+    cr_assert_str_eq(test_main("multipleCpnName.nts"), "Chipsets name already use.");
 }

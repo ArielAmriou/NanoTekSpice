@@ -106,7 +106,6 @@ void nts::Parsing::parsing(std::string &fileName)
     if (!file.good())
         throw OpenFailureException();
     while (std::getline(file, str)) {
-        DEBUG(str);
         removeComment(str);
         if (!str.length())
             continue;

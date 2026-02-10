@@ -15,6 +15,10 @@ namespace nts {
         public:
             const char *what() const noexcept override { return "No such pin available"; };
     };
+    class UnknownComponentException : public std::exception {
+        public:
+            const char *what() const noexcept override { return "Unkown component"; };
+    };
 }
 
 #endif /* !COMPONENTEXCEPTION_HPP_ */

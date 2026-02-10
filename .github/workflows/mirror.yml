@@ -62,12 +62,10 @@ jobs:
       - name: CMake
         timeout-minutes: 2
         run: cmake . .
-      - name: Make
+      - name: Make Test
         timeout-minutes: 5
-        run: make
-      - name: Test
-        timeout-minutes: 5
-        run: ./tests_run
+        run: make tests_run
+  
   push_to_mirror:
     needs: run_tests
     runs-on: ubuntu-latest

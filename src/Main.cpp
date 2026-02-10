@@ -5,10 +5,10 @@
 ** Main
 */
 
-#include "Input.hpp"
+#include <iostream>
 #include <memory>
+#include "Input.hpp"
 #include "ComponentFactory.hpp"
-
 #include "NanoTekSpice.hpp"
 #include "Parsing.hpp"
 
@@ -17,10 +17,13 @@ int main(int ac, char **av)
     //std::unique_ptr<nts::IComponent> a = nts::ComponentFactory::createComponent("input");
     //a->getPinMode(0);
     if (ac != NBARGS)
-        return EPIERROR;
+    return EPIERROR;
     try {
-        nts::parsing(av[1]);
-    } catch (std::exception &e){
+        nts::Parsing parser;
+        std::string filename = av[1];
+        parser.parsing(filename);
+    } catch (std::exception &e) {
+        std::cerr << "ERROR: " << e.what() << std::endl;
         return EPIERROR;
     }
     return EPISUCCESS;

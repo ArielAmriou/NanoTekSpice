@@ -6,11 +6,16 @@
 */
 
 #include <iostream>
+#include <memory>
+#include "Input.hpp"
+#include "ComponentFactory.hpp"
 #include "NanoTekSpice.hpp"
 #include "Parsing.hpp"
 
 int main(int ac, char **av)
 {
+    //std::unique_ptr<nts::IComponent> a = nts::ComponentFactory::createComponent("input");
+    //a->getPinMode(0);
     if (ac != NBARGS)
     return EPIERROR;
     try {

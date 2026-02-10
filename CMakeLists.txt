@@ -13,6 +13,9 @@ set(MAIN
 
 set(SRCS
     src/Parsing.cpp
+    src/ComponentFactory.cpp
+    src/Components/AComponent.cpp
+    src/Components/Input.cpp
 )
 
 set(HEADERS

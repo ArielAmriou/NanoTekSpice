@@ -16,6 +16,7 @@ set(SRCS
     src/ComponentFactory.cpp
     src/Components/AComponent.cpp
     src/Components/Input.cpp
+    src/Shell.cpp
 )
 
 set(HEADERS

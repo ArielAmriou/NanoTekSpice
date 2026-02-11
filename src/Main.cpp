@@ -12,18 +12,21 @@
 #include "ComponentFactory.hpp"
 #include "NanoTekSpice.hpp"
 #include "Parsing.hpp"
+#include "Shell.hpp"
 
 int main(int ac, char **av)
 {
     //std::unique_ptr<nts::IComponent> a = nts::ComponentFactory::createComponent("input");
     //a->getPinMode(0);
     if (ac != NBARGS)
-    return EPIERROR;
+        return EPIERROR;
     try {
         std::map<std::string, std::unique_ptr<nts::IComponent>> map;
         nts::Parsing parser;
         std::string filename = av[1];
         parser.parsing(filename, map);
+        nts::Shell shell;
+        shell.shell(map);
     } catch (std::exception &e) {
         std::cerr << "ERROR: " << e.what() << std::endl;
         return EPIERROR;

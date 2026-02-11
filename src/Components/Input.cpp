@@ -7,7 +7,7 @@
 
 #include "Input.hpp"
 
-nts::Input::Input() {
+nts::Input::Input() : AComponent("input") {
     this->_pins = DEFAULT;
     this->_nbPins = this->_pins.size();
 }

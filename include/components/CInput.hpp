@@ -2,23 +2,23 @@
 ** EPITECH PROJECT, 2026
 ** NanoTekSpice
 ** File description:
-** ComponentInput
+** ComponentCInput
 */
 
-#ifndef COMPONENTINPUT_HPP_
-#define COMPONENTINPUT_HPP_
+#ifndef COMPONENTCINPUT_HPP_
+#define COMPONENTCINPUT_HPP_
 
 #include "AComponent.hpp"
 
 namespace nts {
-    class Input: public AComponent {
+    class CInput: public AComponent {
         public:
-            Input();
-            ~Input() = default;
+            CInput();
+            ~CInput() = default;
             virtual nts::Tristate compute(std::size_t pin) noexcept;
         private:
             static const std::vector<Pin> _defaultPins;
     };
 }
 
-#endif /* !COMPONENTINPUT_HPP_ */
+#endif /* !COMPONENTCINPUT_HPP_ */

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 project(NanoTekSpice)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -12,8 +12,10 @@ set(SRCS
     src/Parsing.cpp
     src/ComponentFactory.cpp
     src/Components/AComponent.cpp
-    src/Components/Input.cpp
-    src/Components/Output.cpp
+    src/Components/CInput.cpp
+    src/Components/COutput.cpp
+    src/Components/CTrue.cpp
+    src/Components/CFalse.cpp
     src/Shell.cpp
 )
 

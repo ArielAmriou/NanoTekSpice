@@ -7,8 +7,10 @@
 
 #include "ComponentFactory.hpp"
 
-#include "Input.hpp"
-#include "Output.hpp"
+#include "CInput.hpp"
+#include "COutput.hpp"
+#include "CTrue.hpp"
+#include "CFalse.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type)
@@ -22,11 +24,19 @@ const std::unordered_map<std::string, nts::ComponentFactory::componentCreator>
 nts::ComponentFactory::componentFactories = {
     {
         "input", []{
-            return std::make_unique<nts::Input>();
+            return std::make_unique<nts::CInput>();
         }
     },{
         "output", []{
-            return std::make_unique<nts::Output>();
+            return std::make_unique<nts::COutput>();
+        }
+    },{
+        "true", []{
+            return std::make_unique<nts::CTrue>();
+        }
+    },{
+        "false", []{
+            return std::make_unique<nts::CFalse>();
         }
     }
 };

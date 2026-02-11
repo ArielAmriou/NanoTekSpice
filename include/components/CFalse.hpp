@@ -2,23 +2,23 @@
 ** EPITECH PROJECT, 2026
 ** NanoTekSpice
 ** File description:
-** ComponentOutput
+** ComponentCFalse
 */
 
-#ifndef COMPONENTOUTPUT_HPP_
-#define COMPONENTOUTPUT_HPP_
+#ifndef COMPONENTCFALSE_HPP_
+#define COMPONENTCFALSE_HPP_
 
 #include "AComponent.hpp"
 
 namespace nts {
-    class Output: public AComponent {
+    class CFalse: public AComponent {
         public:
-            Output();
-            ~Output() = default;
+            CFalse();
+            ~CFalse() = default;
             virtual nts::Tristate compute(std::size_t pin) noexcept;
         private:
             static const std::vector<Pin> _defaultPins;
     };
 }
 
-#endif /* !COMPONENTOUTPUT_HPP_ */
+#endif /* !COMPONENTCFALSE_HPP_ */

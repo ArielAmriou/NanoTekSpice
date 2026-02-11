@@ -8,13 +8,10 @@
 #include <iostream>
 #include <memory>
 #include <map>
-#include "Input.hpp"
-#include "ComponentFactory.hpp"
 #include "NanoTekSpice.hpp"
 #include "Parsing.hpp"
 #include "Shell.hpp"
 
-#include "Input.hpp"
 
 int main(int ac, char **av)
 {

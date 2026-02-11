@@ -8,7 +8,6 @@
 #include <iostream>
 #include <iomanip>
 #include "Shell.hpp"
-#include "Input.hpp"
 
 bool nts::Shell::getCommand(std::string &str)
 {

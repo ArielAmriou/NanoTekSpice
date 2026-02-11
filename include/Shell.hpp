@@ -16,16 +16,22 @@
 namespace nts {
     class Shell {
         public:
-            void shell(
-                std::map<std::string, std::unique_ptr<nts::IComponent>> &);
-            
+            Shell() {};
+            ~Shell() {};
+
+            void run();
+
             class CommandException : public std::exception {
                 public:
                     const char *what() const throw()
                         {return "Wrong Command.";};
             };
 
+            std::map<std::string, std::unique_ptr<nts::IComponent>> &getMap()
+                {return _map;};
+
         private:
+            std::map<std::string, std::unique_ptr<nts::IComponent>> _map;
             bool getCommand(std::string &);
     };
 }

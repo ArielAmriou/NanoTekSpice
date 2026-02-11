@@ -23,10 +23,10 @@ static const char *test_main(const char *file)
     strcat(path, file);
 
     try {
-        nts::Parsing parser;
         std::string namefile = path;
         std::map<std::string, std::unique_ptr<nts::IComponent>> map;
-        parser.parsing(namefile, map);
+        nts::Parsing parser(namefile, map);
+        parser.parseFile();
     } catch (std::exception &e) {
         return e.what();
     }

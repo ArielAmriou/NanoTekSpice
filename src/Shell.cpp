@@ -21,8 +21,7 @@ bool nts::Shell::getCommand(std::string &str)
     return command == "exit";
 }
 
-void nts::Shell::shell(
-    std::map<std::string, std::unique_ptr<nts::IComponent>> &map)
+void nts::Shell::run()
 {
     std::string str;
     std::cout << "> ";

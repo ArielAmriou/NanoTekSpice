@@ -5,11 +5,22 @@
 ** Parsing
 */
 
-#include <fstream>
 #include <iomanip>
 #include "Parsing.hpp"
 #include "NanoTekSpice.hpp"
 #include "ComponentFactory.hpp"
+
+nts::Parsing::Parsing(std::string &fileName,
+    std::map<std::string, std::unique_ptr<nts::IComponent>> &map)
+    : _file(fileName), _map(map)
+{
+    if (!_file.good())
+        throw OpenFailureException();
+    if (!fileName.ends_with(".nts")) {
+        _file.close();
+        throw ParsingException(Error::WRONG_EXTENSION);
+    }
+}
 
 void nts::Parsing::removeComment(std::string &str)
 {
@@ -18,8 +29,7 @@ void nts::Parsing::removeComment(std::string &str)
         str.replace(pos, str.length() - pos, "\0");
 }
 
-void nts::Parsing::parsingChipset(std::string &str,
-    std::map<std::string, std::unique_ptr<nts::IComponent>> &map)
+void nts::Parsing::parsingChipset(std::string &str)
 {
     std::string type;
     std::string name;
@@ -28,19 +38,18 @@ void nts::Parsing::parsingChipset(std::string &str,
     stream >> type >> name >> end;
     if (type.empty() || name.empty() || !end.empty())
         throw ParsingException(nts::Error::LEXICALORSYNTATIC);
-    if (map.count(name))
+    if (_map.count(name))
         throw ParsingException(nts::Error::NAMEISUSE);
     try {
-        map.insert({name, nts::ComponentFactory::createComponent(type)});
+        _map.insert({name, nts::ComponentFactory::createComponent(type)});
     } catch (std::exception &e) {
         throw e;
     }
 }
 
-std::pair<std::string, std::size_t> nts::Parsing::isLink(std::string link,
-    std::map<std::string, std::unique_ptr<nts::IComponent>> &map)
+std::pair<std::string, std::size_t> nts::Parsing::isLink(std::string link)
 {
-    size_t pos = link.find(":");    
+    size_t pos = link.find(":");
     if (pos != std::string::npos)
     link.replace(pos, 1, " ");
     else
@@ -54,8 +63,7 @@ std::pair<std::string, std::size_t> nts::Parsing::isLink(std::string link,
     return std::make_pair(name, pin);
 }
 
-void nts::Parsing::parsingLink(std::string &str,
-    std::map<std::string, std::unique_ptr<nts::IComponent>> &map)
+void nts::Parsing::parsingLink(std::string &str)
 {
     std::string linkOne;
     std::string linkTwo;
@@ -67,15 +75,14 @@ void nts::Parsing::parsingLink(std::string &str,
     try {
         std::pair<std::string, std::size_t> one;
         std::pair<std::string, std::size_t> two;
-        one = isLink(linkOne, map);
-        two = isLink(linkTwo, map);
+        one = isLink(linkOne);
+        two = isLink(linkTwo);
     } catch (ParsingException &e) {
         throw e;
     }
 }
 
-void nts::Parsing::parsingLine(std::string &str, bool &chipsets, bool &links,
-    std::map<std::string, std::unique_ptr<nts::IComponent>> &map)
+void nts::Parsing::parsingLine(std::string &str, bool &chipsets, bool &links)
 {
     bool correct = false;
     if (str == ".chipsets:" && !chipsets) {
@@ -88,10 +95,10 @@ void nts::Parsing::parsingLine(std::string &str, bool &chipsets, bool &links,
     }
     try {
         if (chipsets && !links && !correct) {
-            parsingChipset(str, map);
+            parsingChipset(str);
             correct = true;
         } else if (chipsets && links && !correct) {
-            parsingLink(str, map);
+            parsingLink(str);
             correct = true;
         }
     } catch (ParsingException &e) {
@@ -101,30 +108,23 @@ void nts::Parsing::parsingLine(std::string &str, bool &chipsets, bool &links,
         throw ParsingException(nts::Error::LEXICALORSYNTATIC);
 }
 
-void nts::Parsing::parsing(std::string &fileName,
-    std::map<std::string, std::unique_ptr<nts::IComponent>> &map)
+void nts::Parsing::parseFile()
 {
-    std::ifstream file(fileName);
-    if (!fileName.ends_with(".nts"))
-        throw ParsingException(Error::WRONG_EXTENSION);
-    if (!file.good())
-        throw OpenFailureException();
     std::string str;
     bool chipsets = false;
     bool links = false;
-    while (std::getline(file, str)) {
+    while (std::getline(_file, str)) {
         removeComment(str);
         if (!str.length())
             continue;
         try {
-            parsingLine(str, chipsets, links, map);
+            parsingLine(str, chipsets, links);
         } catch (ParsingException &e) {
             throw e;
-        } 
-        if (links && !map.size())
+        }
+        if (links && !_map.size())
             throw ParsingException(nts::Error::NOCHIPSETS);
     }
     if (!chipsets || !links)
         throw ParsingException(Error::NO_STATEMENTS);
-    file.close();
 }

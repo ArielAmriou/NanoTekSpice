@@ -21,12 +21,11 @@ int main(int ac, char **av)
     if (ac != NBARGS)
         return EPIERROR;
     try {
-        std::map<std::string, std::unique_ptr<nts::IComponent>> map;
-        nts::Parsing parser;
         std::string filename = av[1];
-        parser.parsing(filename, map);
         nts::Shell shell;
-        shell.shell(map);
+        nts::Parsing parser(filename, shell.getMap());
+        parser.parseFile();
+        shell.run();
     } catch (std::exception &e) {
         std::cerr << "ERROR: " << e.what() << std::endl;
         return EPIERROR;

@@ -12,6 +12,7 @@
     #include <array>
     #include <map>
     #include <memory>
+    #include <fstream>
     #include "IComponent.hpp"
 
 namespace nts {
@@ -38,9 +39,11 @@ namespace nts {
 
     class Parsing {
         public:
-            void parsing(std::string &,
+            Parsing(std::string &,
                 std::map<std::string, std::unique_ptr<nts::IComponent>> &);
+            ~Parsing() {_file.close();};
 
+            void parseFile();
             
             class OpenFailureException : public std::exception {
                 public:
@@ -56,15 +59,13 @@ namespace nts {
                     Error _e;
             };
         private:
-            void parsingLink(std::string &str,
-                std::map<std::string, std::unique_ptr<nts::IComponent>> &map);
-            std::pair<std::string, std::size_t> isLink(std::string link,
-                std::map<std::string, std::unique_ptr<nts::IComponent>> &map);
-            void parsingChipset(std::string &str, std::map<std::string,
-                std::unique_ptr<nts::IComponent>> &map);
+            std::map<std::string, std::unique_ptr<nts::IComponent>> &_map;
+            std::ifstream _file;
+            void parsingLink(std::string &str);
+            std::pair<std::string, std::size_t> isLink(std::string link);
+            void parsingChipset(std::string &str);
             void removeComment(std::string &str);
-            void parsingLine(std::string &str, bool &chipsets, bool &links,
-                std::map<std::string, std::unique_ptr<nts::IComponent>> &map);
+            void parsingLine(std::string &str, bool &chipsets, bool &links);
     };
 }
 

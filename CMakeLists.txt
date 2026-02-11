@@ -4,9 +4,6 @@ project(NanoTekSpice)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
-
 set(MAIN
     src/Main.cpp
 )
@@ -35,9 +32,12 @@ set(SRCS_TESTS
 
 add_executable(tests_run_bin ${SRCS_TESTS} ${SRCS})
 target_include_directories(tests_run_bin PRIVATE ${HEADERS})
+target_compile_options(tests_run_bin PRIVATE --coverage)
 target_link_libraries(tests_run_bin criterion --coverage)
 
 add_custom_target(tests_run
+    COMMAND ${CMAKE_COMMAND} -E remove -f ${CMAKE_BINARY_DIR}/*.gcda
     COMMAND ./tests_run_bin
     DEPENDS tests_run_bin
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )

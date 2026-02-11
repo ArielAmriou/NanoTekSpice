@@ -8,8 +8,10 @@
 #include "ComponentFactory.hpp"
 
 #include "Input.hpp"
+#include "Output.hpp"
 
-std::unique_ptr<nts::IComponent> nts::ComponentFactory::createComponent(const std::string &type)
+std::unique_ptr<nts::IComponent>
+    nts::ComponentFactory::createComponent(const std::string &type)
 {
     if (!componentFactories.contains(type))
         throw UnknownComponentException();
@@ -21,6 +23,10 @@ nts::ComponentFactory::componentFactories = {
     {
         "input", []{
             return std::make_unique<nts::Input>();
+        }
+    },{
+        "output", []{
+            return std::make_unique<nts::Output>();
         }
     }
 };

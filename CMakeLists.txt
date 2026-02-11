@@ -13,11 +13,13 @@ set(SRCS
     src/ComponentFactory.cpp
     src/Components/AComponent.cpp
     src/Components/Input.cpp
+    src/Components/Output.cpp
     src/Shell.cpp
 )
 
 set(HEADERS
     include/
+    include/components
 )
 
 add_executable(nanotekspice ${MAIN} ${SRCS})

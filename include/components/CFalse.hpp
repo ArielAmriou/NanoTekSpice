@@ -15,7 +15,7 @@ namespace nts {
         public:
             CFalse();
             ~CFalse() = default;
-            virtual nts::Tristate compute(std::size_t pin) noexcept;
+            nts::Tristate compute(std::size_t pin) noexcept;
         private:
             static const std::vector<Pin> _defaultPins;
     };

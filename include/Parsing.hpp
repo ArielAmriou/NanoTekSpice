@@ -28,7 +28,7 @@ namespace nts {
     };
 
     static const std::array<const std::string, nts::Error::NB_ERROR>
-        ERROR_MSG = {
+        errorMsg = {
         "Wrong file extension.",
         "No statement chipsets or links.",
         "Lexical or syntactic errors.",
@@ -44,7 +44,7 @@ namespace nts {
             ~Parsing() {_file.close();};
 
             void parseFile();
-            
+
             class OpenFailureException : public std::exception {
                 public:
                     const char *what() const throw() {return "No such file.";};
@@ -54,7 +54,7 @@ namespace nts {
                 public:
                     ParsingException(Error e) : _e(e) {};
                     const char *what() const throw()
-                        {return nts::ERROR_MSG[_e].c_str();};
+                        {return nts::errorMsg[_e].c_str();};
                 private:
                     Error _e;
             };

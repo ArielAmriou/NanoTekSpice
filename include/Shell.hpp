@@ -11,12 +11,14 @@
     #include <map>
     #include <string>
     #include <memory>
+    #include <functional>
+    #include <unordered_map>
     #include "IComponent.hpp"
 
 namespace nts {
     class Shell {
         public:
-            Shell() {};
+            Shell();
             ~Shell() {};
 
             void run();
@@ -27,12 +29,21 @@ namespace nts {
                         {return "Wrong Command.";};
             };
 
+            void display(void);
+            void simulate(void);
+            void loop(void);
+            void changeInput(void) {};
+            void exit(void) {};
+
             std::map<std::string, std::unique_ptr<nts::IComponent>> &getMap()
                 {return _map;};
 
         private:
+            std::size_t _tick;
             std::map<std::string, std::unique_ptr<nts::IComponent>> _map;
+            std::unordered_map<std::string, std::function<void()>> _commands;
             bool getCommand(std::string &);
+            void displayType(std::string);
     };
 }
 

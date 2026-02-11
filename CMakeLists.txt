@@ -16,6 +16,7 @@ set(SRCS
     src/Components/COutput.cpp
     src/Components/CTrue.cpp
     src/Components/CFalse.cpp
+    src/Components/CClock.cpp
     src/Shell.cpp
 )
 

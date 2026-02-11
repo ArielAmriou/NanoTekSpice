@@ -75,13 +75,6 @@ void nts::Shell::simulate()
     _tick += 1;
 }
 
-bool forever = true;
-
-void sighandler(int sig)
-{
-	forever = false;
-}
-
 void nts::Shell::loop()
 {
     while (true) {

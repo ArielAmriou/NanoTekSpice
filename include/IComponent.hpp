@@ -17,7 +17,7 @@ namespace nts {
         True = true,
         False = false
     };
-    enum Mode {
+    enum class Mode {
         OutputMode,
         InputMode
     };
@@ -26,7 +26,8 @@ namespace nts {
             virtual ~IComponent() noexcept = default;
             virtual void simulate(std::size_t tick) noexcept = 0;
             virtual nts::Tristate compute(std::size_t pin) noexcept = 0;
-            virtual void setLink(std::size_t pin, nts::IComponent &other, std::size_t otherPin) = 0;
+            virtual void setLink(std::size_t pin,
+                nts::IComponent &other, std::size_t otherPin) = 0;
             virtual nts::Mode getPinMode(std::size_t pin) = 0;
             virtual std::string getName() const = 0;
     };

@@ -14,10 +14,10 @@
 #include "Parsing.hpp"
 #include "Shell.hpp"
 
+#include "Input.hpp"
+
 int main(int ac, char **av)
 {
-    //std::unique_ptr<nts::IComponent> a = nts::ComponentFactory::createComponent("input");
-    //a->getPinMode(0);
     if (ac != NBARGS)
         return EPIERROR;
     try {

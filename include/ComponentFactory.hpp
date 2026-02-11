@@ -16,10 +16,13 @@
 namespace nts {
     class ComponentFactory {
         public:
-            typedef std::function<std::unique_ptr<nts::IComponent>(void)> componentCreator;
-            static std::unique_ptr<nts::IComponent> createComponent(const std::string &type);
+            typedef std::function<std::unique_ptr<nts::IComponent>(void)>
+                componentCreator;
+            static std::unique_ptr<nts::IComponent>
+                createComponent(const std::string &type);
         private:
-            static const std::unordered_map<std::string, componentCreator> componentFactories;
+            static const std::unordered_map<std::string, componentCreator>
+                componentFactories;
     };
 }
 

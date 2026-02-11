@@ -13,11 +13,13 @@
 namespace nts {
     class NoSuchPin: std::exception {
         public:
-            const char *what() const noexcept override { return "No such pin available"; };
+            const char *what() const noexcept override
+                { return "No such pin available"; };
     };
     class UnknownComponentException : public std::exception {
         public:
-            const char *what() const noexcept override { return "Unkown component"; };
+            const char *what() const noexcept override
+                { return "Unkown component"; };
     };
 }
 

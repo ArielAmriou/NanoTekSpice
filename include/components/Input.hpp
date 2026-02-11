@@ -16,11 +16,10 @@ namespace nts {
             Input();
             ~Input() = default;
             nts::Tristate compute(std::size_t pin) noexcept;
+
+        private:
+            static const std::vector<Pin> _defaultPins;
     };
 }
-
-static const std::vector<std::pair<std::string, nts::Mode>> DEFAULT = {
-    {"", nts::OutputMode}
-};
 
 #endif /* !COMPONENTINPUT_HPP_ */

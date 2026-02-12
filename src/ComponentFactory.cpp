@@ -14,6 +14,8 @@
 #include "CClock.hpp"
 #include "CNot.hpp"
 #include "CAnd.hpp"
+#include "CXor.hpp"
+#include "COr.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type)
@@ -52,6 +54,14 @@ nts::ComponentFactory::componentFactories = {
     },{
         "and", []{
             return std::make_unique<nts::CAnd>();
+        }
+    },{
+        "or", []{
+            return std::make_unique<nts::COr>();
+        }
+    },{
+        "xor", []{
+            return std::make_unique<nts::CXor>();
         }
     }
 };

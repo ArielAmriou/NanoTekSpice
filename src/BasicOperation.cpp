@@ -7,30 +7,38 @@
 
 #include "BasicOperation.hpp"
 
-nts::Tristate nts::BasicOperation::notOperation(nts::Tristate a) {
-    auto result = Undefined;
-    if (a == nts::True)
-        result = nts::False;
-    if (a == nts::False)
-        result = nts::True;
-    return result;
-}
-
-nts::Tristate nts::BasicOperation::andOperation(nts::Tristate a, nts::Tristate b) {
-    auto result = True;
-    if (a == b)
-        result = a;
-    else if (a == nts::False || b == nts::False)
-        result = nts::False;
-    else if (a == nts::Undefined || b == nts::Undefined)
+nts::Tristate nts::BasicOperation::nandOperation(
+    nts::Tristate a, nts::Tristate b)
+{
+    auto result = nts::True;
+    if ((a == nts::Undefined && (a == b || b == nts::True))
+        || (b == nts::Undefined && a == nts::True))
         result = nts::Undefined;
+    else if (a == b && a == nts::True)
+        result = nts::False;
     return result;
 }
 
-nts::Tristate nts::BasicOperation::orOperation(nts::Tristate a, nts::Tristate b) {
-    return nts::Undefined;
+nts::Tristate nts::BasicOperation::notOperation(nts::Tristate a)
+{
+    return nandOperation(a, a);
 }
 
-nts::Tristate nts::BasicOperation::xorOperation(nts::Tristate a, nts::Tristate b) {
-    return nts::Undefined;
+nts::Tristate nts::BasicOperation::andOperation(
+    nts::Tristate a, nts::Tristate b)
+{
+    return notOperation(nandOperation(a, b));
+}
+
+nts::Tristate nts::BasicOperation::orOperation(
+    nts::Tristate a, nts::Tristate b)
+{
+    return nandOperation(notOperation(a), notOperation(b));
+}
+
+nts::Tristate nts::BasicOperation::xorOperation(
+    nts::Tristate a, nts::Tristate b)
+{
+    auto tmp = nandOperation(a, b);
+    return nandOperation(nandOperation(tmp, a), nandOperation(tmp, b));
 }

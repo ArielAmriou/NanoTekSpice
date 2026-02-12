@@ -15,6 +15,7 @@ namespace nts {
         public:
             static Tristate notOperation(Tristate);
             static Tristate andOperation(Tristate, Tristate);
+            static Tristate nandOperation(Tristate, Tristate);
             static Tristate orOperation(Tristate, Tristate);
             static Tristate xorOperation(Tristate, Tristate);
     };

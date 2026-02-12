@@ -19,6 +19,8 @@ set(SRCS
     src/Components/CClock.cpp
     src/Components/CNot.cpp
     src/Components/CAnd.cpp
+    src/Components/COr.cpp
+    src/Components/CXor.cpp
     src/Shell.cpp
     src/BasicOperation.cpp
 )

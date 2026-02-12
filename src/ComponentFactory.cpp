@@ -14,6 +14,7 @@
 #include "CClock.hpp"
 #include "CNot.hpp"
 #include "CAnd.hpp"
+#include "C6Not.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type)
@@ -50,8 +51,8 @@ nts::ComponentFactory::componentFactories = {
             return std::make_unique<nts::CNot>();
         }
     },{
-        "and", []{
-            return std::make_unique<nts::CAnd>();
+        "4069", []{
+            return std::make_unique<nts::C6Not>();
         }
     }
 };

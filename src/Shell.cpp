@@ -85,7 +85,8 @@ void nts::Shell::simulate()
     changeState();
     auto iter = _map.begin();
     while (iter != _map.end()) {
-        if (iter->second.get()->getName() == "output") {
+        if (iter->second.get()->getName() == "output"
+            || iter->second.get()->getName() == "clock") {
             iter->second.get()->simulate(_tick);
         }
         iter++;
@@ -148,8 +149,12 @@ void nts::Shell::changeState()
 {
     while (!_change.empty()) {
         std::pair<std::string, nts::Tristate> change = _change.front();
-        _map.find(change.first)->
-            second.get()->getPin(0).setValue(change.second);
+        auto tmp = _map.find(change.first)->second.get();
+        tmp->getPin(0).setValue(change.second);
+        if (tmp->getName() == "clock" && change.second == nts::True)
+            tmp->getPin(0).setValue(nts::False);
+        else if (tmp->getName() == "clock" && change.second == nts::False)
+            tmp->getPin(0).setValue(nts::True);
         _change.pop();
     }
 }

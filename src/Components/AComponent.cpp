@@ -38,18 +38,20 @@ nts::Tristate nts::AComponent::compute(std::size_t pin) {
     return this->_pins[pin].getValue();
 }
 
+#define DEBUG(value) std::cout << "\e[0;35m" << "DEBUG: " <<  "\e[0;37m" << "\t" << value << std::endl;
+
 void nts::AComponent::simulate(std::size_t tick) noexcept {
     auto iter = this->_pins.begin();
     auto end = this->_pins.end();
 
+    if (this->_lastUpdateTick < tick) {
+        this->simulateComponent();
+        this->_lastUpdateTick = tick;
+    }
     for (std::size_t i = 0; iter != end; ++i, ++iter) {
         std::optional<nts::Connection> &con = iter.base()->getConnection();
         if (iter.base()->getMode() == nts::Mode::InputMode && con.has_value()){
             con.value().getComponent().simulate(tick);
-            if (this->_lastUpdateTick < tick) {
-                this->simulateComponent();
-                this->_lastUpdateTick = tick;
-            }
             auto value =
                 con.value().getComponent().compute(con.value().getPin());
             this->_pins[i].setValue(value);

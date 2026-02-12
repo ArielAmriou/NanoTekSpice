@@ -50,6 +50,7 @@ namespace nts {
                 std::string type1, std::optional<std::string> type2);
             Tristate getState(std::string);
             void changeState();
+            
     };
 }
 

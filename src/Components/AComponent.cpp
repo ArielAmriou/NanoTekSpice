@@ -38,8 +38,6 @@ nts::Tristate nts::AComponent::compute(std::size_t pin) {
     return this->_pins[pin].getValue();
 }
 
-#define DEBUG(value) std::cout << "\e[0;35m" << "DEBUG: " <<  "\e[0;37m" << "\t" << value << std::endl;
-
 void nts::AComponent::simulate(std::size_t tick) noexcept {
     auto iter = this->_pins.begin();
     auto end = this->_pins.end();

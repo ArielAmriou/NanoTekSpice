@@ -13,13 +13,16 @@ nts::CAnd::CAnd() : AComponent("and") {
 }
 
 void nts::CAnd::simulateComponent(void) {
-    auto value = this->_pins[0].getValue();
-    if (value == nts::True)
-        this->_pins[1].setValue(nts::False);
-    else if (value == nts::False)
-        this->_pins[1].setValue(nts::True);
+    auto input1 = this->_pins[0].getValue();
+    auto input2 = this->_pins[1].getValue();
+    if (input1 == input2)
+        this->_pins[2].setValue(input1);
+    else if (input1 == nts::False || input2 == nts::False)
+        this->_pins[2].setValue(nts::False);
+    else if (input1 == nts::Undefined || input2 == nts::Undefined)
+        this->_pins[2].setValue(nts::Undefined);
     else
-        this->_pins[1].setValue(nts::Undefined);
+        this->_pins[2].setValue(nts::True);
 }
 
 const std::vector<nts::Pin> nts::CAnd::_defaultPins = {

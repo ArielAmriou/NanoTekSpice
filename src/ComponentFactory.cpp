@@ -13,6 +13,7 @@
 #include "CFalse.hpp"
 #include "CClock.hpp"
 #include "CNot.hpp"
+#include "CAnd.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type)
@@ -47,6 +48,10 @@ nts::ComponentFactory::componentFactories = {
     },{
         "not", []{
             return std::make_unique<nts::CNot>();
+        }
+    },{
+        "and", []{
+            return std::make_unique<nts::CAnd>();
         }
     }
 };

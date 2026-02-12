@@ -18,7 +18,8 @@ namespace nts {
                 _mode(mode), _value(value), _con() {};
             Pin(nts::Mode mode):
                 _mode(mode), _value(nts::Tristate::Undefined), _con() {};
-            Pin(const nts::Pin &src): _mode(src._mode), _con(), _value(src._value) {};
+            Pin(const nts::Pin &src):
+                _mode(src._mode), _con(), _value(src._value) {};
             nts::Mode getMode(void) { return this->_mode; };
             nts::Tristate getValue(void) { return this->_value; };
             void setValue(nts::Tristate value) { this->_value = value; };

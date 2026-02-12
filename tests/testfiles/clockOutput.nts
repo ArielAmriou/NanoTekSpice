@@ -1,5 +1,6 @@
 .chipsets:
 clock a
+clock u
 output b
 .links:
 a:1 b:1

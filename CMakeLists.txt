@@ -17,6 +17,7 @@ set(SRCS
     src/Components/CTrue.cpp
     src/Components/CFalse.cpp
     src/Components/CClock.cpp
+    src/Components/CNot.cpp
     src/Shell.cpp
 )
 

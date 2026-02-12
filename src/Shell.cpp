@@ -47,7 +47,7 @@ void nts::Shell::run()
             if (getCommand(str))
                 break;
         } catch (CommandException &e) {
-            throw e;
+            throw CommandException(str);
         }
         std::cout << "> ";
     }

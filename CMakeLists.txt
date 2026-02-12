@@ -44,9 +44,10 @@ find_library(CRITERION criterion REQUIRED)
 set(SRCS_TESTS
     tests/tests_init.cpp
     tests/tests_parsing.cpp
+    tests/tests_component.cpp
 )
 
-add_executable(tests_run_bin ${SRCS_TESTS} ${SRCS})
+add_executable(tests_run_bin EXCLUDE_FROM_ALL ${SRCS_TESTS} ${SRCS})
 target_include_directories(tests_run_bin PRIVATE ${HEADERS})
 target_compile_options(tests_run_bin PRIVATE --coverage)
 target_link_libraries(tests_run_bin criterion --coverage)

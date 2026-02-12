@@ -25,10 +25,12 @@ namespace nts {
 
             void run();
 
-            class CommandException : public std::exception {
+            class CommandException : public NtsException {
                 public:
-                    const char *what() const throw()
-                        {return "Wrong Command.";};
+                    CommandException()
+                        : NtsException("Wrong Command.") {};
+                    CommandException(std::string cmd)
+                        : NtsException("Wrong Command: " + cmd + ".") {};
             };
 
             void display(void);

@@ -117,14 +117,14 @@ void nts::Parsing::parseFile()
     std::string str;
     bool chipsets = false;
     bool links = false;
-    while (std::getline(_file, str)) {
+    for (std::size_t i = 0; std::getline(_file, str); i++) {
         removeComment(str);
         if (!str.length())
             continue;
         try {
             parsingLine(str, chipsets, links);
         } catch (NtsException &e) {
-            throw e;
+            throw NtsException(e.what(), i);
         }
         if (links && !_map.size())
             throw ParsingException(nts::Error::NOCHIPSETS);

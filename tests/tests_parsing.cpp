@@ -12,6 +12,8 @@
 #include "Parsing.hpp"
 #include "NtsException.hpp"
 
+#define DEBUG(value) std::cout << "\e[0;35m" << "DEBUG: " <<  "\e[0;37m" << "\t" << value << std::endl;
+
 static void redirect_all_std(void)
 {
     cr_redirect_stdout();
@@ -29,14 +31,15 @@ static const char *test_main(const char *file)
         nts::Parsing parser(namefile, map);
         parser.parseFile();
     } catch (nts::NtsException &e) {
-        return e.what();
+        std::string *tmp = new std::string(e.what());
+        return tmp->c_str();
     }
     return "No Error";
 }
 
 Test(ParsingTest, linkInvalid)
 {
-    cr_assert_str_eq(test_main("linkInvalid.nts"), "Link is not valid.");
+    cr_assert_str_eq(test_main("linkInvalid.nts"), "Link is not valid. Line 4");
 }
 
 Test(ParsingTest, noChipsets)
@@ -51,12 +54,12 @@ Test(ParsingTest, noLinks)
 
 Test(ParsingTest, tooMuchInfoChipsets)
 {
-    cr_assert_str_eq(test_main("tooMuchInfoChipsets.nts"), "Lexical or syntactic errors.");
+    cr_assert_str_eq(test_main("tooMuchInfoChipsets.nts"), "Lexical or syntactic errors. Line 1");
 }
 
 Test(ParsingTest, tooMuchInfoLinks)
 {
-    cr_assert_str_eq(test_main("tooMuchInfoLinks.nts"), "Lexical or syntactic errors.");
+    cr_assert_str_eq(test_main("tooMuchInfoLinks.nts"), "Lexical or syntactic errors. Line 5");
 }
 
 Test(ParsingTest, wrongExtension)
@@ -71,15 +74,15 @@ Test(ParsingTest, noFile)
 
 Test(ParsingTest, multipleCpnName)
 {
-    cr_assert_str_eq(test_main("multipleCpnName.nts"), "Chipsets name already use.");
+    cr_assert_str_eq(test_main("multipleCpnName.nts"), "Chipsets name already use. Line 2");
 }
 
 Test(ParsingTest, linkToWrongPin)
 {
-    cr_assert_str_eq(test_main("linkToWrongPin.nts"), "No such pin available.");
+    cr_assert_str_eq(test_main("linkToWrongPin.nts"), "No such pin available. Line 4");
 }
 
 Test(ParsingTest, linkTwoOutput)
 {
-    cr_assert_str_eq(test_main("linkTwoOutput.nts"), "Connection must be between an input and an output.");
+    cr_assert_str_eq(test_main("linkTwoOutput.nts"), "Connection must be between an input and an output. Line 4");
 }

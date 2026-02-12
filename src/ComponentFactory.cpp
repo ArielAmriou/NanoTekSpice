@@ -58,6 +58,10 @@ nts::ComponentFactory::componentFactories = {
             return std::make_unique<nts::CNot>();
         }
     },{
+        "and", []{
+            return std::make_unique<nts::CAnd>();
+        }
+    },{
         "4069", []{
             return std::make_unique<nts::C6Not>();
         }

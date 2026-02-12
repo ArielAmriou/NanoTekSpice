@@ -1,0 +1,49 @@
+> tick: 0
+inputs(s): 
+  c: U
+  i: U
+output(s): 
+  o: U
+> > tick: 1
+inputs(s): 
+  c: U
+  i: U
+output(s): 
+  o: U
+> > > tick: 2
+inputs(s): 
+  c: 0
+  i: U
+output(s): 
+  o: U
+> > tick: 3
+inputs(s): 
+  c: 1
+  i: U
+output(s): 
+  o: 1
+> > > tick: 4
+inputs(s): 
+  c: 0
+  i: 0
+output(s): 
+  o: 0
+> > tick: 5
+inputs(s): 
+  c: 1
+  i: 0
+output(s): 
+  o: 1
+> > > tick: 6
+inputs(s): 
+  c: 0
+  i: 1
+output(s): 
+  o: 1
+> > tick: 7
+inputs(s): 
+  c: 1
+  i: 1
+output(s): 
+  o: 1
+> 

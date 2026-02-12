@@ -12,6 +12,9 @@
     #include "ComponentException.hpp"
 
 namespace nts {
+
+    class Pin;
+
     enum Tristate {
         Undefined = (-true),
         True = true,
@@ -30,6 +33,7 @@ namespace nts {
                 nts::IComponent &other, std::size_t otherPin) = 0;
             virtual nts::Mode getPinMode(std::size_t pin) = 0;
             virtual std::string getName() const = 0;
+            virtual Pin getPin(size_t) = 0;
     };
 }
 

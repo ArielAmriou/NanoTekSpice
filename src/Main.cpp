@@ -12,7 +12,6 @@
 #include "Parsing.hpp"
 #include "Shell.hpp"
 
-
 int main(int ac, char **av)
 {
     if (ac != NBARGS)

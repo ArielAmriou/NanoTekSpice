@@ -24,6 +24,7 @@ namespace nts {
                 std::size_t otherPin) noexcept;
             nts::Mode getPinMode(std::size_t pin);
             std::string getName() const {return _name;};
+            Pin getPin(std::size_t);
         protected:
             std::vector<Pin> _pins;
             std::size_t _nbPins;

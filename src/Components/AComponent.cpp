@@ -6,6 +6,7 @@
 */
 
 #include "AComponent.hpp"
+#include "Pin.hpp"
 
 void nts::AComponent::simulate(std::size_t tick) noexcept {};
 
@@ -16,4 +17,11 @@ nts::Mode nts::AComponent::getPinMode(std::size_t pin) {
     if (pin >= this->_nbPins)
         throw NoSuchPin();
     return this->_pins[pin].getMode();
+}
+
+nts::Pin nts::AComponent::getPin(size_t pinNb)
+{
+    if (pinNb >= _nbPins)
+        throw NoSuchPin();
+    return _pins[pinNb];
 }

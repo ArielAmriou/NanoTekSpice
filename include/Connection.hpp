@@ -16,12 +16,11 @@ namespace nts {
     class Connection {
         public:
             Connection(IComponent &component, std::size_t pin):
-                _component(&component), _pin(pin) {};
-            Connection(): _component(nullptr), _pin(0) {};
-            IComponent &getComponent() { return *_component; };
+                _component(component), _pin(pin) {};
+            IComponent &getComponent() { return _component; };
             std::size_t getPin() { return _pin; };
         private:
-            std::unique_ptr<IComponent> _component;
+            IComponent &_component;
             std::size_t _pin;
     };
 }

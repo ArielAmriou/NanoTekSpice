@@ -83,6 +83,13 @@ void nts::Shell::simulate()
 {
     _tick += 1;
     changeState();
+    auto iter = _map.begin();
+    while (iter != _map.end()) {
+        if (iter->second.get()->getName() == "output") {
+            iter->second.get()->simulate(_tick);
+        }
+        iter++;
+    }
 }
 
 void nts::Shell::loop()

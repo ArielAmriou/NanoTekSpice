@@ -36,6 +36,12 @@ nts::Tristate nts::BasicOperation::orOperation(
     return nandOperation(notOperation(a), notOperation(b));
 }
 
+nts::Tristate nts::BasicOperation::norOperation(
+    nts::Tristate a, nts::Tristate b)
+{
+    return notOperation(orOperation(a, b));
+}
+
 nts::Tristate nts::BasicOperation::xorOperation(
     nts::Tristate a, nts::Tristate b)
 {

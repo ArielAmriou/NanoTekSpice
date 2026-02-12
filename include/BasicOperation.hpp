@@ -17,6 +17,7 @@ namespace nts {
             static Tristate andOperation(Tristate, Tristate);
             static Tristate nandOperation(Tristate, Tristate);
             static Tristate orOperation(Tristate, Tristate);
+            static Tristate norOperation(Tristate, Tristate);
             static Tristate xorOperation(Tristate, Tristate);
     };
 }

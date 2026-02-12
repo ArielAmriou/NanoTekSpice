@@ -6,6 +6,7 @@
 */
 
 #include "CNot.hpp"
+#include "BasicOperation.hpp"
 
 nts::CNot::CNot() : AComponent("not") {
     this->_pins = this->_defaultPins;
@@ -13,13 +14,8 @@ nts::CNot::CNot() : AComponent("not") {
 }
 
 void nts::CNot::simulateComponent(void) {
-    auto value = this->_pins[0].getValue();
-    if (value == nts::True)
-        this->_pins[1].setValue(nts::False);
-    else if (value == nts::False)
-        this->_pins[1].setValue(nts::True);
-    else
-        this->_pins[1].setValue(nts::Undefined);
+    this->_pins[1].setValue(
+        nts::BasicOperation::notOperation(this->_pins[0].getValue()));
 }
 
 const std::vector<nts::Pin> nts::CNot::_defaultPins = {

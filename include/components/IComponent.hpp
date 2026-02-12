@@ -9,7 +9,7 @@
     #define ICOMPONENT_HPP
 
     #include "NanoTekSpice.hpp"
-    #include "ComponentException.hpp"
+    #include "NtsException.hpp"
 
 namespace nts {
 

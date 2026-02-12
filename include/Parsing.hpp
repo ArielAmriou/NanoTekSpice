@@ -14,6 +14,7 @@
     #include <memory>
     #include <fstream>
     #include "IComponent.hpp"
+    #include "NtsException.hpp"
 
 namespace nts {
 
@@ -45,18 +46,14 @@ namespace nts {
 
             void parseFile();
 
-            class OpenFailureException : public std::exception {
+            class OpenFailureException : public NtsException {
                 public:
-                    const char *what() const throw() {return "No such file.";};
+                    OpenFailureException() : NtsException("No such file.") {};
             };
 
-            class ParsingException : public std::exception {
+            class ParsingException : public NtsException {
                 public:
-                    ParsingException(Error e) : _e(e) {};
-                    const char *what() const throw()
-                        {return nts::errorMsg[_e].c_str();};
-                private:
-                    Error _e;
+                    ParsingException(Error e) : NtsException(errorMsg[e]) {};
             };
         private:
             std::map<std::string, std::unique_ptr<nts::IComponent>> &_map;

@@ -8,10 +8,10 @@
 #ifndef COMPONENTFACTORY_HPP_
 #define COMPONENTFACTORY_HPP_
 
-#include "IComponent.hpp"
 #include <memory>
 #include <unordered_map>
 #include <functional>
+#include "IComponent.hpp"
 
 namespace nts {
     class ComponentFactory {

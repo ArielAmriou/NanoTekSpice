@@ -10,6 +10,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "Parsing.hpp"
+#include "NtsException.hpp"
 
 static void redirect_all_std(void)
 {
@@ -27,7 +28,7 @@ static const char *test_main(const char *file)
         std::map<std::string, std::unique_ptr<nts::IComponent>> map;
         nts::Parsing parser(namefile, map);
         parser.parseFile();
-    } catch (std::exception &e) {
+    } catch (nts::NtsException &e) {
         return e.what();
     }
     return "No Error";
@@ -35,7 +36,7 @@ static const char *test_main(const char *file)
 
 Test(ParsingTest, linkInvalid)
 {
-    cr_assert_str_eq(test_main("linkInvalid.nts"), "std::exception");
+    cr_assert_str_eq(test_main("linkInvalid.nts"), "Link is not valid.");
 }
 
 Test(ParsingTest, noChipsets)
@@ -75,10 +76,10 @@ Test(ParsingTest, multipleCpnName)
 
 Test(ParsingTest, linkToWrongPin)
 {
-    cr_assert_str_eq(test_main("linkToWrongPin.nts"), "std::exception");
+    cr_assert_str_eq(test_main("linkToWrongPin.nts"), "No such pin available.");
 }
 
 Test(ParsingTest, linkTwoOutput)
 {
-    cr_assert_str_eq(test_main("linkTwoOutput.nts"), "std::exception");
+    cr_assert_str_eq(test_main("linkTwoOutput.nts"), "Connection must be between an input and an output.");
 }

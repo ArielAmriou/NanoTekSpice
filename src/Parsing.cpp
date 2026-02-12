@@ -42,7 +42,7 @@ void nts::Parsing::parsingChipset(std::string &str)
         throw ParsingException(nts::Error::NAMEISUSE);
     try {
         _map.insert({name, nts::ComponentFactory::createComponent(type)});
-    } catch (std::exception &e) {
+    } catch (NtsException &e) {
         throw e;
     }
 }
@@ -51,9 +51,9 @@ std::pair<std::string, std::size_t> nts::Parsing::isLink(std::string link)
 {
     size_t pos = link.find(":");
     if (pos != std::string::npos)
-    link.replace(pos, 1, " ");
+        link.replace(pos, 1, " ");
     else
-    throw ParsingException(nts::Error::LINKINVALID);
+        throw ParsingException(nts::Error::LINKINVALID);
     std::istringstream stream(link);
     std::string name;
     std::size_t pin;
@@ -81,7 +81,7 @@ void nts::Parsing::parsingLink(std::string &str)
         two = isLink(linkTwo);
         _map.find(one.first)->second.get()->setLink(
             one.second, *_map.find(two.first)->second.get(), two.second);
-    } catch (std::exception &e) {
+    } catch (NtsException &e) {
         throw e;
     }
 }
@@ -123,7 +123,7 @@ void nts::Parsing::parseFile()
             continue;
         try {
             parsingLine(str, chipsets, links);
-        } catch (ParsingException &e) {
+        } catch (NtsException &e) {
             throw e;
         }
         if (links && !_map.size())

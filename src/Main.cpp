@@ -11,6 +11,7 @@
 #include "NanoTekSpice.hpp"
 #include "Parsing.hpp"
 #include "Shell.hpp"
+#include "NtsException.hpp"
 
 int main(int ac, char **av)
 {
@@ -22,7 +23,7 @@ int main(int ac, char **av)
         nts::Parsing parser(filename, shell.getMap());
         parser.parseFile();
         shell.run();
-    } catch (std::exception &e) {
+    } catch (nts::NtsException &e) {
         std::cerr << "ERROR: " << e.what() << std::endl;
         return EPIERROR;
     }

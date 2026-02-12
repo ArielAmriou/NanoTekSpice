@@ -9,7 +9,7 @@
 #define ACOMPONENT_HPP_
 
 #include "IComponent.hpp"
-#include "ComponentException.hpp"
+#include "NtsException.hpp"
 #include "Pin.hpp"
 #include <vector>
 #include <utility>

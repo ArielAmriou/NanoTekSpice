@@ -8,8 +8,6 @@
 #include "AComponent.hpp"
 #include "Pin.hpp"
 
-#define DEBUG(value) std::cout << "\e[0;35m" << "DEBUG: " <<  "\e[0;37m" << "\t" << value << std::endl;
-
 void nts::AComponent::simulate(std::size_t tick) noexcept {};
 
 void nts::AComponent::setLink(std::size_t pin,

@@ -12,10 +12,8 @@ nts::CFalse::CFalse() : AComponent("false") {
     this->_nbPins = this->_pins.size();
 }
 
-nts::Tristate nts::CFalse::computeComponent(std::size_t pin) noexcept {
-    return nts::False;
-}
+void nts::CFalse::simulateComponent(void) {};
 
 const std::vector<nts::Pin> nts::CFalse::_defaultPins = {
-    nts::Mode::OutputMode,
+    {nts::Mode::OutputMode, nts::False}
 };

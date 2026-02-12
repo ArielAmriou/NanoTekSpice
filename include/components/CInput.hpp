@@ -16,7 +16,7 @@ namespace nts {
             CInput();
             ~CInput() = default;
         private:
-            nts::Tristate computeComponent(std::size_t pin) noexcept;
+            void simulateComponent(void);
             static const std::vector<Pin> _defaultPins;
     };
 }

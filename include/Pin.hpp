@@ -14,7 +14,10 @@
 namespace nts {
     class Pin {
         public:
-            Pin(nts::Mode mode): _mode(mode), _con() {};
+            Pin(nts::Mode mode, nts::Tristate value):
+                _mode(mode), _value(value), _con() {};
+            Pin(nts::Mode mode):
+                _mode(mode), _value(nts::Undefined), _con() {};
             Pin(const nts::Pin &src): _mode(src._mode), _con() {};
             nts::Mode getMode(void) { return this->_mode; };
             nts::Tristate getValue(void) { return this->_value; };
@@ -23,10 +26,11 @@ namespace nts {
                 this->_mode = right._mode;
                 return *this;
             };
+            std::optional<Connection> &getConnection(void) { return _con; };
         private:
             std::optional<Connection> _con;
             nts::Mode _mode;
-            nts::Tristate _value = nts::Undefined;
+            nts::Tristate _value;
     };
 }
 

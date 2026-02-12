@@ -12,15 +12,14 @@ nts::CClock::CClock() : AComponent("clock") {
     this->_nbPins = this->_pins.size();
 }
 
-nts::Tristate nts::CClock::computeComponent(std::size_t pin) noexcept {
-    nts::Tristate value = this->_pins[pin].getValue();
+void nts::CClock::simulateComponent(void) {
+    auto value = this->_pins[0].getValue();
     if (value == nts::True)
-        this->_pins[pin].setValue(nts::False);
+        this->_pins[0].setValue(nts::False);
     if (value == nts::False)
-        this->_pins[pin].setValue(nts::True);
-    return value;
+        this->_pins[0].setValue(nts::True);
 }
 
 const std::vector<nts::Pin> nts::CClock::_defaultPins = {
-    nts::Mode::OutputMode,
+    nts::Mode::OutputMode
 };

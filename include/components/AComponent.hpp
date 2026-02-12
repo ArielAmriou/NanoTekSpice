@@ -16,10 +16,11 @@
 #include <memory>
 
 namespace nts {
-    class AComponent: public IComponent {
+class AComponent: public IComponent {
         public:
-            AComponent(const std::string &name): _name(name) {};
-            AComponent(): _name(""), _nbPins(0), _pins(std::vector<Pin>()) {};
+            AComponent(const std::string &name):
+                _name(name), _lastUpdateTick(0) {};
+            AComponent(): _name(""), _lastUpdateTick(0) {};
             void simulate(std::size_t tick) noexcept;
             void setLink(std::size_t pin, nts::IComponent &other,
                 std::size_t otherPin) noexcept;
@@ -28,11 +29,11 @@ namespace nts {
             Pin &getPin(std::size_t);
             nts::Tristate compute(std::size_t pin);
         protected:
-            virtual nts::Tristate
-                computeComponent(std::size_t pin) noexcept = 0;
+            virtual void simulateComponent(void) = 0;
             std::vector<Pin> _pins;
             std::size_t _nbPins;
             std::string _name;
+            std::size_t _lastUpdateTick;
     };
 }
 

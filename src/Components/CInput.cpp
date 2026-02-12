@@ -12,10 +12,8 @@ nts::CInput::CInput() : AComponent("input") {
     this->_nbPins = this->_pins.size();
 }
 
-nts::Tristate nts::CInput::computeComponent(std::size_t pin) noexcept {
-    return this->_pins[pin].getValue();
-}
+void nts::CInput::simulateComponent(void) {};
 
 const std::vector<nts::Pin> nts::CInput::_defaultPins = {
-    nts::Mode::OutputMode,
+    nts::Mode::OutputMode
 };

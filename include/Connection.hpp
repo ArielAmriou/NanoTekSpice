@@ -18,6 +18,8 @@ namespace nts {
             Connection(std::unique_ptr<IComponent> component, std::size_t pin):
                 _component(component.get()), _pin(pin) {};
             Connection(): _component(nullptr), _pin(0) {};
+            IComponent &getComponent() { return *_component; };
+            std::size_t getPin() { return _pin; };
         private:
             std::unique_ptr<IComponent> _component;
             std::size_t _pin;

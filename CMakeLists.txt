@@ -20,6 +20,7 @@ set(SRCS
     src/Components/CNot.cpp
     src/Components/CAnd.cpp
     src/Shell.cpp
+    src/BasicOperation.cpp
 )
 
 set(HEADERS

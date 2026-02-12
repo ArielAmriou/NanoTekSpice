@@ -12,6 +12,7 @@
 
 nts::Shell::Shell() : _tick(0)
 {
+    _commands[""] = [this]() {exit();};
     _commands["display"] = [this]() {display();};
     _commands["simulate"] = [this]() {simulate();};
     _commands["loop"] = [this]() {loop();};
@@ -24,7 +25,7 @@ bool nts::Shell::getCommand(std::string &str)
     std::string end;
     std::istringstream stream(str);
     stream >> command >> end;
-    if (command.empty() || !end.empty()) {
+    if (!end.empty()) {
         throw CommandException();
     } else if (!_commands.count(command)) {
         try {
@@ -42,10 +43,6 @@ void nts::Shell::run()
     std::string str;
     std::cout << "> ";
     while (std::getline(std::cin, str)) {
-        if (str.empty()) {
-            std::cout << "> ";
-            continue;
-        }
         try {
             if (getCommand(str))
                 break;

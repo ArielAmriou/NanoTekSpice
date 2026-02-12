@@ -20,6 +20,7 @@ set(SRCS
     src/Components/CNot.cpp
     src/Components/C6Not.cpp
     src/Components/CAnd.cpp
+    src/Components/C4And.cpp
     src/Shell.cpp
     src/BasicOperation.cpp
 )

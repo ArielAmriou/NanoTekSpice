@@ -17,6 +17,8 @@
 #include "CXor.hpp"
 #include "COr.hpp"
 #include "C6Not.hpp"
+#include "C4And.hpp"
+#include "C4Or.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type)
@@ -63,6 +65,14 @@ nts::ComponentFactory::componentFactories = {
     },{
         "xor", []{
             return std::make_unique<nts::CXor>();
+        }
+    },{
+        "4081", []{
+            return std::make_unique<nts::C4And>();
+        }
+    },{
+        "4071", []{
+            return std::make_unique<nts::C4Or>();
         }
     }
 };

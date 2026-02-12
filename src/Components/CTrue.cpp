@@ -12,8 +12,8 @@ nts::CTrue::CTrue() : AComponent("true") {
     this->_nbPins = this->_pins.size();
 }
 
-nts::Tristate nts::CTrue::compute(std::size_t pin) noexcept {
-    return nts::Undefined;
+nts::Tristate nts::CTrue::computeComponent(std::size_t pin) noexcept {
+    return nts::True;
 }
 
 const std::vector<nts::Pin> nts::CTrue::_defaultPins = {

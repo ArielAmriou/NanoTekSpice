@@ -52,7 +52,8 @@ void nts::Shell::run()
     }
 }
 
-void nts::Shell::displayType(std::string type1, std::optional<std::string> type2)
+void nts::Shell::displayType(
+    std::string type1, std::optional<std::string> type2)
 {
     auto iter = _map.begin();
     while (iter != _map.end()) {

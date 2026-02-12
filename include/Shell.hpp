@@ -46,7 +46,8 @@ namespace nts {
             std::unordered_map<std::string, std::function<void()>> _commands;
             std::queue<std::pair<std::string, Tristate>> _change;
             bool getCommand(std::string &);
-            void displayType(std::string type1, std::optional<std::string> type2);
+            void displayType(
+                std::string type1, std::optional<std::string> type2);
             Tristate getState(std::string);
             void changeState();
     };

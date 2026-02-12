@@ -28,12 +28,12 @@ namespace nts {
         public :
             virtual ~IComponent() noexcept = default;
             virtual void simulate(std::size_t tick) noexcept = 0;
-            virtual nts::Tristate compute(std::size_t pin) noexcept = 0;
+            virtual nts::Tristate compute(std::size_t pin) = 0;
             virtual void setLink(std::size_t pin,
                 nts::IComponent &other, std::size_t otherPin) = 0;
             virtual nts::Mode getPinMode(std::size_t pin) = 0;
             virtual std::string getName() const = 0;
-            virtual Pin getPin(size_t) = 0;
+            virtual Pin &getPin(size_t) = 0;
     };
 }
 

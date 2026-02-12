@@ -12,7 +12,7 @@ nts::COutput::COutput() : AComponent("output") {
     this->_nbPins = this->_pins.size();
 }
 
-nts::Tristate nts::COutput::compute(std::size_t pin) noexcept {
+nts::Tristate nts::COutput::computeComponent(std::size_t pin) noexcept {
     return nts::Undefined;
 }
 

@@ -58,9 +58,11 @@ std::pair<std::string, std::size_t> nts::Parsing::isLink(std::string link)
     std::string name;
     std::size_t pin;
     stream >> name >> pin;
-    if (name.empty() || stream.fail())
+    if (name.empty() || stream.fail() || pin < 1)
         throw ParsingException(nts::Error::LINKINVALID);
-    return std::make_pair(name, pin);
+    if (!_map.count(name))
+        throw ParsingException(nts::Error::LEXICALORSYNTATIC);
+    return std::make_pair(name, pin - 1);
 }
 
 void nts::Parsing::parsingLink(std::string &str)
@@ -77,7 +79,9 @@ void nts::Parsing::parsingLink(std::string &str)
         std::pair<std::string, std::size_t> two;
         one = isLink(linkOne);
         two = isLink(linkTwo);
-    } catch (ParsingException &e) {
+        _map.find(one.first)->second.get()->setLink(
+            one.second, *_map.find(two.first)->second.get(), two.second);
+    } catch (std::exception &e) {
         throw e;
     }
 }

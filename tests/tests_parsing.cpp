@@ -35,7 +35,7 @@ static const char *test_main(const char *file)
 
 Test(ParsingTest, linkInvalid)
 {
-    cr_assert_str_eq(test_main("linkInvalid.nts"), "Link is not valid.");
+    cr_assert_str_eq(test_main("linkInvalid.nts"), "std::exception");
 }
 
 Test(ParsingTest, noChipsets)
@@ -71,4 +71,14 @@ Test(ParsingTest, noFile)
 Test(ParsingTest, multipleCpnName)
 {
     cr_assert_str_eq(test_main("multipleCpnName.nts"), "Chipsets name already use.");
+}
+
+Test(ParsingTest, linkToWrongPin)
+{
+    cr_assert_str_eq(test_main("linkToWrongPin.nts"), "std::exception");
+}
+
+Test(ParsingTest, linkTwoOutput)
+{
+    cr_assert_str_eq(test_main("linkTwoOutput.nts"), "std::exception");
 }

@@ -11,15 +11,20 @@
 #include <exception>
 
 namespace nts {
-    class NoSuchPin: std::exception {
+    class NoSuchPin : public std::exception {
         public:
             const char *what() const noexcept override
-                { return "No such pin available"; };
+                { return "No such pin available."; };
+    };
+    class ConnectionException : public std::exception {
+        public:
+            const char *what() const noexcept override
+                {return "Connection must be between an input and an output.";};
     };
     class UnknownComponentException : public std::exception {
         public:
             const char *what() const noexcept override
-                { return "Unkown component"; };
+                { return "Unkown component."; };
     };
 }
 

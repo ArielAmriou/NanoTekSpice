@@ -27,6 +27,8 @@ namespace nts {
                 return *this;
             };
             std::optional<Connection> &getConnection(void) { return _con; };
+            void setConnection(IComponent &component, std::size_t pin)
+                {_con.emplace(Connection(component, pin));}
         private:
             std::optional<Connection> _con;
             nts::Mode _mode;

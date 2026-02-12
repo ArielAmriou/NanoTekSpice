@@ -9,7 +9,15 @@
 #include "Pin.hpp"
 
 void nts::AComponent::setLink(std::size_t pin,
-    nts::IComponent &other, std::size_t otherPin) noexcept {};
+    nts::IComponent &other, std::size_t otherPin)
+{
+    if (pin >= _nbPins || otherPin >= other.getNbPin())
+        throw NoSuchPin();
+    if (getPinMode(pin) == other.getPinMode(otherPin))
+        throw ConnectionException();
+    _pins[pin].setConnection(other, otherPin);
+    other.getPin(otherPin).setConnection(*this, pin);
+};
 
 nts::Mode nts::AComponent::getPinMode(std::size_t pin) {
     if (pin >= this->_nbPins)

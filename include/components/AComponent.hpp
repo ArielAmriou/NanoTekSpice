@@ -9,6 +9,7 @@
 #define ACOMPONENT_HPP_
 
 #include "IComponent.hpp"
+#include "ComponentException.hpp"
 #include "Pin.hpp"
 #include <vector>
 #include <utility>
@@ -24,7 +25,9 @@ namespace nts {
                 std::size_t otherPin) noexcept;
             nts::Mode getPinMode(std::size_t pin);
             std::string getName() const {return _name;};
+            nts::Tristate compute(std::size_t pin);
         protected:
+            virtual nts::Tristate computeComponent(std::size_t pin) noexcept = 0;
             std::vector<Pin> _pins;
             std::size_t _nbPins;
             std::string _name;

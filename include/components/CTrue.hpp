@@ -15,8 +15,8 @@ namespace nts {
         public:
             CTrue();
             ~CTrue() = default;
-            nts::Tristate compute(std::size_t pin) noexcept;
         private:
+            nts::Tristate computeComponent(std::size_t pin) noexcept;
             static const std::vector<Pin> _defaultPins;
     };
 }

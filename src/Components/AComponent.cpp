@@ -17,3 +17,10 @@ nts::Mode nts::AComponent::getPinMode(std::size_t pin) {
         throw NoSuchPin();
     return this->_pins[pin].getMode();
 }
+
+nts::Tristate nts::AComponent::compute(std::size_t pin) {
+    if (pin >= this->_nbPins)
+        throw NoSuchPin();
+    return this->computeComponent(pin);
+}
+

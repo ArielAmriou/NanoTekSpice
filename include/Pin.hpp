@@ -23,6 +23,8 @@ namespace nts {
                 this->_mode = right._mode;
                 return *this;
             };
+            void setConnection(IComponent &component, std::size_t pin)
+                {_con.emplace(Connection(component, pin));}
         private:
             std::optional<Connection> _con;
             nts::Mode _mode;

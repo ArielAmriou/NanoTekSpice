@@ -34,6 +34,7 @@ namespace nts {
             virtual nts::Mode getPinMode(std::size_t pin) = 0;
             virtual std::string getName() const = 0;
             virtual Pin &getPin(size_t) = 0;
+            virtual std::size_t getNbPin() const = 0;
     };
 }
 

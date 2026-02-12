@@ -42,6 +42,10 @@ void nts::Shell::run()
     std::string str;
     std::cout << "> ";
     while (std::getline(std::cin, str)) {
+        if (str.empty()) {
+            std::cout << "> ";
+            continue;
+        }
         try {
             if (getCommand(str))
                 break;

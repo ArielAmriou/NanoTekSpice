@@ -1,26 +1,13 @@
+# three inputs and gate
 .chipsets:
-input i00
-input i01
-input i02
-input i03
-input i10
-input i11
-input i12
-input i13
-4081 a
-output o0
-output o1
-output o2
+input i0
+input i1
+input i2
+4081 and0
+output out
 .links:
-i00:1 a:1
-i10:1 a:2
-o0:1 a:3
-i01:1 a:4
-i11:1 a:5
-o1:1 a:6
-i02:1 a:7
-i12:1 a:8
-o2:1 a:9
-i03:1 a:10
-i13:1 a:11
-o3:1 a:12
+i0:1 and0:1
+i1:1 and0:2
+and0:3 and0:5
+i2:1 and0:6
+and0:4 out:1

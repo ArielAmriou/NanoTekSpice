@@ -14,8 +14,6 @@ nts::CClock::CClock() : AComponent("clock") {
 
 nts::Tristate nts::CClock::computeComponent(std::size_t pin) noexcept {
     nts::Tristate value = this->_pins[pin].getValue();
-
-
     if (value == nts::True)
         this->_pins[pin].setValue(nts::False);
     if (value == nts::False)

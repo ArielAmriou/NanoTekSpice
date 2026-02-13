@@ -33,11 +33,11 @@ namespace nts {
                         : NtsException("Wrong Command: " + cmd + ".") {};
             };
 
-            void display(void);
-            void simulate(void);
-            void loop(void);
+            void display();
+            void simulate();
+            void loop();
             void changeInput(std::string);
-            void exit(void) {};
+            void exit() {};
 
             std::map<std::string, std::unique_ptr<nts::IComponent>> &getMap()
                 {return _map;};

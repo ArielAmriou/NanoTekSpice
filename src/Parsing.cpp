@@ -12,7 +12,7 @@
 
 nts::Parsing::Parsing(std::string &fileName,
     std::map<std::string, std::unique_ptr<nts::IComponent>> &map)
-    : _file(fileName), _map(map)
+    : _file(fileName), _path(fileName), _map(map)
 {
     if (!_file.good())
         throw OpenFailureException();
@@ -124,7 +124,7 @@ void nts::Parsing::parseFile()
         try {
             parsingLine(str, chipsets, links);
         } catch (NtsException &e) {
-            throw NtsException(e.what(), i);
+            throw NtsException(e.what(), _path, i + 1);
         }
         if (links && !_map.size())
             throw ParsingException(nts::Error::NOCHIPSETS);

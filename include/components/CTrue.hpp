@@ -16,7 +16,7 @@ namespace nts {
             CTrue();
             ~CTrue() = default;
         private:
-            void simulateComponent(void);
+            void simulateComponent();
             static const std::vector<Pin> _defaultPins;
     };
 }

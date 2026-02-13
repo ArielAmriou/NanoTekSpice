@@ -10,19 +10,16 @@
 
     #include "NanoTekSpice.hpp"
     #include "NtsException.hpp"
+    #include "Tristate.hpp"
 
 namespace nts {
 
     class Pin;
 
-    enum Tristate {
-        Undefined = (-true),
-        True = true,
-        False = false
-    };
     enum class Mode {
         OutputMode,
-        InputMode
+        InputMode,
+        UnusedMode,
     };
     class IComponent {
         public :
@@ -35,6 +32,7 @@ namespace nts {
             virtual std::string getName() const = 0;
             virtual Pin &getPin(size_t) = 0;
             virtual std::size_t getNbPin() const = 0;
+            virtual std::size_t getLastUpdateTick() const = 0;
     };
 }
 

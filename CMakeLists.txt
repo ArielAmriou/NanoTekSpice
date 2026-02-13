@@ -27,8 +27,9 @@ set(SRCS
     src/Components/C4Xor.cpp
     src/Components/C4Nor.cpp
     src/Components/C4Nand.cpp
+    src/Components/CAdder.cpp
     src/Shell.cpp
-    src/BasicOperation.cpp
+    src/Tristate.cpp
 )
 
 set(HEADERS

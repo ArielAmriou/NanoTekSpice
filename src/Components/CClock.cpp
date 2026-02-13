@@ -12,12 +12,9 @@ nts::CClock::CClock() : AComponent("clock") {
     this->_nbPins = this->_pins.size();
 }
 
-void nts::CClock::simulateComponent(void) {
+void nts::CClock::simulateComponent() {
     auto value = this->_pins[0].getValue();
-    if (value == nts::True)
-        this->_pins[0].setValue(nts::False);
-    if (value == nts::False)
-        this->_pins[0].setValue(nts::True);
+    this->_pins[0].setValue(!value);
 }
 
 const std::vector<nts::Pin> nts::CClock::_defaultPins = {

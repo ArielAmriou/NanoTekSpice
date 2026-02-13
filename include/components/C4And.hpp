@@ -16,7 +16,7 @@ namespace nts {
             C4And();
             ~C4And() = default;
         private:
-            void simulateComponent(void);
+            void simulateComponent();
             static const std::vector<Pin> _defaultPins;
     };
 }

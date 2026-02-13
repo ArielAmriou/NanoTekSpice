@@ -18,6 +18,8 @@ namespace nts {
             NtsException(std::string str) : _str(str) {};
             NtsException(std::string str, std::size_t line) :
                 _str(str + " Line " + std::to_string(line)) {};
+            NtsException(std::string str, std::string path, std::size_t line) :
+                _str(str + " At " + path + ":" + std::to_string(line)) {};
             virtual const char *what() const noexcept override
                 { return _str.c_str(); };
         private:

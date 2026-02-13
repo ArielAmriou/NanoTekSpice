@@ -16,7 +16,7 @@
 namespace nts {
     class ComponentFactory {
         public:
-            typedef std::function<std::unique_ptr<nts::IComponent>(void)>
+            typedef std::function<std::unique_ptr<nts::IComponent>()>
                 componentCreator;
             static std::unique_ptr<nts::IComponent>
                 createComponent(const std::string &type);

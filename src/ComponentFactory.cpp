@@ -22,6 +22,7 @@
 #include "C4Xor.hpp"
 #include "C4Nor.hpp"
 #include "C4Nand.hpp"
+#include "CAdder.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type)
@@ -92,6 +93,10 @@ nts::ComponentFactory::componentFactories = {
     },{
         "4011", []{
             return std::make_unique<nts::C4Nand>();
+        }
+    },{
+        "4008", []{
+            return std::make_unique<nts::CAdder>();
         }
     }
 };

@@ -16,7 +16,7 @@ namespace nts {
             C6Not();
             ~C6Not() = default;
         private:
-            void simulateComponent(void);
+            void simulateComponent();
             static const std::vector<Pin> _defaultPins;
     };
 }

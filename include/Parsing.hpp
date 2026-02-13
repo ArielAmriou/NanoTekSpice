@@ -57,6 +57,7 @@ namespace nts {
             };
         private:
             std::map<std::string, std::unique_ptr<nts::IComponent>> &_map;
+            std::string _path;
             std::ifstream _file;
             void parsingLink(std::string &str);
             std::pair<std::string, std::size_t> isLink(std::string link);

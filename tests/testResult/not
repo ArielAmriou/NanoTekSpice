@@ -1,20 +1,20 @@
 > tick: 0
-inputs(s): 
+input(s): 
   c: U
 output(s): 
   o: U
 > > tick: 1
-inputs(s): 
+input(s): 
   c: U
 output(s): 
   o: U
 > > > tick: 2
-inputs(s): 
+input(s): 
   c: 0
 output(s): 
   o: 1
 > > tick: 3
-inputs(s): 
+input(s): 
   c: 1
 output(s): 
   o: 0

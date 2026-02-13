@@ -74,7 +74,7 @@ void nts::Shell::displayType(
 void nts::Shell::display()
 {
     std::cout << "tick: " << _tick << std::endl;
-    std::cout << "inputs(s): " << std::endl;
+    std::cout << "input(s): " << std::endl;
     displayType("input", "clock");
     std::cout << "output(s): " << std::endl;
     displayType("output", {});

@@ -27,6 +27,7 @@ set(SRCS
     src/Components/C4Xor.cpp
     src/Components/C4Nor.cpp
     src/Components/C4Nand.cpp
+    src/Components/CAdder.cpp
     src/Shell.cpp
     src/Tristate.cpp
 )
@@ -37,7 +38,6 @@ set(HEADERS
 )
 
 add_executable(nanotekspice ${MAIN} ${SRCS})
-#target_compile_options(nanotekspice PRIVATE -g3)
 target_include_directories(nanotekspice PRIVATE ${HEADERS})
 
 find_library(CRITERION criterion REQUIRED)

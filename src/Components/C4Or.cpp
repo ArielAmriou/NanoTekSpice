@@ -6,7 +6,6 @@
 */
 
 #include "C4Or.hpp"
-#include "BasicOperation.hpp"
 
 nts::C4Or::C4Or() : AComponent("4071") {
     this->_pins = this->_defaultPins;
@@ -14,14 +13,14 @@ nts::C4Or::C4Or() : AComponent("4071") {
 }
 
 void nts::C4Or::simulateComponent() {
-    this->_pins[2].setValue(nts::BasicOperation::orOperation(
-        this->_pins[0].getValue(), this->_pins[1].getValue()));
-    this->_pins[3].setValue(nts::BasicOperation::orOperation(
-        this->_pins[4].getValue(), this->_pins[5].getValue()));
-    this->_pins[8].setValue(nts::BasicOperation::orOperation(
-        this->_pins[6].getValue(), this->_pins[7].getValue()));
-    this->_pins[9].setValue(nts::BasicOperation::orOperation(
-        this->_pins[10].getValue(), this->_pins[11].getValue()));
+    this->_pins[2].setValue(
+        this->_pins[0].getValue() | this->_pins[1].getValue());
+    this->_pins[3].setValue(
+        this->_pins[4].getValue() | this->_pins[5].getValue());
+    this->_pins[8].setValue(
+        this->_pins[6].getValue() | this->_pins[7].getValue());
+    this->_pins[9].setValue(
+        this->_pins[10].getValue() | this->_pins[11].getValue());
 }
 
 const std::vector<nts::Pin> nts::C4Or::_defaultPins = {

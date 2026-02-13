@@ -6,7 +6,6 @@
 */
 
 #include "CXor.hpp"
-#include "BasicOperation.hpp"
 
 nts::CXor::CXor() : AComponent("and") {
     this->_pins = this->_defaultPins;
@@ -17,8 +16,7 @@ void nts::CXor::simulateComponent() {
     auto input1 = this->_pins[0].getValue();
     auto input2 = this->_pins[1].getValue();
 
-    this->_pins[2].setValue(
-        nts::BasicOperation::xorOperation(input1, input2));
+    this->_pins[2].setValue(input1 ^ input2);
 }
 
 const std::vector<nts::Pin> nts::CXor::_defaultPins = {

@@ -6,7 +6,6 @@
 */
 
 #include "COr.hpp"
-#include "BasicOperation.hpp"
 
 nts::COr::COr() : AComponent("and") {
     this->_pins = this->_defaultPins;
@@ -14,11 +13,8 @@ nts::COr::COr() : AComponent("and") {
 }
 
 void nts::COr::simulateComponent() {
-    auto input1 = this->_pins[0].getValue();
-    auto input2 = this->_pins[1].getValue();
-
     this->_pins[2].setValue(
-        nts::BasicOperation::orOperation(input1, input2));
+        this->_pins[0].getValue() | this->_pins[1].getValue());
 }
 
 const std::vector<nts::Pin> nts::COr::_defaultPins = {

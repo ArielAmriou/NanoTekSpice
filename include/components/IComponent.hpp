@@ -10,16 +10,12 @@
 
     #include "NanoTekSpice.hpp"
     #include "NtsException.hpp"
+    #include "Tristate.hpp"
 
 namespace nts {
 
     class Pin;
 
-    enum Tristate {
-        Undefined = (-true),
-        True = true,
-        False = false
-    };
     enum class Mode {
         OutputMode,
         InputMode

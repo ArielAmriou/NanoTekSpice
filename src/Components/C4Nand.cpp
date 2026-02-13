@@ -6,7 +6,6 @@
 */
 
 #include "C4Nand.hpp"
-#include "BasicOperation.hpp"
 
 nts::C4Nand::C4Nand() : AComponent("4011") {
     this->_pins = this->_defaultPins;
@@ -14,14 +13,14 @@ nts::C4Nand::C4Nand() : AComponent("4011") {
 }
 
 void nts::C4Nand::simulateComponent() {
-    this->_pins[2].setValue(nts::BasicOperation::nandOperation(
-        this->_pins[0].getValue(), this->_pins[1].getValue()));
-    this->_pins[3].setValue(nts::BasicOperation::nandOperation(
-        this->_pins[4].getValue(), this->_pins[5].getValue()));
-    this->_pins[8].setValue(nts::BasicOperation::nandOperation(
-        this->_pins[6].getValue(), this->_pins[7].getValue()));
-    this->_pins[9].setValue(nts::BasicOperation::nandOperation(
-        this->_pins[10].getValue(), this->_pins[11].getValue()));
+    this->_pins[2].setValue(
+        !(this->_pins[0].getValue() & this->_pins[1].getValue()));
+    this->_pins[3].setValue(
+        !(this->_pins[4].getValue() & this->_pins[5].getValue()));
+    this->_pins[8].setValue(
+        !(this->_pins[6].getValue() & this->_pins[7].getValue()));
+    this->_pins[9].setValue(
+        !(this->_pins[10].getValue() & this->_pins[11].getValue()));
 }
 
 const std::vector<nts::Pin> nts::C4Nand::_defaultPins = {

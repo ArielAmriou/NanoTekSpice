@@ -13,7 +13,7 @@ nts::CAnd::CAnd() : AComponent("and") {
     this->_nbPins = this->_pins.size();
 }
 
-void nts::CAnd::simulateComponent(void) {
+void nts::CAnd::simulateComponent() {
     auto input1 = this->_pins[0].getValue();
     auto input2 = this->_pins[1].getValue();
 

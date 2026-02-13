@@ -12,7 +12,7 @@ nts::CInput::CInput() : AComponent("input") {
     this->_nbPins = this->_pins.size();
 }
 
-void nts::CInput::simulateComponent(void) {};
+void nts::CInput::simulateComponent() {};
 
 const std::vector<nts::Pin> nts::CInput::_defaultPins = {
     nts::Mode::OutputMode

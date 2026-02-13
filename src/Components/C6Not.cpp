@@ -13,7 +13,7 @@ nts::C6Not::C6Not() : AComponent("4069") {
     this->_nbPins = this->_pins.size();
 }
 
-void nts::C6Not::simulateComponent(void) {
+void nts::C6Not::simulateComponent() {
     for(std::size_t i = 0; i < this->_nbPins / 2; i += 2)
         this->_pins[i + 1].setValue(
             nts::BasicOperation::notOperation(this->_pins[i].getValue()));

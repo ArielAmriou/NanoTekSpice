@@ -12,7 +12,7 @@ nts::CClock::CClock() : AComponent("clock") {
     this->_nbPins = this->_pins.size();
 }
 
-void nts::CClock::simulateComponent(void) {
+void nts::CClock::simulateComponent() {
     auto value = this->_pins[0].getValue();
     if (value == nts::True)
         this->_pins[0].setValue(nts::False);

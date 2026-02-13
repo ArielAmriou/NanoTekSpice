@@ -21,7 +21,7 @@
 
 #define DEBUG(value) std::cout << "\e[0;35m" << "DEBUG: " <<  "\e[0;37m" << "\t" << value << std::endl;
 
-static void redirect_all_std(void)
+static void redirect_all_std()
 {
     cr_redirect_stdout();
     cr_redirect_stderr();

@@ -20,15 +20,15 @@ namespace nts {
                 _mode(mode), _value(nts::Tristate::Undefined), _con() {};
             Pin(const nts::Pin &src):
                 _mode(src._mode), _con(), _value(src._value) {};
-            nts::Mode getMode(void) { return this->_mode; };
-            nts::Tristate getValue(void) { return this->_value; };
+            nts::Mode getMode() { return this->_mode; };
+            nts::Tristate getValue() { return this->_value; };
             void setValue(nts::Tristate value) { this->_value = value; };
             Pin &operator=(const Pin &right) {
                 this->_mode = right._mode;
                 this->_value = right._value;
                 return *this;
             };
-            std::optional<Connection> &getConnection(void) { return _con; };
+            std::optional<Connection> &getConnection() { return _con; };
             void setConnection(IComponent &component, std::size_t pin)
                 {_con.emplace(Connection(component, pin));}
         private:

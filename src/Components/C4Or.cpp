@@ -13,7 +13,7 @@ nts::C4Or::C4Or() : AComponent("4071") {
     this->_nbPins = this->_pins.size();
 }
 
-void nts::C4Or::simulateComponent(void) {
+void nts::C4Or::simulateComponent() {
     this->_pins[2].setValue(nts::BasicOperation::orOperation(
         this->_pins[0].getValue(), this->_pins[1].getValue()));
     this->_pins[3].setValue(nts::BasicOperation::orOperation(

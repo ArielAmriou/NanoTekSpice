@@ -48,7 +48,7 @@ void nts::AComponent::simulate(std::size_t tick) noexcept {
             if (this->_name != con.value().getComponent().getName())
                 con.value().getComponent().simulate(tick);
             auto value =
-            con.value().getComponent().compute(con.value().getPin());
+                con.value().getComponent().compute(con.value().getPin());
             this->_pins[i].setValue(value);
         }
     }

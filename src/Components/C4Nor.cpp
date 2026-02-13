@@ -13,7 +13,7 @@ nts::C4Nor::C4Nor() : AComponent("4001") {
     this->_nbPins = this->_pins.size();
 }
 
-void nts::C4Nor::simulateComponent(void) {
+void nts::C4Nor::simulateComponent() {
     this->_pins[2].setValue(nts::BasicOperation::norOperation(
         this->_pins[0].getValue(), this->_pins[1].getValue()));
     this->_pins[3].setValue(nts::BasicOperation::norOperation(

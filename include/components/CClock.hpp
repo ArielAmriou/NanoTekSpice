@@ -16,7 +16,7 @@ namespace nts {
             CClock();
             ~CClock() = default;
         private:
-            void simulateComponent(void);
+            void simulateComponent();
             static const std::vector<Pin> _defaultPins;
     };
 }

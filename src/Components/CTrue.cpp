@@ -12,7 +12,7 @@ nts::CTrue::CTrue() : AComponent("true") {
     this->_nbPins = this->_pins.size();
 }
 
-void nts::CTrue::simulateComponent(void) {};
+void nts::CTrue::simulateComponent() {};
 
 const std::vector<nts::Pin> nts::CTrue::_defaultPins = {
     {nts::Mode::OutputMode, nts::True},

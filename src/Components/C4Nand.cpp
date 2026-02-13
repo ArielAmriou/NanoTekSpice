@@ -13,7 +13,7 @@ nts::C4Nand::C4Nand() : AComponent("4011") {
     this->_nbPins = this->_pins.size();
 }
 
-void nts::C4Nand::simulateComponent(void) {
+void nts::C4Nand::simulateComponent() {
     this->_pins[2].setValue(nts::BasicOperation::nandOperation(
         this->_pins[0].getValue(), this->_pins[1].getValue()));
     this->_pins[3].setValue(nts::BasicOperation::nandOperation(

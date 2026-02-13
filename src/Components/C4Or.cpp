@@ -14,23 +14,27 @@ nts::C4Or::C4Or() : AComponent("4071") {
 }
 
 void nts::C4Or::simulateComponent(void) {
-    for(std::size_t i = 0; i < this->_nbPins; i += 3)
-        this->_pins[i + 2].setValue(
-            nts::BasicOperation::orOperation(
-            this->_pins[i].getValue(), this->_pins[i + 1].getValue()));
+    this->_pins[2].setValue(nts::BasicOperation::orOperation(
+        this->_pins[0].getValue(), this->_pins[1].getValue()));
+    this->_pins[3].setValue(nts::BasicOperation::orOperation(
+        this->_pins[4].getValue(), this->_pins[5].getValue()));
+    this->_pins[8].setValue(nts::BasicOperation::orOperation(
+        this->_pins[6].getValue(), this->_pins[7].getValue()));
+    this->_pins[9].setValue(nts::BasicOperation::orOperation(
+        this->_pins[10].getValue(), this->_pins[11].getValue()));
 }
 
 const std::vector<nts::Pin> nts::C4Or::_defaultPins = {
     nts::Mode::InputMode,
     nts::Mode::InputMode,
     nts::Mode::OutputMode,
-    nts::Mode::InputMode,
-    nts::Mode::InputMode,
     nts::Mode::OutputMode,
     nts::Mode::InputMode,
     nts::Mode::InputMode,
-    nts::Mode::OutputMode,
     nts::Mode::InputMode,
     nts::Mode::InputMode,
     nts::Mode::OutputMode,
+    nts::Mode::OutputMode,
+    nts::Mode::InputMode,
+    nts::Mode::InputMode,
 };

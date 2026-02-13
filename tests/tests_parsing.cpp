@@ -39,7 +39,7 @@ static const char *test_main(const char *file)
 
 Test(ParsingTest, linkInvalid)
 {
-    cr_assert_str_eq(test_main("linkInvalid.nts"), "Link is not valid. Line 4");
+    cr_assert_str_eq(test_main("linkInvalid.nts"), "Link is not valid. At tests/testfiles/linkInvalid.nts:5");
 }
 
 Test(ParsingTest, noChipsets)
@@ -54,12 +54,12 @@ Test(ParsingTest, noLinks)
 
 Test(ParsingTest, tooMuchInfoChipsets)
 {
-    cr_assert_str_eq(test_main("tooMuchInfoChipsets.nts"), "Lexical or syntactic errors. Line 1");
+    cr_assert_str_eq(test_main("tooMuchInfoChipsets.nts"), "Lexical or syntactic errors. At tests/testfiles/tooMuchInfoChipsets.nts:2");
 }
 
 Test(ParsingTest, tooMuchInfoLinks)
 {
-    cr_assert_str_eq(test_main("tooMuchInfoLinks.nts"), "Lexical or syntactic errors. Line 5");
+    cr_assert_str_eq(test_main("tooMuchInfoLinks.nts"), "Lexical or syntactic errors. At tests/testfiles/tooMuchInfoLinks.nts:6");
 }
 
 Test(ParsingTest, wrongExtension)
@@ -74,15 +74,20 @@ Test(ParsingTest, noFile)
 
 Test(ParsingTest, multipleCpnName)
 {
-    cr_assert_str_eq(test_main("multipleCpnName.nts"), "Chipsets name already use. Line 2");
+    cr_assert_str_eq(test_main("multipleCpnName.nts"), "Chipsets name already use. At tests/testfiles/multipleCpnName.nts:3");
 }
 
 Test(ParsingTest, linkToWrongPin)
 {
-    cr_assert_str_eq(test_main("linkToWrongPin.nts"), "No such pin available. Line 4");
+    cr_assert_str_eq(test_main("linkToWrongPin.nts"), "No such pin available. At tests/testfiles/linkToWrongPin.nts:5");
 }
 
 Test(ParsingTest, linkTwoOutput)
 {
-    cr_assert_str_eq(test_main("linkTwoOutput.nts"), "Connection must be between an input and an output. Line 4");
+    cr_assert_str_eq(test_main("linkTwoOutput.nts"), "Connection must be between an input and an output. At tests/testfiles/linkTwoOutput.nts:5");
+}
+
+Test(ParsingTest, connectUnusedPin)
+{
+    cr_assert_str_eq(test_main("connectUnusedPin.nts"), "Connection must be between an input and an output. At tests/testfiles/connectUnusedPin.nts:4");
 }

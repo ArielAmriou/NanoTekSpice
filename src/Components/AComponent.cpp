@@ -13,7 +13,9 @@ void nts::AComponent::setLink(std::size_t pin,
 {
     if (pin >= _nbPins || otherPin >= other.getNbPin())
         throw NoSuchPin();
-    if (getPinMode(pin) == other.getPinMode(otherPin))
+    if (getPinMode(pin) == other.getPinMode(otherPin)
+        || getPinMode(pin) == Mode::UnusedMode
+        || other.getPinMode(otherPin) == Mode::UnusedMode)
         throw ConnectionException();
     _pins[pin].setConnection(other, otherPin);
     other.getPin(otherPin).setConnection(*this, pin);

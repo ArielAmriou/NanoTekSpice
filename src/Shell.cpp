@@ -40,6 +40,7 @@ bool nts::Shell::getCommand(std::string &str)
 
 void nts::Shell::run()
 {
+    simulate();
     std::string str;
     std::cout << "> ";
     while (std::getline(std::cin, str)) {
@@ -73,7 +74,7 @@ void nts::Shell::displayType(
 
 void nts::Shell::display()
 {
-    std::cout << "tick: " << _tick << std::endl;
+    std::cout << "tick: " << _tick - 1 << std::endl;
     std::cout << "input(s): " << std::endl;
     displayType("input", "clock");
     std::cout << "output(s): " << std::endl;

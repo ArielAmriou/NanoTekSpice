@@ -42,10 +42,12 @@ void nts::AComponent::simulate(std::size_t tick) noexcept {
     auto iter = this->_pins.begin();
     auto end = this->_pins.end();
 
+    this->_lastUpdateTick = tick;
     for (std::size_t i = 0; iter != end; ++i, ++iter) {
         std::optional<nts::Connection> &con = iter.base()->getConnection();
         if (iter.base()->getMode() == nts::Mode::InputMode && con.has_value()){
-            con.value().getComponent().simulate(tick);
+            if (con.value().getComponent().getLastUpdateTick() < tick)
+                con.value().getComponent().simulate(tick);
             auto value =
                 con.value().getComponent().compute(con.value().getPin());
             this->_pins[i].setValue(value);
@@ -53,6 +55,5 @@ void nts::AComponent::simulate(std::size_t tick) noexcept {
     }
     if (this->_lastUpdateTick < tick) {
         this->simulateComponent();
-        this->_lastUpdateTick = tick;
     }
 }

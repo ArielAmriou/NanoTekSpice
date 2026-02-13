@@ -37,6 +37,7 @@ set(HEADERS
 )
 
 add_executable(nanotekspice ${MAIN} ${SRCS})
+#target_compile_options(nanotekspice PRIVATE -g3)
 target_include_directories(nanotekspice PRIVATE ${HEADERS})
 
 find_library(CRITERION criterion REQUIRED)

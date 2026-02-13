@@ -29,6 +29,7 @@ class AComponent: public IComponent {
             Pin &getPin(std::size_t);
             nts::Tristate compute(std::size_t pin);
             std::size_t getNbPin() const {return _nbPins;}
+            std::size_t getLastUpdateTick() const { return _lastUpdateTick; };
         protected:
             virtual void simulateComponent(void) = 0;
             std::vector<Pin> _pins;

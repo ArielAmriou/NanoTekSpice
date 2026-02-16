@@ -59,14 +59,14 @@ void nts::Shell::displayType(
 {
     auto iter = _map.begin();
     while (iter != _map.end()) {
-        if (iter->second.get()->getName() == type1
+        if (iter->second->getName() == type1
             || (type2.has_value()
-            && iter->second.get()->getName() == type2.value())) {
+            && iter->second->getName() == type2.value())) {
             std::cout << "  " << iter->first << ": ";
-            if (iter->second.get()->compute(0) == Undefined)
+            if (iter->second->compute(0) == Undefined)
                 std::cout << "U" << std::endl;
             else
-                std::cout << iter->second.get()->compute(0) << std::endl;
+                std::cout << iter->second->compute(0) << std::endl;
         }
         iter++;
     }
@@ -87,9 +87,9 @@ void nts::Shell::simulate()
     changeState();
     auto iter = _map.begin();
     while (iter != _map.end()) {
-        if (iter->second.get()->getName() == "output"
-            || iter->second.get()->getName() == "clock") {
-            iter->second.get()->simulate(_tick);
+        if (iter->second->getName() == "output"
+            || iter->second->getName() == "clock") {
+            iter->second->simulate(_tick);
         }
         iter++;
     }
@@ -118,8 +118,8 @@ void nts::Shell::changeInput(std::string str)
     if (name.empty() || value.empty() || !end.empty())
         throw CommandException();
     if (!_map.count(name)
-        || (_map.find(name)->second.get()->getName() != "input"
-        && _map.find(name)->second.get()->getName() != "clock"))
+        || (_map.find(name)->second->getName() != "input"
+        && _map.find(name)->second->getName() != "clock"))
         throw CommandException();
     try {
         _change.push(std::make_pair(name, getState(value)));

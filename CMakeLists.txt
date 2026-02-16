@@ -30,6 +30,7 @@ set(SRCS
     src/Components/CAdder.cpp
     src/Shell.cpp
     src/Tristate.cpp
+    src/Pin.cpp
 )
 
 set(HEADERS

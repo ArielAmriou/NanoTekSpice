@@ -28,6 +28,7 @@ set(SRCS
     src/Components/C4Nor.cpp
     src/Components/C4Nand.cpp
     src/Components/CAdder.cpp
+    src/Components/CLogger.cpp
     src/Shell.cpp
     src/Tristate.cpp
     src/Pin.cpp
@@ -56,6 +57,7 @@ target_link_libraries(tests_run_bin criterion --coverage)
 
 add_custom_target(tests_run
     COMMAND ${CMAKE_COMMAND} -E remove -f ${CMAKE_BINARY_DIR}/*.gcda
+    COMMAND ${CMAKE_COMMAND} -E rm -f log.bin
     COMMAND ./tests_run_bin
     DEPENDS tests_run_bin
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}

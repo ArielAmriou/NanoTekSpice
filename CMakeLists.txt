@@ -29,6 +29,7 @@ set(SRCS
     src/Components/C4Nand.cpp
     src/Components/CAdder.cpp
     src/Components/CLogger.cpp
+    src/Components/CSelector.cpp
     src/Shell.cpp
     src/Tristate.cpp
     src/Pin.cpp

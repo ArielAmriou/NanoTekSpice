@@ -1,0 +1,46 @@
+> tick: 0
+input(s): 
+  enable: U
+  in_a: U
+  in_b: U
+  in_c: U
+  inhibit: U
+output(s): 
+  out_data: U
+> > > > > tick: 1
+input(s): 
+  enable: U
+  in_a: 1
+  in_b: 1
+  in_c: 1
+  inhibit: U
+output(s): 
+  out_data: U
+> > > > tick: 2
+input(s): 
+  enable: 1
+  in_a: 1
+  in_b: 1
+  in_c: 1
+  inhibit: 0
+output(s): 
+  out_data: U
+> > > > tick: 3
+input(s): 
+  enable: 0
+  in_a: 1
+  in_b: 1
+  in_c: 1
+  inhibit: 1
+output(s): 
+  out_data: 0
+> > > tick: 4
+input(s): 
+  enable: 0
+  in_a: 1
+  in_b: 1
+  in_c: 1
+  inhibit: 0
+output(s): 
+  out_data: 1
+> 

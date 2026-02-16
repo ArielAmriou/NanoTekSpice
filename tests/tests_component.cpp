@@ -172,3 +172,14 @@ Test(TestFiles, CPN_logger, .init = redirect_all_std)
     auto log = readFile("log.bin", false).c_str();
     cr_assert_str_eq(log, "A");
 }
+
+Test(TestFiles, CPN_selector, .init = redirect_all_std)
+{
+    std::string test = "selector";
+    std::string ext = "4512.nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), test.c_str()), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}

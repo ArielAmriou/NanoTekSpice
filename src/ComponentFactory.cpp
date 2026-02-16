@@ -23,6 +23,7 @@
 #include "C4Nor.hpp"
 #include "C4Nand.hpp"
 #include "CAdder.hpp"
+#include "CCounter.hpp"
 #include "CLogger.hpp"
 #include "CSelector.hpp"
 #include "CDecoder.hpp"
@@ -100,6 +101,10 @@ nts::ComponentFactory::componentFactories = {
     },{
         "4008", []{
             return std::make_unique<nts::CAdder>();
+        }
+    },{
+        "4040", []{
+            return std::make_unique<nts::CCounter>();
         }
     },{
         "logger", []{

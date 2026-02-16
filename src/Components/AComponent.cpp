@@ -21,7 +21,8 @@ void nts::AComponent::setLink(std::size_t pin,
     other.getPin(otherPin).setConnection(*this, pin);
 };
 
-nts::Mode nts::AComponent::getPinMode(std::size_t pin) {
+nts::Mode nts::AComponent::getPinMode(std::size_t pin)
+{
     if (pin >= this->_nbPins)
         throw NoSuchPin();
     return this->_pins[pin].getMode();
@@ -34,13 +35,15 @@ nts::Pin &nts::AComponent::getPin(size_t pinNb)
     return _pins[pinNb];
 }
 
-nts::Tristate nts::AComponent::compute(std::size_t pin) {
+nts::Tristate nts::AComponent::compute(std::size_t pin)
+{
     if (pin >= this->_nbPins)
         throw NoSuchPin();
     return this->_pins[pin].getValue();
 }
 
-void nts::AComponent::simulate(std::size_t tick) noexcept {
+void nts::AComponent::simulate(std::size_t tick) noexcept
+{
     auto iter = this->_pins.begin();
     auto end = this->_pins.end();
     
@@ -58,4 +61,11 @@ void nts::AComponent::simulate(std::size_t tick) noexcept {
         this->simulateComponent();
         this->_lastUpdateTick = tick;
     }
+}
+
+void nts::AComponent::resetOutputs(const nts::Tristate value)
+{
+    for (std::size_t i = 0; i < this->_nbPins; ++i)
+        if (this->_pins[i].getMode() == nts::Mode::OutputMode)
+            this->_pins[i].setValue(value);
 }

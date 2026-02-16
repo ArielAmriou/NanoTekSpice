@@ -28,12 +28,14 @@ set(SRCS
     src/Components/C4Nor.cpp
     src/Components/C4Nand.cpp
     src/Components/CAdder.cpp
+    src/Components/CCounter.cpp
     src/Components/CLogger.cpp
     src/Components/CSelector.cpp
     src/Components/CDecoder.cpp
     src/Shell.cpp
     src/Tristate.cpp
     src/Pin.cpp
+    src/Utils.cpp
 )
 
 set(HEADERS

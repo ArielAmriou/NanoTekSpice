@@ -161,6 +161,17 @@ Test(TestFiles, CPN_false, .init = redirect_all_std)
     cr_assert_stdout_eq_str(result.c_str());
 }
 
+Test(TestFiles, CPN_4040, .init = redirect_all_std)
+{
+    std::string test = "4040";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str());
+    cr_assert_str_eq(test_main(ext.c_str(), "4040"), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}
+
 Test(TestFiles, CPN_logger, .init = redirect_all_std)
 {
     std::string test = "logger";

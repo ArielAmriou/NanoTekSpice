@@ -24,6 +24,8 @@
 #include "C4Nand.hpp"
 #include "CAdder.hpp"
 #include "CCounter.hpp"
+#include "CLogger.hpp"
+#include "CSelector.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type)
@@ -102,6 +104,14 @@ nts::ComponentFactory::componentFactories = {
     },{
         "4040", []{
             return std::make_unique<nts::CCounter>();
+        }
+    },{
+        "logger", []{
+            return std::make_unique<nts::CLogger>();
+        }
+    },{
+        "4512", []{
+            return std::make_unique<nts::CSelector>();
         }
     }
 };

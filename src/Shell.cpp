@@ -88,7 +88,8 @@ void nts::Shell::simulate()
     auto iter = _map.begin();
     while (iter != _map.end()) {
         if (iter->second->getName() == "output"
-            || iter->second->getName() == "clock") {
+            || iter->second->getName() == "clock"
+            || iter->second->getName() == "logger") {
             iter->second->simulate(_tick);
         }
         iter++;

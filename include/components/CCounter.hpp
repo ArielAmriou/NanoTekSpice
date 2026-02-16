@@ -18,6 +18,7 @@ namespace nts {
             ~CCounter() = default;
         private:
             void simulateComponent();
+            void incrementValues();
             nts::Tristate _prevC = nts::Tristate::Undefined;
             static const std::vector<Pin> _defaultPins;
             static const std::list<std::size_t> _outputOrder;

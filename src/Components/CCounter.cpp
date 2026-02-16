@@ -14,20 +14,9 @@ nts::CCounter::CCounter() : AComponent("4040")
     this->_nbPins = this->_pins.size();
 }
 
-void nts::CCounter::simulateComponent()
+void nts::CCounter::incrementValues()
 {
-    nts::Tristate c = this->_pins[C].getValue();
-    nts::Tristate r = this->_pins[R].getValue();
-    if (r != nts::Tristate::False) {
-        this->_prevC = c;
-        return this->resetOutputs(!r);
-    }
-    nts::Tristate v = this->_pins[C].getValue() & !this->_prevC;
-    if (v == nts::Tristate::Undefined) {
-        this->_prevC = c;
-        return this->resetOutputs();
-    }
-    nts::Tristate carry = c;
+    nts::Tristate carry = this->_pins[C].getValue();;
     for (auto s = _outputOrder.begin(); s != _outputOrder.end(); ++s) {
         nts::Pin &pin = this->_pins[*s];
         nts::Tristate value = pin.getValue();
@@ -42,6 +31,22 @@ void nts::CCounter::simulateComponent()
         auto tmp = nts::Utils::halfAdder(one ^ carry, value, carry);
         pin.setValue(tmp);
     }
+}
+
+void nts::CCounter::simulateComponent()
+{
+    nts::Tristate c = this->_pins[C].getValue();
+    nts::Tristate r = this->_pins[R].getValue();
+    if (r != nts::Tristate::False) {
+        this->_prevC = c;
+        return this->resetOutputs(!r);
+    }
+    nts::Tristate v = this->_pins[C].getValue() & !this->_prevC;
+    if (v == nts::Tristate::Undefined) {
+        this->_prevC = c;
+        return this->resetOutputs();
+    }
+    this->incrementValues();
     this->_prevC = c;
 }
 

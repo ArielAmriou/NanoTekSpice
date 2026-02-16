@@ -1,0 +1,14 @@
+display
+in_0=0
+simulate
+display
+strobe=1
+simulate
+display
+strobe=0
+inhibit=1
+simulate
+display
+inhibit=0
+simulate
+display

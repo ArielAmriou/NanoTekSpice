@@ -26,6 +26,7 @@
 #include "CCounter.hpp"
 #include "CLogger.hpp"
 #include "CSelector.hpp"
+#include "CDecoder.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type)
@@ -112,6 +113,10 @@ nts::ComponentFactory::componentFactories = {
     },{
         "4512", []{
             return std::make_unique<nts::CSelector>();
+        }
+    },{
+        "4514", []{
+            return std::make_unique<nts::CDecoder>();
         }
     }
 };

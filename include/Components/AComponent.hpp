@@ -22,7 +22,6 @@ class AComponent: public IComponent {
             void simulate(std::size_t tick) noexcept;
             void setLink(std::size_t pin, nts::IComponent &other,
                 std::size_t otherPin);
-            nts::Mode getPinMode(std::size_t pin);
             Pin &getPin(std::size_t);
             nts::Tristate compute(std::size_t pin);
             void resetOutputs(

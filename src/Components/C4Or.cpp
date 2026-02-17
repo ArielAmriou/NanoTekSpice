@@ -7,7 +7,7 @@
 
 #include "C4Or.hpp"
 
-nts::C4Or::C4Or() : AComponent("4071") {
+nts::C4Or::C4Or() : AComponent() {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
 }

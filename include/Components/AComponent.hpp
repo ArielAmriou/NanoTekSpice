@@ -18,15 +18,11 @@
 namespace nts {
 class AComponent: public IComponent {
         public:
-            AComponent(const std::string &name):
-                _name(name), _lastUpdateTick(0) {};
-            AComponent(): _name(""), _lastUpdateTick(0) {};
+            AComponent(): _lastUpdateTick(0) {};
             void simulate(std::size_t tick) noexcept;
             void setLink(std::size_t pin, nts::IComponent &other,
                 std::size_t otherPin);
             nts::Mode getPinMode(std::size_t pin);
-            std::string getName() const {return _name;};
-            std::size_t getId() const {return _id;}
             Pin &getPin(std::size_t);
             nts::Tristate compute(std::size_t pin);
             void resetOutputs(
@@ -36,7 +32,6 @@ class AComponent: public IComponent {
             virtual void simulateComponent() = 0;
             std::vector<Pin> _pins;
             std::size_t _nbPins;
-            std::string _name;
             std::size_t _lastUpdateTick;
     };
 }

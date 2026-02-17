@@ -7,7 +7,7 @@
 
 #include "CDualFlipFlop.hpp"
 
-nts::CDualFlipFlop::CDualFlipFlop() : AComponent("4013")
+nts::CDualFlipFlop::CDualFlipFlop() : AComponent()
 {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();

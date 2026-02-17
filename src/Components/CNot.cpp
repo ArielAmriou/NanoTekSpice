@@ -7,7 +7,7 @@
 
 #include "CNot.hpp"
 
-nts::CNot::CNot() : AComponent("not") {
+nts::CNot::CNot() : AComponent() {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
 }

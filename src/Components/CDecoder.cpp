@@ -8,7 +8,7 @@
 #include <cmath>
 #include "CDecoder.hpp"
 
-nts::CDecoder::CDecoder() : AComponent("4514") {
+nts::CDecoder::CDecoder() : AComponent() {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
 }

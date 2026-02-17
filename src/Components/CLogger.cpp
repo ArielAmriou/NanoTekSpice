@@ -9,7 +9,7 @@
 #include <fstream>
 #include "CLogger.hpp"
 
-nts::CLogger::CLogger() : AComponent("logger")
+nts::CLogger::CLogger() : AComponent()
 {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();

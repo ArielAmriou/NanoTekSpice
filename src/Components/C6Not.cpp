@@ -7,7 +7,7 @@
 
 #include "C6Not.hpp"
 
-nts::C6Not::C6Not() : AComponent("4069") {
+nts::C6Not::C6Not() : AComponent() {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
 }

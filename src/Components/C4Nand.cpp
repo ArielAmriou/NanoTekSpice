@@ -7,7 +7,7 @@
 
 #include "C4Nand.hpp"
 
-nts::C4Nand::C4Nand() : AComponent("4011") {
+nts::C4Nand::C4Nand() : AComponent() {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
 }

@@ -7,7 +7,7 @@
 
 #include "CClock.hpp"
 
-nts::CClock::CClock() : AComponent("clock") {
+nts::CClock::CClock() : AComponent() {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
 }

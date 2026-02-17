@@ -7,7 +7,7 @@
 
 #include "CFalse.hpp"
 
-nts::CFalse::CFalse() : AComponent("false") {
+nts::CFalse::CFalse() : AComponent() {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
 }

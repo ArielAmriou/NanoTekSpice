@@ -7,7 +7,7 @@
 
 #include "C4Xor.hpp"
 
-nts::C4Xor::C4Xor() : AComponent("4030") {
+nts::C4Xor::C4Xor() : AComponent() {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
 }

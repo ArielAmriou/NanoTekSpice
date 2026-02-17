@@ -7,7 +7,7 @@
 
 #include "CTrue.hpp"
 
-nts::CTrue::CTrue() : AComponent("true") {
+nts::CTrue::CTrue() : AComponent() {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
 }

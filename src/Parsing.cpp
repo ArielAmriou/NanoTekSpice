@@ -10,8 +10,7 @@
 #include "NanoTekSpice.hpp"
 #include "ComponentFactory.hpp"
 
-nts::Parsing::Parsing(std::string &fileName,
-    std::map<std::string, std::unique_ptr<nts::IComponent>> &map)
+nts::Parsing::Parsing(std::string &fileName, ComponentMap &map)
     : _file(fileName), _path(fileName), _map(map)
 {
     if (!_file.good())
@@ -41,7 +40,7 @@ void nts::Parsing::parsingChipset(std::string &str)
     if (_map.count(name))
         throw ParsingException(nts::Error::NAMEISUSE);
     try {
-        _map.insert({name, nts::ComponentFactory::createComponent(type)});
+        _map.insert({name, std::make_pair(nts::ComponentFactory::createComponent(type), type)});
     } catch (NtsException &e) {
         throw e;
     }
@@ -79,8 +78,8 @@ void nts::Parsing::parsingLink(std::string &str)
         std::pair<std::string, std::size_t> two;
         one = isLink(linkOne);
         two = isLink(linkTwo);
-        _map.find(one.first)->second.get()->setLink(
-            one.second, *_map.find(two.first)->second.get(), two.second);
+        Utils::getComponent(_map, one.first)->setLink(
+            one.second, *Utils::getComponent(_map, two.first), two.second);
     } catch (NtsException &e) {
         throw e;
     }

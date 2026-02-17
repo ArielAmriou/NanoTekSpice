@@ -15,6 +15,7 @@
     #include <fstream>
     #include "IComponent.hpp"
     #include "NtsException.hpp"
+    #include "Utils.hpp"
 
 namespace nts {
 
@@ -40,8 +41,7 @@ namespace nts {
 
     class Parsing {
         public:
-            Parsing(std::string &,
-                std::map<std::string, std::unique_ptr<nts::IComponent>> &);
+            Parsing(std::string &, ComponentMap &);
             ~Parsing() {_file.close();};
 
             void parseFile();
@@ -56,7 +56,7 @@ namespace nts {
                     ParsingException(Error e) : NtsException(errorMsg[e]) {};
             };
         private:
-            std::map<std::string, std::unique_ptr<nts::IComponent>> &_map;
+            ComponentMap &_map;
             std::string _path;
             std::ifstream _file;
             void parsingLink(std::string &str);

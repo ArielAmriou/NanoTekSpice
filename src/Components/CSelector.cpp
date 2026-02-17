@@ -8,7 +8,7 @@
 #include <cmath>
 #include "CSelector.hpp"
 
-nts::CSelector::CSelector() : AComponent("4512") {
+nts::CSelector::CSelector() : AComponent() {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
 }

@@ -8,7 +8,7 @@
 #include "CAdder.hpp"
 #include "Utils.hpp"
 
-nts::CAdder::CAdder() : AComponent("4008") {
+nts::CAdder::CAdder() : AComponent() {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
 }

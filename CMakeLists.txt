@@ -40,7 +40,7 @@ set(SRCS
 
 set(HEADERS
     include/
-    include/components
+    include/Components
 )
 
 add_executable(nanotekspice ${MAIN} ${SRCS})

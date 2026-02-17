@@ -7,7 +7,7 @@
 
 #include "COr.hpp"
 
-nts::COr::COr() : AComponent("or") {
+nts::COr::COr() : AComponent() {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
 }

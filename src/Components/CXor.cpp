@@ -7,7 +7,7 @@
 
 #include "CXor.hpp"
 
-nts::CXor::CXor() : AComponent("xor") {
+nts::CXor::CXor() : AComponent() {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
 }

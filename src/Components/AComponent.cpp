@@ -11,14 +11,18 @@
 void nts::AComponent::setLink(std::size_t pin,
     nts::IComponent &other, std::size_t otherPin)
 {
-    if (pin >= _nbPins || otherPin >= other.getNbPin())
+    if (pin >= _nbPins)
         throw NoSuchPin();
     if (getPinMode(pin) == other.getPinMode(otherPin)
         || getPinMode(pin) == Mode::UnusedMode
         || other.getPinMode(otherPin) == Mode::UnusedMode)
         throw ConnectionException();
     _pins[pin].setConnection(other, otherPin);
-    other.getPin(otherPin).setConnection(*this, pin);
+    try {
+        other.getPin(otherPin).setConnection(*this, pin);
+    } catch (NoSuchPin &e) {
+        throw e;
+    }
 };
 
 nts::Mode nts::AComponent::getPinMode(std::size_t pin)
@@ -50,7 +54,7 @@ void nts::AComponent::simulate(std::size_t tick) noexcept
     for (std::size_t i = 0; iter != end; ++i, ++iter) {
         std::optional<nts::Connection> &con = iter.base()->getConnection();
         if (iter.base()->getMode() == nts::Mode::InputMode && con.has_value()){
-            if (this->_name != con.value().getComponent().getName())
+            if (std::addressof(con.value().getComponent()) != this)
                 con.value().getComponent().simulate(tick);
             auto value =
                 con.value().getComponent().compute(con.value().getPin());

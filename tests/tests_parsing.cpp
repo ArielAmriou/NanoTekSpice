@@ -11,6 +11,7 @@
 #include <fcntl.h>
 #include "Parsing.hpp"
 #include "NtsException.hpp"
+#include "Utils.hpp"
 
 #define DEBUG(value) std::cout << "\e[0;35m" << "DEBUG: " <<  "\e[0;37m" << "\t" << value << std::endl;
 
@@ -27,7 +28,7 @@ static const char *test_main(const char *file)
 
     try {
         std::string namefile = path;
-        std::map<std::string, std::unique_ptr<nts::IComponent>> map;
+        nts::ComponentMap map;
         nts::Parsing parser(namefile, map);
         parser.parseFile();
     } catch (nts::NtsException &e) {

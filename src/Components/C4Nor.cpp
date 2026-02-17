@@ -7,7 +7,7 @@
 
 #include "C4Nor.hpp"
 
-nts::C4Nor::C4Nor() : AComponent("4001") {
+nts::C4Nor::C4Nor() : AComponent() {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
 }

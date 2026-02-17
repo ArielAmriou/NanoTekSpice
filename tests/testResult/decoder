@@ -1,9 +1,9 @@
 > tick: 0
-input(s): 
+input(s):
   in_0: U
   inhibit: U
   strobe: U
-output(s): 
+output(s):
   out_00: U
   out_01: U
   out_02: U
@@ -21,11 +21,11 @@ output(s):
   out_14: U
   out_15: U
 > > > tick: 1
-input(s): 
+input(s):
   in_0: 0
   inhibit: U
   strobe: U
-output(s): 
+output(s):
   out_00: U
   out_01: U
   out_02: U
@@ -43,11 +43,11 @@ output(s):
   out_14: U
   out_15: U
 > > > tick: 2
-input(s): 
+input(s):
   in_0: 0
   inhibit: U
   strobe: 1
-output(s): 
+output(s):
   out_00: 0
   out_01: 0
   out_02: 0
@@ -65,11 +65,11 @@ output(s):
   out_14: 0
   out_15: 0
 > > > > tick: 3
-input(s): 
+input(s):
   in_0: 0
   inhibit: 1
   strobe: 0
-output(s): 
+output(s):
   out_00: 0
   out_01: 0
   out_02: 0
@@ -87,11 +87,11 @@ output(s):
   out_14: 0
   out_15: 0
 > > > tick: 4
-input(s): 
+input(s):
   in_0: 0
   inhibit: 0
   strobe: 0
-output(s): 
+output(s):
   out_00: 1
   out_01: 0
   out_02: 0

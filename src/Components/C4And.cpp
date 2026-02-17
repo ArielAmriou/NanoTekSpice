@@ -7,7 +7,7 @@
 
 #include "C4And.hpp"
 
-nts::C4And::C4And() : AComponent("4081") {
+nts::C4And::C4And() : AComponent() {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
 }

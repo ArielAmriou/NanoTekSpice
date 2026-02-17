@@ -9,10 +9,7 @@
 #include <fstream>
 #include "CLogger.hpp"
 
-#include <iostream>
-#define DEBUG(value) std::cout << "\e[0;35m" << "DEBUG: " <<  "\e[0;37m" << "\t" << value << std::endl;
-
-nts::CLogger::CLogger() : AComponent("logger")
+nts::CLogger::CLogger() : AComponent()
 {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();

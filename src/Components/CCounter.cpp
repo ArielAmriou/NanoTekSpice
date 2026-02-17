@@ -8,7 +8,7 @@
 #include "CCounter.hpp"
 #include "Utils.hpp"
 
-nts::CCounter::CCounter() : AComponent("4040")
+nts::CCounter::CCounter() : AComponent()
 {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();

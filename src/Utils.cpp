@@ -13,3 +13,8 @@ nts::Tristate nts::Utils::halfAdder(const nts::Tristate a,
     carry = a & b;
     return a ^ b;
 }
+
+std::unique_ptr<nts::IComponent> &nts::Utils::getComponent(ComponentMap &map, std::string name)
+{
+    return map.find(name)->second.first;
+}

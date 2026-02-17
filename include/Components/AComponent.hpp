@@ -8,12 +8,12 @@
 #ifndef ACOMPONENT_HPP_
 #define ACOMPONENT_HPP_
 
-#include "IComponent.hpp"
-#include "NtsException.hpp"
-#include "Pin.hpp"
 #include <vector>
 #include <utility>
 #include <memory>
+#include "IComponent.hpp"
+#include "NtsException.hpp"
+#include "Pin.hpp"
 
 namespace nts {
 class AComponent: public IComponent {
@@ -26,12 +26,12 @@ class AComponent: public IComponent {
                 std::size_t otherPin);
             nts::Mode getPinMode(std::size_t pin);
             std::string getName() const {return _name;};
+            std::size_t getId() const {return _id;}
             Pin &getPin(std::size_t);
             nts::Tristate compute(std::size_t pin);
-            std::size_t getNbPin() const {return _nbPins;}
-            std::size_t getLastUpdateTick() const { return _lastUpdateTick; };
             void resetOutputs(
                 const nts::Tristate value = nts::Tristate::Undefined);
+
         protected:
             virtual void simulateComponent() = 0;
             std::vector<Pin> _pins;

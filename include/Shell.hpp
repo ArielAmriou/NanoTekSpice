@@ -16,6 +16,7 @@
     #include <queue>
     #include <optional>
     #include "IComponent.hpp"
+    #include "Utils.hpp"
 
 namespace nts {
     class Shell {
@@ -39,12 +40,11 @@ namespace nts {
             void changeInput(std::string);
             void exit() {};
 
-            std::map<std::string, std::unique_ptr<nts::IComponent>> &getMap()
-                {return _map;};
+            ComponentMap &getMap() {return _map;}
 
         private:
             std::size_t _tick;
-            std::map<std::string, std::unique_ptr<nts::IComponent>> _map;
+            ComponentMap _map;
             std::unordered_map<std::string, std::function<void()>> _commands;
             std::queue<std::pair<std::string, Tristate>> _change;
             bool getCommand(std::string &);

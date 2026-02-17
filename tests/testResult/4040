@@ -1,8 +1,8 @@
 > > > tick: 0
-input(s): 
+input(s):
   cl_clock: U
   in_reset: U
-output(s): 
+output(s):
   out_00: U
   out_01: U
   out_02: U
@@ -16,10 +16,10 @@ output(s):
   out_10: U
   out_11: U
 > > > > > > > tick: 6
-input(s): 
+input(s):
   cl_clock: 1
   in_reset: 0
-output(s): 
+output(s):
   out_00: 1
   out_01: 1
   out_02: 0

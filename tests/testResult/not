@@ -1,21 +1,21 @@
 > tick: 0
-input(s): 
+input(s):
   c: U
-output(s): 
+output(s):
   o: U
 > > tick: 1
-input(s): 
+input(s):
   c: U
-output(s): 
+output(s):
   o: U
 > > > tick: 2
-input(s): 
+input(s):
   c: 0
-output(s): 
+output(s):
   o: 1
 > > tick: 3
-input(s): 
+input(s):
   c: 1
-output(s): 
+output(s):
   o: 0
 > 

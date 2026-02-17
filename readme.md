@@ -16,7 +16,7 @@ This project present the next features:
 
 This project requires the following dependencies:
 
-- **Programming Language:** CPP
+- **Programming Language:** C++
 - **Package Manager:** Cmake
 
 ### Installation
@@ -93,8 +93,16 @@ cmake . && make tests_run
 ```
 ## Project organisation
 
-. \
 ├── CMakeLists.txt \
+├── src/ \
+│   ├── Components/ \
+│   ├── ComponentFactory.cpp \
+│   ├── Main.cpp \
+│   ├── Parsing.cpp \
+│   ├── Pin.cpp \
+│   ├── Shell.cpp \
+│   ├── Tristate.cpp \
+│   └── Utils.cpp \
 ├── include/ \
 │   ├── Components/ \
 │   ├── ComponentFactory.hpp \
@@ -106,15 +114,6 @@ cmake . && make tests_run
 │   ├── Shell.hpp \
 │   ├── Tristate.hpp \
 │   └── Utils.hpp \
-├── src/ \
-│   ├── Components/ \
-│   ├── ComponentFactory.cpp \
-│   ├── Main.cpp \
-│   ├── Parsing.cpp \
-│   ├── Pin.cpp \
-│   ├── Shell.cpp \
-│   ├── Tristate.cpp \
-│   └── Utils.cpp \
 └── tests/ \
     ├── testCommands/ \
     ├── testfiles/ \

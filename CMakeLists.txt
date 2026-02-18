@@ -32,6 +32,7 @@ set(SRCS
     src/Components/CLogger.cpp
     src/Components/CSelector.cpp
     src/Components/CDecoder.cpp
+    src/Components/CDualFlipFlop.cpp
     src/Shell.cpp
     src/Tristate.cpp
     src/Pin.cpp

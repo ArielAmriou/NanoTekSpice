@@ -44,7 +44,7 @@ namespace nts {
             void simulate();
             void loop();
             void changeInput(std::string);
-            void exit() {};
+            void exitShell() {};
             bool getCommand(std::string &);
             void displayType(
                 std::string type1, std::optional<std::string> type2);

@@ -16,7 +16,7 @@ nts::CCounter::CCounter() : AComponent()
 
 void nts::CCounter::incrementValues()
 {
-    nts::Tristate carry = this->_pins[C].getValue();;
+    nts::Tristate carry = this->_pins[C].getValue();
     for (auto s = _outputOrder.begin(); s != _outputOrder.end(); ++s) {
         nts::Pin &pin = this->_pins[*s];
         nts::Tristate value = pin.getValue();

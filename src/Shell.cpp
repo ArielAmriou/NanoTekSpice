@@ -12,11 +12,11 @@
 
 nts::Shell::Shell() : _tick(0)
 {
-    _commands[""] = [this]() {exit();};
+    _commands[""] = [this]() {exitShell();};
     _commands["display"] = [this]() {display();};
     _commands["simulate"] = [this]() {simulate();};
     _commands["loop"] = [this]() {loop();};
-    _commands["exit"] = [this]() {exit();};
+    _commands["exit"] = [this]() {exitShell();};
 }
 
 bool nts::Shell::getCommand(std::string &str)
@@ -136,8 +136,8 @@ nts::Tristate nts::Shell::getState(std::string str)
     if (str == "U")
         value = Undefined;
     else {
-        int state;
         std::istringstream stream(str);
+        int state;
         stream >> state;
         if (stream.fail() || (state != true && state != false))
             throw CommandException();

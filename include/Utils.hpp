@@ -16,8 +16,8 @@
 
 namespace nts {
 
-    typedef std::map<std::string, std::pair<std::unique_ptr<nts::IComponent>,
-        std::string>> ComponentMap;
+    using ComponentMap = std::map<std::string, std::pair<
+        std::unique_ptr<nts::IComponent>, std::string>>;
 
     class Utils {
         public:

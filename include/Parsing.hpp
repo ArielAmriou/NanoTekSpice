@@ -53,7 +53,8 @@ namespace nts {
 
             class ParsingException : public NtsException {
                 public:
-                    ParsingException(Error e) : NtsException(errorMsg[e]) {};
+                    ParsingException(const Error &e) :
+                        NtsException(errorMsg[e]) {};
             };
         private:
             ComponentMap &_map;

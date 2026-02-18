@@ -15,6 +15,7 @@ namespace nts {
         public:
             CDecoder();
             ~CDecoder() = default;
+
             enum PinName {
                 STROBE,
                 A,
@@ -41,6 +42,7 @@ namespace nts {
                 INHIBIT,
                 VDD
             };
+
         private:
             void simulateComponent();
             static const std::vector<Pin> _defaultPins;

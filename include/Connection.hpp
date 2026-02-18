@@ -15,12 +15,13 @@
 namespace nts {
     class Connection {
         public:
-            Connection(IComponent &component, std::size_t pin):
-                _component(component), _pin(pin) {};
-            IComponent &getComponent() { return _component; };
+            Connection(std::reference_wrapper<IComponent> component,
+                std::size_t pin): _component(component), _pin(pin) {};
+            std::reference_wrapper<IComponent>
+                getComponent() { return _component; };
             std::size_t getPin() { return _pin; };
         private:
-            IComponent &_component;
+            std::reference_wrapper<IComponent> _component;
             std::size_t _pin;
     };
 }

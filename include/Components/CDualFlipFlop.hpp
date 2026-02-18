@@ -15,6 +15,7 @@ namespace nts {
         public:
             CDualFlipFlop();
             ~CDualFlipFlop() = default;
+
         private:
             enum PinName {
                 Q1,

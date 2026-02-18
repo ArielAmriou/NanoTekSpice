@@ -15,6 +15,7 @@ namespace nts {
         public:
             CSelector();
             ~CSelector() = default;
+
         private:
             enum PinName {
                 X0,

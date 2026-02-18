@@ -1,0 +1,8 @@
+.chipsets:
+4030 xor
+4069 not
+output out
+.links:
+xor:1 not:2
+not:1 xor:3
+out:1 xor:4

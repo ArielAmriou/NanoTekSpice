@@ -36,7 +36,7 @@ std::unique_ptr<nts::IComponent>
     return componentFactories.at(type)();
 }
 
-const std::unordered_map<std::string, nts::ComponentFactory::componentCreator>
+const std::unordered_map<std::string, nts::ComponentFactory::ComponentCreator>
 nts::ComponentFactory::componentFactories = {
     {
         "input", []{

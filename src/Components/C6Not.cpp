@@ -13,9 +13,9 @@ nts::C6Not::C6Not() : AComponent() {
 }
 
 void nts::C6Not::simulateComponent() {
-    this->_pins[0].setValue(!this->_pins[1].getValue());
-    this->_pins[2].setValue(!this->_pins[3].getValue());
-    this->_pins[4].setValue(!this->_pins[5].getValue());
+    this->_pins[1].setValue(!this->_pins[0].getValue());
+    this->_pins[3].setValue(!this->_pins[2].getValue());
+    this->_pins[5].setValue(!this->_pins[4].getValue());
     this->_pins[7].setValue(!this->_pins[8].getValue());
     this->_pins[9].setValue(!this->_pins[10].getValue());
     this->_pins[11].setValue(!this->_pins[12].getValue());

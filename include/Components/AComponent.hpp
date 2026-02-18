@@ -16,9 +16,8 @@
 #include "Pin.hpp"
 
 namespace nts {
-class AComponent: public IComponent {
+    class AComponent: public IComponent {
         public:
-            AComponent(): _lastUpdateTick(0) {};
             void simulate(std::size_t tick) noexcept;
             void setLink(std::size_t pin, nts::IComponent &other,
                 std::size_t otherPin);
@@ -31,7 +30,7 @@ class AComponent: public IComponent {
             virtual void simulateComponent() = 0;
             std::vector<Pin> _pins;
             std::size_t _nbPins;
-            std::size_t _lastUpdateTick;
+            std::size_t _lastUpdateTick = 0;
     };
 }
 

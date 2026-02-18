@@ -17,11 +17,11 @@ namespace nts {
     class ComponentFactory {
         public:
             typedef std::function<std::unique_ptr<nts::IComponent>()>
-                componentCreator;
+                ComponentCreator;
             static std::unique_ptr<nts::IComponent>
                 createComponent(const std::string &type);
         private:
-            static const std::unordered_map<std::string, componentCreator>
+            static const std::unordered_map<std::string, ComponentCreator>
                 componentFactories;
     };
 }

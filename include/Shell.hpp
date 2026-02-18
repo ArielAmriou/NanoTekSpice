@@ -22,9 +22,10 @@ namespace nts {
     class Shell {
         public:
             Shell();
-            ~Shell() {};
 
             void run();
+            
+            ComponentMap &getMap() {return _map;}
 
             class CommandException : public NtsException {
                 public:
@@ -34,19 +35,16 @@ namespace nts {
                         : NtsException("Wrong Command: " + cmd + ".") {};
             };
 
-            void display();
-            void simulate();
-            void loop();
-            void changeInput(std::string);
-            void exit() {};
-
-            ComponentMap &getMap() {return _map;}
-
         private:
             std::size_t _tick;
             ComponentMap _map;
             std::unordered_map<std::string, std::function<void()>> _commands;
             std::queue<std::pair<std::string, Tristate>> _change;
+            void display();
+            void simulate();
+            void loop();
+            void changeInput(std::string);
+            void exit() {};
             bool getCommand(std::string &);
             void displayType(
                 std::string type1, std::optional<std::string> type2);

@@ -6,7 +6,6 @@
 */
 
 #include "ComponentFactory.hpp"
-
 #include "CInput.hpp"
 #include "COutput.hpp"
 #include "CTrue.hpp"

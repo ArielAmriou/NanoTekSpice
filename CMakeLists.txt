@@ -35,6 +35,7 @@ set(SRCS
     src/Components/CDualFlipFlop.cpp
     src/Components/CRom.cpp
     src/Components/CRam.cpp
+    src/Components/CShiftRegister.cpp
     src/Shell.cpp
     src/Tristate.cpp
     src/Pin.cpp

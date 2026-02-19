@@ -238,3 +238,14 @@ Test(TestFiles, CPN_ram, .init = redirect_all_std)
     fflush(stdout);
     cr_assert_stdout_eq_str(result.c_str());
 }
+
+Test(TestFiles, CPN_shift, .init = redirect_all_std)
+{
+    std::string test = "shift";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), test.c_str()), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}

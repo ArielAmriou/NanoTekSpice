@@ -30,6 +30,7 @@
 #include "CDualFlipFlop.hpp"
 #include "CRom.hpp"
 #include "CRam.hpp"
+#include "CShiftRegister.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type)
@@ -132,6 +133,10 @@ nts::ComponentFactory::componentFactories = {
     },{
         "4801", []{
             return std::make_unique<nts::CRam>();
+        }
+    },{
+        "4094", []{
+            return std::make_unique<nts::CShiftRegister>();
         }
     }
 };

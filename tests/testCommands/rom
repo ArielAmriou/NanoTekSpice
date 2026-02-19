@@ -1,0 +1,13 @@
+display
+addr_00=0
+simulate
+display
+enable=0
+simulate
+display
+read=1
+simulate
+display
+read=0
+simulate
+display

@@ -16,6 +16,8 @@
 
 namespace nts {
 
+    constexpr int BIT = 8;
+
     using ComponentMap = std::map<std::string, std::pair<
         std::unique_ptr<nts::IComponent>, std::string>>;
 

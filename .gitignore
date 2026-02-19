@@ -7,3 +7,4 @@ nanotekspice
 tests_run_bin
 Testing
 log.bin
+./rom.bin

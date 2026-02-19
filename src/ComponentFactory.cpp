@@ -28,6 +28,7 @@
 #include "CSelector.hpp"
 #include "CDecoder.hpp"
 #include "CDualFlipFlop.hpp"
+#include "CRom.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type)
@@ -122,6 +123,10 @@ nts::ComponentFactory::componentFactories = {
     },{
         "4013", []{
             return std::make_unique<nts::CDualFlipFlop>();
+        }
+    },{
+        "2716", []{
+            return std::make_unique<nts::CRom>();
         }
     }
 };

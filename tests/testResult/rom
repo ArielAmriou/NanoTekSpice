@@ -1,0 +1,71 @@
+> tick: 0
+input(s):
+  addr_00: U
+  enable: U
+  read: U
+output(s):
+  out_0: U
+  out_1: U
+  out_2: U
+  out_3: U
+  out_4: U
+  out_5: U
+  out_6: U
+  out_7: U
+> > > tick: 1
+input(s):
+  addr_00: 0
+  enable: U
+  read: U
+output(s):
+  out_0: U
+  out_1: U
+  out_2: U
+  out_3: U
+  out_4: U
+  out_5: U
+  out_6: U
+  out_7: U
+> > > tick: 2
+input(s):
+  addr_00: 0
+  enable: 0
+  read: U
+output(s):
+  out_0: U
+  out_1: U
+  out_2: U
+  out_3: U
+  out_4: U
+  out_5: U
+  out_6: U
+  out_7: U
+> > > tick: 3
+input(s):
+  addr_00: 0
+  enable: 1
+  read: 1
+output(s):
+  out_0: 1
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 1
+  out_7: 0
+> > > tick: 4
+input(s):
+  addr_00: 0
+  enable: 0
+  read: 0
+output(s):
+  out_0: 1
+  out_1: 0
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 1
+  out_7: 0
+> 

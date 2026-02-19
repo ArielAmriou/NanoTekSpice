@@ -46,11 +46,6 @@ namespace nts {
 
             void parseFile();
 
-            class OpenFailureException : public NtsException {
-                public:
-                    OpenFailureException() : NtsException("No such file.") {};
-            };
-
             class ParsingException : public NtsException {
                 public:
                     ParsingException(const Error &e) :

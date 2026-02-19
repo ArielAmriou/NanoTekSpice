@@ -41,6 +41,11 @@ namespace nts {
         public:
             UnknownComponentException() : NtsException("Unkown component.") {};
     };
+
+    class OpenFailureException : public NtsException {
+        public:
+            OpenFailureException() : NtsException("No such file.") {};
+    };
 }
 
 #endif /* !COMPONENTEXCEPTION_HPP_ */

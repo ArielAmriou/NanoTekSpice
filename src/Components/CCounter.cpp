@@ -41,7 +41,7 @@ void nts::CCounter::simulateComponent()
         this->_prevC = c;
         return this->resetOutputs(!r);
     }
-    nts::Tristate v = this->_pins[C].getValue() & !this->_prevC;
+    nts::Tristate v = c & !this->_prevC;
     if (v == nts::Tristate::Undefined) {
         this->_prevC = c;
         return this->resetOutputs();

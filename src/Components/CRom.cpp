@@ -19,12 +19,11 @@ nts::CRom::CRom() : AComponent() {
     if (!file.is_open())
         throw OpenFailureException();
     for (std::size_t i = 0; i < ROMMEM; i++) {
-        char byte[1];
-        file.read(byte, 1);
-        if (!file.good())
+        int byte = file.get();
+        if (byte == EOF)
             break;
         for (std::size_t j = 0; j < BIT; j++) {
-            if ((*byte >> j) & True == True)
+            if ((static_cast<const char>(byte) >> j) & True == True)
                 _mem[i][j] = True;
             else
                 _mem[i][j] = False;

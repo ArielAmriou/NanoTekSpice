@@ -29,6 +29,7 @@
 #include "CDecoder.hpp"
 #include "CDualFlipFlop.hpp"
 #include "CRom.hpp"
+#include "CRam.hpp"
 
 #include "CJohnson.hpp"
 
@@ -133,6 +134,10 @@ nts::ComponentFactory::componentFactories = {
     },{
         "4017", []{
             return std::make_unique<nts::CJohnson>();
+        }
+    },{
+        "4801", []{
+            return std::make_unique<nts::CRam>();
         }
     }
 };

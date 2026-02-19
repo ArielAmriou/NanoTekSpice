@@ -13,12 +13,15 @@ void nts::AComponent::setLink(std::size_t pin,
 {
     if (pin >= _nbPins)
         throw NoSuchPin();
-    if (getPin(pin).getMode() == other.getPin(otherPin).getMode()
-        || getPin(pin).getMode() == Mode::UnusedMode
-        || other.getPin(otherPin).getMode() == Mode::UnusedMode)
+    Mode first = getPin(pin).getMode();
+    Mode second = other.getPin(otherPin).getMode();
+    if (first == second
+        || first == Mode::UnusedMode
+        || second == Mode::UnusedMode)
         throw ConnectionException();
     try {
-        if (getPin(pin).getMode() == Mode::InputMode)
+        if (first == Mode::InputMode
+            || (first == Mode::DualMode && second == Mode::OutputMode))
             _pins[pin].setConnection(other, otherPin);
         else
             other.getPin(otherPin).setConnection(*this, pin);
@@ -52,7 +55,9 @@ void nts::AComponent::simulate(std::size_t tick) noexcept
         return;
     for (std::size_t i = 0; iter != end; ++i) {
         std::optional<nts::Connection> &con = iter.base()->getConnection();
-        if (iter.base()->getMode() == nts::Mode::InputMode && con.has_value()){
+        if ((iter.base()->getMode() == nts::Mode::InputMode
+            || iter.base()->getMode() == nts::Mode::DualMode)
+            && con.has_value()){
             con.value().getComponent().get().simulate(tick);
             auto value =
                 con.value().getComponent().get().compute(con.value().getPin());

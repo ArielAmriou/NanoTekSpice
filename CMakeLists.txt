@@ -34,8 +34,8 @@ set(SRCS
     src/Components/CDecoder.cpp
     src/Components/CDualFlipFlop.cpp
     src/Components/CRom.cpp
-
     src/Components/CJohnson.cpp
+    src/Components/CRam.cpp
     src/Shell.cpp
     src/Tristate.cpp
     src/Pin.cpp

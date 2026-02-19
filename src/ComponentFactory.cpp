@@ -32,6 +32,8 @@
 #include "CRam.hpp"
 #include "CShiftRegister.hpp"
 
+#include "CJohnson.hpp"
+
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type)
 {
@@ -129,6 +131,10 @@ nts::ComponentFactory::componentFactories = {
     },{
         "2716", []{
             return std::make_unique<nts::CRom>();
+        }
+    },{
+        "4017", []{
+            return std::make_unique<nts::CJohnson>();
         }
     },{
         "4801", []{

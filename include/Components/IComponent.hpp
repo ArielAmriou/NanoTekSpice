@@ -20,6 +20,7 @@ namespace nts {
         OutputMode,
         InputMode,
         UnusedMode,
+        DualMode,
     };
     class IComponent {
         public :

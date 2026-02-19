@@ -29,6 +29,7 @@
 #include "CDecoder.hpp"
 #include "CDualFlipFlop.hpp"
 #include "CRom.hpp"
+#include "CRam.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type)
@@ -127,6 +128,10 @@ nts::ComponentFactory::componentFactories = {
     },{
         "2716", []{
             return std::make_unique<nts::CRom>();
+        }
+    },{
+        "4801", []{
+            return std::make_unique<nts::CRam>();
         }
     }
 };

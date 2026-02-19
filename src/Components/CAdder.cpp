@@ -20,14 +20,14 @@ void nts::CAdder::simulateComponent() {
             return;
         }
     nts::Tristate co = this->_pins[CI].getValue();
-    this->_pins[S4].setValue(nts::Utils::halfAdder(this->_pins[B4].getValue(),
-        this->_pins[A4].getValue() ^ co, co));
-    this->_pins[S3].setValue(nts::Utils::halfAdder(this->_pins[B3].getValue(),
-        this->_pins[A3].getValue() ^ co, co));
-    this->_pins[S2].setValue(nts::Utils::halfAdder(this->_pins[B2].getValue(),
-        this->_pins[A2].getValue() ^ co, co));
-    this->_pins[S1].setValue(nts::Utils::halfAdder(this->_pins[B1].getValue(),
-        this->_pins[A1].getValue() ^ co, co));
+    this->_pins[S1].setValue(nts::Utils::fullAdder(this->_pins[B1].getValue(),
+        this->_pins[A1].getValue(), co));
+    this->_pins[S2].setValue(nts::Utils::fullAdder(this->_pins[B2].getValue(),
+        this->_pins[A2].getValue(), co));
+    this->_pins[S3].setValue(nts::Utils::fullAdder(this->_pins[B3].getValue(),
+        this->_pins[A3].getValue(), co));
+    this->_pins[S4].setValue(nts::Utils::fullAdder(this->_pins[B4].getValue(),
+        this->_pins[A4].getValue(), co));
     this->_pins[CO].setValue(co);
 }
 

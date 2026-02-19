@@ -26,6 +26,8 @@ namespace nts {
             static std::unique_ptr<nts::IComponent> &getComponent(ComponentMap &, std::string);
             static Tristate halfAdder(const Tristate a,
                 const Tristate b, Tristate &carry);
+            static Tristate fullAdder(const Tristate a,
+                const Tristate b, Tristate &carry);
     };
 }
 

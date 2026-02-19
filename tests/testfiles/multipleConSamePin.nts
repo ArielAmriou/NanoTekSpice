@@ -1,0 +1,7 @@
+.chipsets:
+clock clk
+output out_0
+output out_1
+.links:
+clk:1 out_0:1
+clk:1 out_1:1

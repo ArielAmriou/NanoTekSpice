@@ -10,10 +10,6 @@
 void nts::Pin::setConnection(
     std::reference_wrapper<IComponent> component, std::size_t pin)
 {
-    if (_con.has_value()) {
-        Connection con = _con.value();
-        con.getComponent().get().getPin(con.getPin())._con = std::nullopt;
-    }
     _con.emplace(Connection(component, pin));
 }
 

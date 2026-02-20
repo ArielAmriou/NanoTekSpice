@@ -1,0 +1,12 @@
+   .chipsets:
+input i
+
+        output o
+    
+.links:   
+
+
+    i:1 o:1  
+
+
+

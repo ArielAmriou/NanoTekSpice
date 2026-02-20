@@ -1,0 +1,8 @@
+# caca
+.chipsets: # caca # caca
+input i # caca
+output o
+# caca
+.links:#test
+# caca
+i:1 o:1

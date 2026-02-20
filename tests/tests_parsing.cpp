@@ -92,3 +92,13 @@ Test(ParsingTest, connectUnusedPin)
 {
     cr_assert_str_eq(test_main("connectUnusedPin.nts"), "Connection must be between an input and an output. At tests/testfiles/connectUnusedPin.nts:4");
 }
+
+Test(ParsingTest, comment)
+{
+    cr_assert_str_eq(test_main("goodComment.nts"), "No Error");
+}
+
+Test(ParsingTest, new_line)
+{
+    cr_assert_str_eq(test_main("goodNL.nts"), "No Error");
+}

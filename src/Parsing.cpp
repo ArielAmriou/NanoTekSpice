@@ -85,17 +85,31 @@ void nts::Parsing::parsingLink(std::string &str)
     }
 }
 
-void nts::Parsing::parsingLine(std::string &str, bool &chipsets, bool &links)
+bool nts::Parsing::parsingType(std::string &str, bool &chipsets, bool &links)
 {
+    std::string line;
+    std::string end;
+    std::istringstream stream(str);
+    stream >> line >> end;
     bool correct = false;
-    if (str == ".chipsets:" && !chipsets) {
+    if (line == ".chipsets:" && !chipsets) {
         chipsets = true;
         correct = true;
     }
-    if (str == ".links:" && chipsets && !links) {
+    if (line == ".links:" && chipsets && !links) {
         links = true;
         correct = true;
     }
+    if (line.empty())
+        correct = true;
+    if (!end.empty())
+        correct = false;
+    return correct;
+}
+
+void nts::Parsing::parsingLine(std::string &str, bool &chipsets, bool &links)
+{
+    bool correct = parsingType(str, chipsets, links);
     try {
         if (chipsets && !links && !correct) {
             parsingChipset(str);

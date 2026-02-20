@@ -55,6 +55,7 @@ namespace nts {
             ComponentMap &_map;
             std::string _path;
             std::ifstream _file;
+            bool parsingType(std::string &str, bool &chipsets, bool &links);
             void parsingLink(std::string &str);
             std::pair<std::string, std::size_t> isLink(std::string link);
             void parsingChipset(std::string &str);

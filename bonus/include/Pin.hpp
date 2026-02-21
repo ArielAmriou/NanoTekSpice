@@ -14,12 +14,12 @@
 namespace nts {
     class Pin {
         public:
-            Pin(nts::Mode mode, nts::Tristate value):
-                _mode(mode), _value(value), _con() {};
-            Pin(nts::Mode mode):
-                _mode(mode), _value(nts::Tristate::Undefined), _con() {};
+            Pin(nts::Mode mode, nts::Tristate value, sf::Vector2f pos):
+                _mode(mode), _value(value), _con(), _pos(pos) {_circle.setOrigin(5, 5);};
+            Pin(nts::Mode mode, sf::Vector2f pos):
+                _mode(mode), _value(nts::Tristate::Undefined), _con(), _pos(pos) {_circle.setOrigin(5, 5);};
             Pin(const nts::Pin &src):
-                _mode(src._mode), _con(), _value(src._value) {};
+                _mode(src._mode), _con(), _value(src._value), _pos(src._pos), _circle(src._circle) {};
 
             nts::Mode getMode() const { return this->_mode; };
             nts::Tristate getValue() const { return this->_value; };
@@ -29,10 +29,21 @@ namespace nts {
                 std::reference_wrapper<IComponent>, std::size_t pin);
             Pin &operator=(const Pin &right);
 
+            // Sfml
+            void draw(sf::RenderWindow &window, sf::Vector2f pos);
+
+            sf::CircleShape &getPin() {return _circle;};
+            sf::Vector2f getPos() {return _pos;}
+            void resetCon() {_con = std::nullopt;}
+
         private:
             std::optional<Connection> _con;
             nts::Mode _mode;
             nts::Tristate _value;
+
+            // Sfml
+            sf::CircleShape _circle;
+            sf::Vector2f _pos;
     };
 }
 

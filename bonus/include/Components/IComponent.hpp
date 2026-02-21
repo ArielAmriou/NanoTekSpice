@@ -8,6 +8,7 @@
 #ifndef ICOMPONENT_HPP
     #define ICOMPONENT_HPP
 
+    #include <SFML/Graphics.hpp>
     #include "NtsException.hpp"
     #include "Tristate.hpp"
 
@@ -30,6 +31,16 @@ namespace nts {
             virtual void setLink(std::size_t pin,
                 nts::IComponent &other, std::size_t otherPin) = 0;
             virtual Pin &getPin(size_t) = 0;
+
+            // Sfml
+            virtual Pin &getNPin(size_t n) = 0;
+            virtual sf::Vector2f getNPinPos(size_t n) = 0;
+            virtual void setPos(sf::Vector2f pos) = 0;
+            virtual sf::Vector2f getPos() = 0;
+            virtual sf::RectangleShape &getChipset() = 0;
+            virtual sf::Vector2f getSize() = 0;
+
+            virtual void draw(sf::RenderWindow &window) = 0;
     };
 }
 

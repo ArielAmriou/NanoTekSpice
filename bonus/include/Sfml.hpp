@@ -15,7 +15,6 @@ namespace nts
 {
     constexpr int EPISUCCESS = 0;
     constexpr int EPIERROR = 84;
-    inline const sf::Color DARKBLUE = sf::Color(0, 0, 139);
 
     class Sfml {
         public:

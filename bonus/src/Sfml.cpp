@@ -7,6 +7,7 @@
 
 #include "Sfml.hpp"
 #include "NtsException.hpp"
+#include "Utils.hpp"
 
 nts::Sfml::Sfml()
     : _window(sf::VideoMode(_size.x, _size.y, 144), "NanoTeckSpice", sf::Style::Close),

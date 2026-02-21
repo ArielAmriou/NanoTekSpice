@@ -12,6 +12,8 @@ set(SRCS
     src/Sfml.cpp
     src/Event.cpp
     src/Utils.cpp
+    src/Tristate.cpp
+    src/Pin.cpp
 )
 
 set(HEADERS

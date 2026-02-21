@@ -10,6 +10,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Event.hpp"
+#include "Utils.hpp"
 
 namespace nts
 {
@@ -30,6 +31,7 @@ namespace nts
             sf::Font _font;
             Event _event;
             std::vector<std::function<void (sf::Event, sf::RenderWindow &)>> _otherEvents;
+            ComponentMap _components;
     };
 }
 

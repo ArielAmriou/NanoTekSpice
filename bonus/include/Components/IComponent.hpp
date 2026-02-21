@@ -36,7 +36,7 @@ namespace nts {
             virtual Pin &getNPin(size_t n) = 0;
             virtual sf::Vector2f getNPinPos(size_t n) = 0;
             virtual void setPos(sf::Vector2f pos) = 0;
-            virtual sf::Vector2f getPos() = 0;
+            virtual sf::Vector2f getPos() const = 0;
             virtual sf::RectangleShape &getChipset() = 0;
             virtual sf::Vector2f getSize() = 0;
 

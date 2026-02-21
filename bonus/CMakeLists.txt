@@ -15,7 +15,11 @@ set(SRCS
     src/Tristate.cpp
     src/Pin.cpp
     src/Connection.cpp
+    src/ComponentFactory.cpp
+
     src/Components/AComponent.cpp
+    src/Components/CInput.cpp
+    src/Components/COutput.cpp
 )
 
 set(HEADERS

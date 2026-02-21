@@ -10,6 +10,7 @@ set(MAIN
 
 set(SRCS
     src/Sfml.cpp
+    src/Event.cpp
 )
 
 set(HEADERS

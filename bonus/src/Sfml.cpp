@@ -9,7 +9,8 @@
 #include "NtsException.hpp"
 
 nts::Sfml::Sfml()
-    : _window(sf::VideoMode(_size.x, _size.y, 144), "NanoTeckSpice", sf::Style::Close)
+    : _window(sf::VideoMode(_size.x, _size.y, 144), "NanoTeckSpice", sf::Style::Close),
+    _event(_window)
 {
     try {
         _font = loadFont();
@@ -29,15 +30,9 @@ sf::Font nts::Sfml::loadFont()
 
 void nts::Sfml::run()
 {
-    sf::Event event;
-
     while (_window.isOpen()) {
-        while (_window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed
-                || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-                _window.close();
-        }
-            _window.clear(DARKBLUE);
+        _event.run(_otherEvents);
+        _window.clear(DARKBLUE);
         _window.display();
     }
 }

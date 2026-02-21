@@ -9,6 +9,7 @@
     #define SFMLHPP
 
 #include <SFML/Graphics.hpp>
+#include "Event.hpp"
 
 namespace nts
 {
@@ -28,6 +29,8 @@ namespace nts
             sf::Vector2u _size = {1778, 1000};
             sf::RenderWindow _window;
             sf::Font _font;
+            Event _event;
+            std::vector<std::function<void (sf::Event, sf::RenderWindow &)>> _otherEvents;
     };
 }
 

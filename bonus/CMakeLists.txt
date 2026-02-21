@@ -9,6 +9,7 @@ set(MAIN
 )
 
 set(SRCS
+    src/Sfml.cpp
 )
 
 set(HEADERS

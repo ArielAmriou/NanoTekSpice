@@ -73,3 +73,11 @@ add_custom_target(tests_run
     DEPENDS tests_run_bin
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )
+
+add_custom_target(bonus_run
+    COMMAND ${CMAKE_COMMAND} -S . -B . -DCMAKE_BUILD_TYPE=Release
+    COMMAND ${CMAKE_BUILD_TOOL} clean
+    COMMAND ${CMAKE_BUILD_TOOL} -j
+    COMMAND ./bonus
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/bonus
+)

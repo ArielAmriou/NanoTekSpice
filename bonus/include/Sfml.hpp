@@ -11,6 +11,7 @@
 #include <SFML/Graphics.hpp>
 #include "Event.hpp"
 #include "Utils.hpp"
+#include "RightToolBar.hpp"
 
 namespace nts
 {
@@ -34,6 +35,7 @@ namespace nts
             std::vector<std::function<void (sf::Event, sf::RenderWindow &)>> _otherEvents;
             ComponentMap _components;
             sf::VertexArray _line;
+            RightToolBar _rightToolBar;
     };
 }
 

@@ -44,6 +44,11 @@ namespace nts {
             static sf::Color colorOffset(const sf::Color &rec, int offset);
             static sf::Color colorOpacity(const sf::Color &rec, int opacity);
     };
+
+     static const std::vector<std::string> ChipsetsName = {
+        "intput",
+        "output",
+    };
 }
 
 #endif

@@ -12,17 +12,13 @@
 
 nts::Sfml::Sfml()
     : _window(sf::VideoMode(_size.x, _size.y, 144), "NanoTeckSpice", sf::Style::Close),
-    _event(_window), _line(sf::LinesStrip, 2)
+    _font(loadFont()), _event(_window), _line(sf::LinesStrip, 2), _rightToolBar(_size, _font)
 {
-    try {
-        _font = loadFont();
-    } catch (FontsException &e) {
-        throw e;
-    }
     _components.insert({"1", std::make_pair(ComponentFactory::createComponent("input", {100, 100}, _font), "input")});
     _components.insert({"2", std::make_pair(ComponentFactory::createComponent("output", {200, 100}, _font), "output")});
     _components.insert({"3", std::make_pair(ComponentFactory::createComponent("input", {300, 100}, _font), "input")});
     _components.insert({"4", std::make_pair(ComponentFactory::createComponent("output", {400, 100}, _font), "output")});
+    _otherEvents.push_back([this](sf::Event e, sf::RenderWindow& w) {_rightToolBar.event(e, w);});
 }
 
 sf::Font nts::Sfml::loadFont()
@@ -40,6 +36,7 @@ void nts::Sfml::run()
         _event.run(_otherEvents, _components);
         _window.clear(DARKBLUE);
         drawComponents();
+        _rightToolBar.draw(_window);
         _window.display();
     }
 }

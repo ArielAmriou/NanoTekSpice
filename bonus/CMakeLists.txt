@@ -16,6 +16,10 @@ set(SRCS
     src/Pin.cpp
     src/Connection.cpp
     src/ComponentFactory.cpp
+    src/AButton.cpp
+    src/ComponentButton.cpp
+    src/RightToolBar.cpp
+    src/Slider.cpp
 
     src/Components/AComponent.cpp
     src/Components/CInput.cpp

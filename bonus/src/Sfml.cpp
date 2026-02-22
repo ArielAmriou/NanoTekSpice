@@ -12,7 +12,7 @@
 
 nts::Sfml::Sfml()
     : _window(sf::VideoMode(_size.x, _size.y, 144), "NanoTeckSpice", sf::Style::Close),
-    _font(loadFont()), _event(_window), _line(sf::LinesStrip, 2), _rightToolBar(_size, _font)
+    _font(loadFont()), _event(_window), _line(sf::LinesStrip, 2), _rightToolBar(_size, _components, _font, _window)
 {
     _components.insert({"1", std::make_pair(ComponentFactory::createComponent("input", {100, 100}, _font), "input")});
     _components.insert({"2", std::make_pair(ComponentFactory::createComponent("output", {200, 100}, _font), "output")});

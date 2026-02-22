@@ -9,16 +9,18 @@
 #include "Utils.hpp"
 #include "ComponentButton.hpp"
 
-nts::RightToolBar::RightToolBar(sf::Vector2u windowSize, const sf::Font &font) : AButton(ButtonType::DRAWER), _size({WIDTH, static_cast<float>(windowSize.y)}), _rec(_size), _slider({windowSize.x - SLIDERWIDTH, 0}, {SLIDERWIDTH, _size.y}, sf::Color::White)
+nts::RightToolBar::RightToolBar(sf::Vector2u windowSize, ComponentMap &components, sf::Font &font, sf::RenderWindow &window)
+    : AButton(ButtonType::DRAWER), _size({WIDTH, static_cast<float>(windowSize.y)}),
+    _rec(_size), _slider({windowSize.x - SLIDERWIDTH, 0}, {SLIDERWIDTH, _size.y}, sf::Color::White)
 {
     _rec.setPosition({windowSize.x - WIDTH, 0});
     _rec.setFillColor(DARKGREY);
     _slider.setSrollZone(_rec.getGlobalBounds());
-    initAddButton(font, windowSize.x);
+    initAddButton(components, font, window, windowSize.x);
     initButton(font, windowSize.x - WIDTH);
 }
 
-void nts::RightToolBar::initAddButton(const sf::Font &font, unsigned int posx)
+void nts::RightToolBar::initAddButton(ComponentMap &components, sf::Font &font, sf::RenderWindow &window, unsigned int posx)
 {
     float yGap = _size.y / (ChipsetsName.size());
     if (yGap < MINGAP)
@@ -26,7 +28,7 @@ void nts::RightToolBar::initAddButton(const sf::Font &font, unsigned int posx)
     float yoffset = yGap / 2;
     float maxScroll = 0;
     for (std::size_t i= 0; i < ChipsetsName.size(); i++) {
-        _buttons.push_back(std::make_unique<ComponentButton>(sf::Vector2f{static_cast<float>(posx - 125), yGap * i + yoffset}, ChipsetsName[i], font));
+        _buttons.push_back(std::make_unique<ComponentButton>(sf::Vector2f{static_cast<float>(posx - 125), yGap * i + yoffset}, ChipsetsName[i], components, font, window));
         maxScroll += yGap;
     }
     maxScroll -= _size.y;

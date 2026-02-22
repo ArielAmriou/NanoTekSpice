@@ -20,12 +20,10 @@ namespace nts {
 
     class ComponentButton : public AButton {
         public:
-            ComponentButton(sf::Vector2f pos, std::string name, const sf::Font &font);
+            ComponentButton(sf::Vector2f pos, std::string name, ComponentMap &components, sf::Font &font, sf::RenderWindow &window);
 
-            void func() override {DEBUG(_name);}
-
+            void func() override;
             void draw(sf::RenderWindow &window) override;
-
             void changePos(sf::Vector2f offset);
 
         private:
@@ -33,6 +31,9 @@ namespace nts {
             sf::RectangleShape _rec;
             sf::Text _text;
             std::string _name;
+            ComponentMap &_components;
+            sf::Font &_font;
+            sf::RenderWindow &_window;
     };
 }
 

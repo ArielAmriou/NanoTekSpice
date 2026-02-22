@@ -22,9 +22,10 @@
     constexpr int HOVEROFFSET = 25;
 
 namespace nts {
+
     class RightToolBar : public AButton {
         public:
-            RightToolBar(sf::Vector2u windowSize, const sf::Font &);
+            RightToolBar(sf::Vector2u windowSize, ComponentMap &components, sf::Font &font, sf::RenderWindow &window);
             ~RightToolBar() {};
 
             void draw(sf::RenderWindow &window) override;
@@ -33,7 +34,7 @@ namespace nts {
             void func() override;
 
         private:
-            void initAddButton(const sf::Font &, unsigned int posx);
+            void initAddButton(ComponentMap &components, sf::Font &font, sf::RenderWindow &window, unsigned int posx);
             void initButton(const sf::Font &font, unsigned int posx);
             sf::Vector2f _size;
             sf::RectangleShape _rec;

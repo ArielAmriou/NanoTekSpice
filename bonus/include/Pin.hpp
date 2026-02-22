@@ -15,9 +15,9 @@ namespace nts {
     class Pin {
         public:
             Pin(nts::Mode mode, nts::Tristate value, sf::Vector2f pos):
-                _mode(mode), _value(value), _con(), _pos(pos) {_circle.setOrigin(5, 5);};
+                _mode(mode), _value(value), _con(), _pos(pos), _circle(5) {_circle.setOrigin(5, 5);};
             Pin(nts::Mode mode, sf::Vector2f pos):
-                _mode(mode), _value(nts::Tristate::Undefined), _con(), _pos(pos) {_circle.setOrigin(5, 5);};
+                _mode(mode), _value(nts::Tristate::Undefined), _con(), _pos(pos), _circle(5) {_circle.setOrigin(5, 5);};
             Pin(const nts::Pin &src):
                 _mode(src._mode), _con(), _value(src._value), _pos(src._pos), _circle(src._circle) {};
 

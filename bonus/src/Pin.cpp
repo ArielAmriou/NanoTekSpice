@@ -6,6 +6,7 @@
 */
 
 #include "Pin.hpp"
+#include "Utils.hpp"
 
 void nts::Pin::setConnection(
     std::reference_wrapper<IComponent> component, std::size_t pin)
@@ -30,6 +31,7 @@ void nts::Pin::draw(sf::RenderWindow &window, sf::Vector2f pos)
     if (_value == True)
         color = sf::Color::Green;
     _circle.setPosition({_pos.x + pos.x, _pos.y + pos.y});
+    _circle.setFillColor(color);
     window.draw(_circle);
     if (_con.has_value())
         _con.value().draw(window, {_pos.x + pos.x, _pos.y + pos.y});

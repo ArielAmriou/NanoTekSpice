@@ -37,6 +37,7 @@ namespace nts {
                 const Tristate b, Tristate &carry);
             static Tristate fullAdder(const Tristate a,
                 const Tristate b, Tristate &carry);
+            static void removeCon(ComponentMap &components, std::string name);
 
             // SFML
             static std::string toUpper(const std::string &);

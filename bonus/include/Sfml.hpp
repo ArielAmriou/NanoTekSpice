@@ -25,6 +25,7 @@ namespace nts
             void run();
 
         private:
+            void drawComponents();
             sf::Font loadFont();
             sf::Vector2u _size = {1778, 1000};
             sf::RenderWindow _window;
@@ -32,6 +33,7 @@ namespace nts
             Event _event;
             std::vector<std::function<void (sf::Event, sf::RenderWindow &)>> _otherEvents;
             ComponentMap _components;
+            sf::VertexArray _line;
     };
 }
 

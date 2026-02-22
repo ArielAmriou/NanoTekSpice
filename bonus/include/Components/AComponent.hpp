@@ -29,6 +29,7 @@ namespace nts {
                 const nts::Tristate value = nts::Tristate::Undefined);
 
             // Sfml
+            size_t getNbPin() {return _nbPins;}
             Pin &getNPin(size_t n) {return _pins[n];}
             sf::Vector2f getNPinPos(size_t n) {return {_pins[n].getPos().x + _pos.x, _pins[n].getPos().y + _pos.y};}
             void setPos(sf::Vector2f pos) {_pos = {pos.x - _size.x / 2, pos.y - _size.y / 2};}
@@ -37,6 +38,7 @@ namespace nts {
             sf::Vector2f getSize() {return _size;}
 
             void draw(sf::RenderWindow &window);
+            void drawPin(sf::RenderWindow &window);
 
         protected:
             virtual void simulateComponent() = 0;

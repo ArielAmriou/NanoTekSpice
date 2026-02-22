@@ -106,6 +106,10 @@ void nts::AComponent::draw(sf::RenderWindow &window)
     _rec.setFillColor(GREY);
     _text.setPosition({_pos.x + _size.x / 2, _pos.y + _size.y / 2});
     window.draw(_text);
+}
+
+void nts::AComponent::drawPin(sf::RenderWindow &window)
+{
     for (auto &pin : _pins) {
         pin.draw(window, _pos);
     }

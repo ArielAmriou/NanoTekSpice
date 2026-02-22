@@ -6,7 +6,9 @@
 */
 
 #include <algorithm>
+#include <memory>
 #include "Utils.hpp"
+#include "Pin.hpp"
 
 std::string nts::Utils::toUpper(const std::string &str)
 {
@@ -43,4 +45,26 @@ nts::Tristate nts::Utils::fullAdder(const nts::Tristate a,
 std::unique_ptr<nts::IComponent> &nts::Utils::getComponent(ComponentMap &map, std::string name)
 {
     return map.find(name)->second.first;
+}
+
+void nts::Utils::removeCon(ComponentMap &components, std::string name)
+{
+    auto component = getComponent(components, name).get();
+
+    for (size_t i = 0; i < component->getNbPin(); i++) {
+        auto pin = component->getPin(i);
+        if (pin.getMode() == Mode::InputMode || pin.getMode() == Mode::UnusedMode)
+            continue;
+        for (auto iter = components.begin(); iter != components.end(); iter++) {
+            auto &other = Utils::getComponent(components, iter->first);
+            if (other.get() == component)
+                continue;
+            for (size_t i = 0; i < other->getNbPin(); i++) {
+                auto &otherPin = other->getPin(i);
+                if (otherPin.getConnection().has_value()
+                    && std::addressof(otherPin.getConnection().value().getComponent().get()) == component)
+                    otherPin.resetCon();
+            }
+        }
+    }
 }

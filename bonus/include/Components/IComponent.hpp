@@ -33,6 +33,7 @@ namespace nts {
             virtual Pin &getPin(size_t) = 0;
 
             // Sfml
+            virtual size_t getNbPin() = 0;
             virtual Pin &getNPin(size_t n) = 0;
             virtual sf::Vector2f getNPinPos(size_t n) = 0;
             virtual void setPos(sf::Vector2f pos) = 0;
@@ -41,6 +42,7 @@ namespace nts {
             virtual sf::Vector2f getSize() = 0;
 
             virtual void draw(sf::RenderWindow &window) = 0;
+            virtual void drawPin(sf::RenderWindow &window) = 0;
     };
 }
 

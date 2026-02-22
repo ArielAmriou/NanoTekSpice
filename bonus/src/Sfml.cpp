@@ -12,7 +12,7 @@
 
 nts::Sfml::Sfml()
     : _window(sf::VideoMode(_size.x, _size.y, 144), "NanoTeckSpice", sf::Style::Close),
-    _event(_window)
+    _event(_window), _line(sf::LinesStrip, 2)
 {
     try {
         _font = loadFont();
@@ -21,6 +21,8 @@ nts::Sfml::Sfml()
     }
     _components.insert({"1", std::make_pair(ComponentFactory::createComponent("input", {100, 100}, _font), "input")});
     _components.insert({"2", std::make_pair(ComponentFactory::createComponent("output", {200, 100}, _font), "output")});
+    _components.insert({"3", std::make_pair(ComponentFactory::createComponent("input", {300, 100}, _font), "input")});
+    _components.insert({"4", std::make_pair(ComponentFactory::createComponent("output", {400, 100}, _font), "output")});
 }
 
 sf::Font nts::Sfml::loadFont()
@@ -35,11 +37,41 @@ sf::Font nts::Sfml::loadFont()
 void nts::Sfml::run()
 {
     while (_window.isOpen()) {
-        _event.run(_otherEvents);
+        _event.run(_otherEvents, _components);
         _window.clear(DARKBLUE);
-        for (auto &chip : _components) {
-            Utils::getComponent(_components, chip.first)->draw(_window);
-        }
+        drawComponents();
         _window.display();
+    }
+}
+
+void nts::Sfml::drawComponents()
+{
+    sf::Vector2f mousePos = _window.mapPixelToCoords(sf::Mouse::getPosition(_window));
+    auto selectChip = _event.getSelectChip();
+
+    for (auto &chip : _components) {
+        Utils::getComponent(_components, chip.first)->draw(_window);
+    }
+
+    for (auto &chip : _components) {
+        Utils::getComponent(_components, chip.first)->drawPin(_window);
+    }
+
+    if (selectChip.has_value()) {
+        auto &component = Utils::getComponent(_components, selectChip.value().first);
+        if (_event.getCDragged()) {
+            if (!selectChip.value().second.has_value()) {
+                component->setPos(mousePos - _event.getCDraggedOffset() + sf::Vector2f(component->getSize().x / 2, component->getSize().y / 2));
+            } else {
+                _line[0] = component->getNPinPos(selectChip.value().second.value());
+                _line[1] = mousePos;
+                _window.draw(_line);
+            }
+        }
+        if (!selectChip.value().second.has_value()) {
+            sf::RectangleShape &rec = component->getChipset();
+            rec.setOutlineThickness(6);
+            rec.setFillColor(Utils::colorOffset(rec.getFillColor(), -50));
+        }
     }
 }

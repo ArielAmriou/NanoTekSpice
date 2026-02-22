@@ -17,7 +17,7 @@ namespace nts {
     class Connection {
         public:
             Connection(std::reference_wrapper<IComponent> component,
-                std::size_t pin): _component(component), _pin(pin) {};
+                std::size_t pin): _component(component), _pin(pin), _line(sf::LinesStrip, 2) {};
             std::reference_wrapper<IComponent>
                 getComponent() { return _component; };
             std::size_t getPin() { return _pin; };

@@ -12,6 +12,7 @@
     #include <string>
     #include "AButton.hpp"
     #include "Utils.hpp"
+    #include "Variables.hpp"
 
 namespace nts {
 
@@ -20,20 +21,18 @@ namespace nts {
 
     class ComponentButton : public AButton {
         public:
-            ComponentButton(sf::Vector2f pos, std::string name, ComponentMap &components, sf::Font &font, sf::RenderWindow &window);
+            ComponentButton(sf::Vector2f pos, std::string name, Variables &var);
 
             void func() override;
             void draw(sf::RenderWindow &window) override;
             void changePos(sf::Vector2f offset);
 
         private:
+            Variables &_variables;
             sf::Vector2f _size = {100, 50};
             sf::RectangleShape _rec;
             sf::Text _text;
             std::string _name;
-            ComponentMap &_components;
-            sf::Font &_font;
-            sf::RenderWindow &_window;
     };
 }
 

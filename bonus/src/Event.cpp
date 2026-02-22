@@ -8,53 +8,55 @@
 #include "Event.hpp"
 #include "Pin.hpp"
 
-void nts::Event::run(std::vector<std::function<void(sf::Event, sf::RenderWindow &)>> otherEvents, ComponentMap &list)
+void nts::Event::run(std::vector<std::function<void(sf::Event, sf::RenderWindow &)>> otherEvents)
 {
-    while (_window.pollEvent(_event)) {
+    while (_variables._window.pollEvent(_event)) {
         for (auto other : otherEvents)
-            other(_event, _window);
+            other(_event, _variables._window);
         if (_event.type == sf::Event::Closed
             || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-            _window.close();
-        componentsEvents(list);
+            _variables._window.close();
+        componentsEvents(_variables._components);
     }
 }
 
 void nts::Event::componentsEvents(ComponentMap &components)
 {
-    sf::Vector2f mousePos = _window.mapPixelToCoords(sf::Mouse::getPosition(_window));
+    sf::RenderWindow &window = _variables._window;
+    sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+    auto &selectChip = _variables._selectChip;
 
     if (_event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-        _window.close();
+        window.close();
     
     if (_event.type == sf::Event::MouseButtonPressed && _event.mouseButton.button == sf::Mouse::Left) {
 
-        _selectChip = hoverChip(components, mousePos);
+        selectChip = hoverChip(components, mousePos);
         
-        if (_selectChip.has_value()) {
-            auto &component = Utils::getComponent(components, _selectChip.value().first);
+        if (selectChip.has_value()) {
+            auto &component = Utils::getComponent(components, selectChip.value().first);
             component->getChipset().setOutlineThickness(3);
-            if (!_selectChip.value().second.has_value()) {
+            if (!selectChip.value().second.has_value()) {
                 _CDragOffset = mousePos - component->getPos();
             } 
-            _CDragged = true;
+            _variables._CDragged = true;
         }
     }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) && _selectChip.has_value() && !_selectChip.value().second.has_value()) {
-        Utils::removeCon(components, _selectChip.value().first);
-        components.erase(_selectChip.value().first);
-        _selectChip = std::nullopt;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) && selectChip.has_value() && !selectChip.value().second.has_value()) {
+        Utils::removeCon(components, selectChip.value().first);
+        components.erase(selectChip.value().first);
+        selectChip = std::nullopt;
     }
 
     if (_event.type == sf::Event::MouseButtonReleased && _event.mouseButton.button == sf::Mouse::Left) {
-        if (_selectChip.has_value()) {
-            if (_selectChip.value().second.has_value()) {
+        if (selectChip.has_value()) {
+            if (selectChip.value().second.has_value()) {
                 _releaseSelectChip = hoverChip(components, mousePos);
                 if (_releaseSelectChip.has_value() && _releaseSelectChip.value().second.has_value()) {
                     try {
-                    Utils::getComponent(components, _selectChip.value().first)
-                        ->setLink(_selectChip.value().second.value(),
+                    Utils::getComponent(components, selectChip.value().first)
+                        ->setLink(selectChip.value().second.value(),
                         *Utils::getComponent(components, _releaseSelectChip.value().first).get(),
                         _releaseSelectChip.value().second.value());
                     } catch (std::exception &e) {
@@ -64,7 +66,7 @@ void nts::Event::componentsEvents(ComponentMap &components)
                 _releaseSelectChip = std::nullopt;
             }
         }
-        _CDragged = false;
+        _variables._CDragged = false;
     }
 }
 

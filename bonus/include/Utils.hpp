@@ -25,6 +25,10 @@ namespace nts {
     inline const sf::Color DARKBLUE = sf::Color(0, 0, 139);
     inline const sf::Color WHITHETHROUGH = sf::Color(255, 255, 255, 200);
 
+    constexpr unsigned int WINDOW_SIZE_X = 1778;
+    constexpr unsigned int WINDOW_SIZE_Y = 1000;
+    constexpr unsigned int WINDOW_BITS = 144;
+
     constexpr int BIT = 8;
 
     using ComponentMap = std::map<std::string, std::pair<

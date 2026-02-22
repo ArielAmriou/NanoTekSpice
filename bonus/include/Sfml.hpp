@@ -12,6 +12,7 @@
 #include "Event.hpp"
 #include "Utils.hpp"
 #include "RightToolBar.hpp"
+#include "Variables.hpp"
 
 namespace nts
 {
@@ -26,14 +27,12 @@ namespace nts
             void run();
 
         private:
-            void drawComponents();
-            sf::Font loadFont();
-            sf::Vector2u _size = {1778, 1000};
+            void drawComponents(ComponentMap &components);
             sf::RenderWindow _window;
-            sf::Font _font;
+            ComponentMap _components;
+            Variables _variables;
             Event _event;
             std::vector<std::function<void (sf::Event, sf::RenderWindow &)>> _otherEvents;
-            ComponentMap _components;
             sf::VertexArray _line;
             RightToolBar _rightToolBar;
     };

@@ -38,7 +38,7 @@ namespace nts {
             sf::FloatRect _scrollZone;
             float _maxScroll;
             float _minScroll;
-            float _scroll;
+            float _scroll = 0;
             bool _dragged = false;
             float _dragOffset;
     };

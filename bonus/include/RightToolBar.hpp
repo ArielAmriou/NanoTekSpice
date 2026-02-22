@@ -13,6 +13,7 @@
     #include "ComponentButton.hpp"
     #include "Slider.hpp"
     #include "AButton.hpp"
+    #include "Variables.hpp"
 
     constexpr float WIDTH = 150;
     constexpr float SLIDERWIDTH = 10;
@@ -25,7 +26,7 @@ namespace nts {
 
     class RightToolBar : public AButton {
         public:
-            RightToolBar(sf::Vector2u windowSize, ComponentMap &components, sf::Font &font, sf::RenderWindow &window);
+            RightToolBar(Variables &var);
             ~RightToolBar() {};
 
             void draw(sf::RenderWindow &window) override;
@@ -34,15 +35,16 @@ namespace nts {
             void func() override;
 
         private:
-            void initAddButton(ComponentMap &components, sf::Font &font, sf::RenderWindow &window, unsigned int posx);
-            void initButton(const sf::Font &font, unsigned int posx);
+            void initAddButton(unsigned int posx);
+            void initButton(unsigned int posx);
+            Variables &_variables;
             sf::Vector2f _size;
+            sf::Vector2f _buttonPos;
             sf::RectangleShape _rec;
             sf::RectangleShape _button;
             sf::Text _buttonText;
             Slider _slider;
             std::vector<std::unique_ptr<ComponentButton>> _buttons;
-            bool _open = true;
     };
 }
 

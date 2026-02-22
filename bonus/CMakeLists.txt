@@ -20,6 +20,7 @@ set(SRCS
     src/ComponentButton.cpp
     src/RightToolBar.cpp
     src/Slider.cpp
+    src/Variables.cpp
 
     src/Components/AComponent.cpp
     src/Components/CInput.cpp

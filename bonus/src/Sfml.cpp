@@ -8,61 +8,48 @@
 #include "Sfml.hpp"
 #include "NtsException.hpp"
 #include "Utils.hpp"
-#include "ComponentFactory.hpp"
 
 nts::Sfml::Sfml()
-    : _window(sf::VideoMode(_size.x, _size.y, 144), "NanoTeckSpice", sf::Style::Close),
-    _font(loadFont()), _event(_window), _line(sf::LinesStrip, 2), _rightToolBar(_size, _components, _font, _window)
+    : _window(sf::RenderWindow(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y, WINDOW_BITS), "NanoTeckSpice", sf::Style::Close)),
+     _variables(_window, _components), _event(_variables), _line(sf::LinesStrip, 2), _rightToolBar(_variables)
 {
-    _components.insert({"1", std::make_pair(ComponentFactory::createComponent("input", {100, 100}, _font), "input")});
-    _components.insert({"2", std::make_pair(ComponentFactory::createComponent("output", {200, 100}, _font), "output")});
-    _components.insert({"3", std::make_pair(ComponentFactory::createComponent("input", {300, 100}, _font), "input")});
-    _components.insert({"4", std::make_pair(ComponentFactory::createComponent("output", {400, 100}, _font), "output")});
     _otherEvents.push_back([this](sf::Event e, sf::RenderWindow& w) {_rightToolBar.event(e, w);});
-}
-
-sf::Font nts::Sfml::loadFont()
-{
-    sf::Font font;
-
-    if (!font.loadFromFile("public/Font.ttf"))
-        throw FontsException();
-    return font;
 }
 
 void nts::Sfml::run()
 {
-    while (_window.isOpen()) {
-        _event.run(_otherEvents, _components);
-        _window.clear(DARKBLUE);
-        drawComponents();
-        _rightToolBar.draw(_window);
-        _window.display();
+    while (_variables._window.isOpen()) {
+        _event.run(_otherEvents);
+        _variables._window.clear(DARKBLUE);
+        drawComponents(_variables._components);
+        _rightToolBar.draw(_variables._window);
+        _variables._window.display();
     }
 }
 
-void nts::Sfml::drawComponents()
+void nts::Sfml::drawComponents(ComponentMap &components)
 {
-    sf::Vector2f mousePos = _window.mapPixelToCoords(sf::Mouse::getPosition(_window));
-    auto selectChip = _event.getSelectChip();
+    sf::RenderWindow &window = _variables._window;
+    sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+    auto selectChip = _variables._selectChip;
 
-    for (auto &chip : _components) {
-        Utils::getComponent(_components, chip.first)->draw(_window);
+    for (auto &chip : components) {
+        Utils::getComponent(components, chip.first)->draw(window);
     }
 
-    for (auto &chip : _components) {
-        Utils::getComponent(_components, chip.first)->drawPin(_window);
+    for (auto &chip : components) {
+        Utils::getComponent(components, chip.first)->drawPin(window);
     }
 
     if (selectChip.has_value()) {
-        auto &component = Utils::getComponent(_components, selectChip.value().first);
-        if (_event.getCDragged()) {
+        auto &component = Utils::getComponent(components, selectChip.value().first);
+        if (_variables._CDragged) {
             if (!selectChip.value().second.has_value()) {
                 component->setPos(mousePos - _event.getCDraggedOffset() + sf::Vector2f(component->getSize().x / 2, component->getSize().y / 2));
             } else {
                 _line[0] = component->getNPinPos(selectChip.value().second.value());
                 _line[1] = mousePos;
-                _window.draw(_line);
+                window.draw(_line);
             }
         }
         if (!selectChip.value().second.has_value()) {

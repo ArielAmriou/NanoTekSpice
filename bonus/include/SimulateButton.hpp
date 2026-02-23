@@ -22,6 +22,8 @@ namespace nts {
             void func() override;
             void draw(sf::RenderWindow &window) override;
 
+            void changeName(std::string);
+
         private:
             sf::Vector2f _size = {100, 50};
             sf::RectangleShape _rec;

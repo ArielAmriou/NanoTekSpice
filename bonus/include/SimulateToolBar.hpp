@@ -14,15 +14,42 @@
 
 namespace nts {
 
+    enum SimulateMultiplicateur {
+        X1,
+        X2,
+        X5,
+        X10,
+        X50,
+        END,
+    };
+
+    static const std::vector<std::string> SIMULATEMULTIPLICATEURNAME = {
+        "x1",
+        "x2",
+        "x5",
+        "x10",
+        "x50",
+    };
+
+    static const std::vector<std::size_t> SIMULATEMULTIPLICATEURVALUE = {
+        1,
+        2,
+        5,
+        10,
+        50,
+    };
+
     enum SimulateButtonType {
         TICK,
         PLAY,
+        MULTIPLICATEUR,
         NB,
     };
 
     static const std::vector<std::string> SIMULATEBUTTONNAME = {
         "tick",
-        "play"
+        "play",
+        SIMULATEMULTIPLICATEURNAME[X1]
     };
 
     class SimulateToolBar {
@@ -36,11 +63,14 @@ namespace nts {
         private:
             void simulate();
             Variables &_variables;
-            sf::Vector2f _size = {275, 100};
+            sf::Vector2f _size = {400, 100};
             sf::RectangleShape _rec;
+            sf::Clock _clk;
             std::array<bool, NB> _push;
             std::array<SimulateButton, NB> _buttons;
             std::size_t _tick = 0;
+            std::size_t _simulate = 1000;
+            std::size_t _multiplicateur = 0;
     };
 }
 

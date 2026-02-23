@@ -16,7 +16,7 @@ nts::SimulateButton::SimulateButton(std::string name, bool &push, Variables &var
     setBound(_rec.getGlobalBounds());
     _text.setFont(var._font);
     _text.setStyle(sf::Text::Style::Bold);
-    _text.setCharacterSize(15);
+    _text.setCharacterSize(20);
     _text.setString(Utils::toUpper(name));
     sf::FloatRect rc = _text.getLocalBounds();
     _text.setOrigin(rc.left + rc.width / 2, rc.top + rc.height / 2);
@@ -38,4 +38,11 @@ void nts::SimulateButton::draw(sf::RenderWindow &window)
 void nts::SimulateButton::func()
 {
     _push = !_push;
+}
+
+void nts::SimulateButton::changeName(std::string name)
+{
+    _text.setString(Utils::toUpper(name));
+    sf::FloatRect rc = _text.getLocalBounds();
+    _text.setOrigin(rc.left + rc.width / 2, rc.top + rc.height / 2);
 }

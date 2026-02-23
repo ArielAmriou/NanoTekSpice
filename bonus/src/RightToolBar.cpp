@@ -14,7 +14,9 @@ nts::RightToolBar::RightToolBar(Variables &var)
     _rec(_size), _slider({var._size.x - SLIDERWIDTH, 0}, {SLIDERWIDTH, _size.y}, sf::Color::White)
 {
     _rec.setPosition({var._size.x - WIDTH, 0});
-    _rec.setFillColor(DARKGREY);
+    _rec.setOutlineColor(sf::Color::Black);
+    _rec.setOutlineThickness(3);
+    _rec.setFillColor(LIGHTBLUE);
     _slider.setSrollZone(_rec.getGlobalBounds());
     initAddButton(var._size.x);
     initButton(var._size.x - WIDTH);
@@ -58,10 +60,10 @@ void nts::RightToolBar::draw(sf::RenderWindow &window)
 {
     sf::Vector2f pos = _buttonPos;
     if (_variables._rightToolBar) {
-        _buttonText.setString(Utils::toUpper(">"));
+        _buttonText.setString(Utils::toUpper("<"));
     } else {
         pos.x += WIDTH;
-        _buttonText.setString(Utils::toUpper("<"));
+        _buttonText.setString(Utils::toUpper(">"));
     }
     _button.setPosition(pos);
     setBound(_button.getGlobalBounds());

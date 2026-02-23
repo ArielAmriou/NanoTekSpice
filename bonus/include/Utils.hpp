@@ -23,6 +23,7 @@ namespace nts {
     inline const sf::Color GREY = sf::Color(150, 150, 150);
     inline const sf::Color DARKGREY = sf::Color(50, 50, 50);
     inline const sf::Color DARKBLUE = sf::Color(0, 0, 139);
+    inline const sf::Color LIGHTBLUE = sf::Color(173, 216, 230);
     inline const sf::Color WHITHETHROUGH = sf::Color(255, 255, 255, 200);
 
     constexpr unsigned int WINDOW_SIZE_X = 1778;
@@ -52,6 +53,7 @@ namespace nts {
      static const std::vector<std::string> ChipsetsName = {
         "input",
         "output",
+        "clock"
     };
 }
 

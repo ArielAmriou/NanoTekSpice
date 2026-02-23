@@ -29,6 +29,7 @@ set(SRCS
     src/Components/AComponent.cpp
     src/Components/CInput.cpp
     src/Components/COutput.cpp
+    src/Components/CClock.cpp
 )
 
 set(HEADERS

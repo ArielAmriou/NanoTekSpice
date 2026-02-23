@@ -69,7 +69,8 @@ void nts::Sfml::drawChangeState()
 {
     if (!_variables._selectChip.has_value()
         || _variables._selectChip.value().second.has_value()
-        || _components.find(_variables._selectChip.value().first)->second.second != "input") {
+        || (_components.find(_variables._selectChip.value().first)->second.second != "input"
+        && _components.find(_variables._selectChip.value().first)->second.second != "clock")) {
         _changeState.setShow(false);
         _changeState.resetComponent();
         return;

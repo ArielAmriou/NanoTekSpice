@@ -112,6 +112,8 @@ void nts::AComponent::draw(sf::RenderWindow &window)
 void nts::AComponent::drawPin(sf::RenderWindow &window)
 {
     for (auto &pin : _pins) {
+        if (pin.getMode() == Mode::UnusedMode)
+            continue;
         pin.draw(window, _pos);
     }
 }

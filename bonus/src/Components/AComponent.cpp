@@ -9,9 +9,11 @@
 #include "Pin.hpp"
 #include "Utils.hpp"
 
-nts::AComponent::AComponent(const std::string &name, sf::Vector2f pos, sf::Vector2f size, sf::Font &font)
+nts::AComponent::AComponent(const std::string &name, sf::Vector2f pos, sf::Vector2f size,
+    sf::Font &font, std::vector<std::tuple<Mode, sf::Vector2f, std::string, Tristate>> quads)
     : _size(size), _rec(size), _pos(pos), _name(name)
 {
+    initPin(quads, font);
     sf::FloatRect rc;
     _rec.setFillColor(GREY);
     _rec.setOutlineThickness(3);
@@ -115,5 +117,12 @@ void nts::AComponent::drawPin(sf::RenderWindow &window)
         if (pin.getMode() == Mode::UnusedMode)
             continue;
         pin.draw(window, _pos);
+    }
+}
+
+void nts::AComponent::initPin(std::vector<std::tuple<Mode, sf::Vector2f, std::string, Tristate>> quads, sf::Font &font)
+{
+    for (std::size_t i = 0; i < quads.size(); i++) {
+        _pins.push_back(Pin(std::get<0>(quads[i]), std::get<3>(quads[i]), std::get<1>(quads[i]), font, std::get<2>(quads[i])));
     }
 }

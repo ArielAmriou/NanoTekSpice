@@ -14,12 +14,10 @@
 namespace nts {
     class Pin {
         public:
-            Pin(nts::Mode mode, nts::Tristate value, sf::Vector2f pos):
-                _mode(mode), _value(value), _con(), _pos(pos), _circle(5) {_circle.setOrigin(5, 5);};
-            Pin(nts::Mode mode, sf::Vector2f pos):
-                _mode(mode), _value(nts::Tristate::Undefined), _con(), _pos(pos), _circle(5) {_circle.setOrigin(5, 5);};
+            Pin(nts::Mode mode, nts::Tristate value, sf::Vector2f pos, sf::Font &font, std::string name);
+            Pin(nts::Mode mode, sf::Vector2f pos, sf::Font &font, std::string name);
             Pin(const nts::Pin &src):
-                _mode(src._mode), _con(), _value(src._value), _pos(src._pos), _circle(src._circle) {};
+                _mode(src._mode), _con(), _value(src._value), _pos(src._pos), _circle(src._circle), _text(src._text), _rec(src._rec) {};
 
             nts::Mode getMode() const { return this->_mode; };
             nts::Tristate getValue() const { return this->_value; };
@@ -44,6 +42,9 @@ namespace nts {
             // Sfml
             sf::CircleShape _circle;
             sf::Vector2f _pos;
+            sf::Vector2f _size = {50, 25};
+            sf::RectangleShape _rec;
+            sf::Text _text;
     };
 }
 

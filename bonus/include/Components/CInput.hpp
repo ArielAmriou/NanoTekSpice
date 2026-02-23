@@ -17,7 +17,7 @@ namespace nts {
             ~CInput() = default;
         private:
             void simulateComponent();
-            static const std::vector<Pin> _defaultPins;
+            static const std::vector<std::tuple<nts::Mode, sf::Vector2f, std::string, nts::Tristate>> _defaultPins;
     };
 }
 

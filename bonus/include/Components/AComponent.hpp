@@ -11,6 +11,7 @@
 #include <vector>
 #include <utility>
 #include <memory>
+#include <tuple>
 #include "IComponent.hpp"
 #include "NtsException.hpp"
 #include "Pin.hpp"
@@ -18,7 +19,8 @@
 namespace nts {
     class AComponent: public IComponent {
         public:
-            AComponent(const std::string &name, sf::Vector2f pos, sf::Vector2f size, sf::Font &font);
+            AComponent(const std::string &name, sf::Vector2f pos, sf::Vector2f size,
+                sf::Font &font, std::vector<std::tuple<Mode, sf::Vector2f, std::string, Tristate>>);
 
             void simulate(std::size_t tick) noexcept;
             void setLink(std::size_t pin, nts::IComponent &other,
@@ -39,8 +41,9 @@ namespace nts {
 
             void draw(sf::RenderWindow &window);
             void drawPin(sf::RenderWindow &window);
-
+            
         protected:
+            void initPin(std::vector<std::tuple<Mode, sf::Vector2f, std::string, Tristate>>, sf::Font &);
             virtual void simulateComponent() = 0;
             std::vector<Pin> _pins;
             std::size_t _nbPins;

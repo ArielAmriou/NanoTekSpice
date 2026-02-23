@@ -16,7 +16,8 @@ namespace nts {
     enum class ButtonType {
         COMPONENT,
         DRAWER,
-        TRISTATE
+        TRISTATE,
+        SIMULATE
     };
 
     class AButton {

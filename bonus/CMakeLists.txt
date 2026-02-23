@@ -23,6 +23,8 @@ set(SRCS
     src/Variables.cpp
     src/TristateButton.cpp
     src/ChangeState.cpp
+    src/SimulateButton.cpp
+    src/SimulateToolBar.cpp
 
     src/Components/AComponent.cpp
     src/Components/CInput.cpp

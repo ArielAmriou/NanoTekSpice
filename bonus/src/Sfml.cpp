@@ -12,10 +12,11 @@
 nts::Sfml::Sfml()
     : _window(sf::RenderWindow(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y, WINDOW_BITS), "NanoTeckSpice", sf::Style::Close)),
      _variables(_window, _components), _event(_variables), _line(sf::LinesStrip, 2), _rightToolBar(_variables),
-     _changeState(_variables)
+     _changeState(_variables), _simulateToolBar(_variables)
 {
     _otherEvents.push_back([this](sf::Event e, sf::RenderWindow& w) {_rightToolBar.event(e, w);});
     _otherEvents.push_back([this](sf::Event e, sf::RenderWindow& w) {_changeState.event(e, w);});
+    _otherEvents.push_back([this](sf::Event e, sf::RenderWindow& w) {_simulateToolBar.event(e, w);});
 }
 
 void nts::Sfml::run()
@@ -26,6 +27,7 @@ void nts::Sfml::run()
         drawComponents(_variables._components);
         drawChangeState();
         _rightToolBar.draw(_variables._window);
+        _simulateToolBar.draw(_variables._window);
         _variables._window.display();
     }
 }

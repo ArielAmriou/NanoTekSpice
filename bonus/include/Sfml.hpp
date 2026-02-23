@@ -14,6 +14,7 @@
 #include "RightToolBar.hpp"
 #include "Variables.hpp"
 #include "ChangeState.hpp"
+#include "SimulateToolBar.hpp"
 
 namespace nts
 {
@@ -38,6 +39,7 @@ namespace nts
             sf::VertexArray _line;
             RightToolBar _rightToolBar;
             ChangeState _changeState;
+            SimulateToolBar _simulateToolBar;
     };
 }
 

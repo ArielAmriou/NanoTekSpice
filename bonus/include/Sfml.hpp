@@ -13,6 +13,7 @@
 #include "Utils.hpp"
 #include "RightToolBar.hpp"
 #include "Variables.hpp"
+#include "ChangeState.hpp"
 
 namespace nts
 {
@@ -28,6 +29,7 @@ namespace nts
 
         private:
             void drawComponents(ComponentMap &components);
+            void drawChangeState();
             sf::RenderWindow _window;
             ComponentMap _components;
             Variables _variables;
@@ -35,6 +37,7 @@ namespace nts
             std::vector<std::function<void (sf::Event, sf::RenderWindow &)>> _otherEvents;
             sf::VertexArray _line;
             RightToolBar _rightToolBar;
+            ChangeState _changeState;
     };
 }
 

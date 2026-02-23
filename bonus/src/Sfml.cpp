@@ -11,9 +11,11 @@
 
 nts::Sfml::Sfml()
     : _window(sf::RenderWindow(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y, WINDOW_BITS), "NanoTeckSpice", sf::Style::Close)),
-     _variables(_window, _components), _event(_variables), _line(sf::LinesStrip, 2), _rightToolBar(_variables)
+     _variables(_window, _components), _event(_variables), _line(sf::LinesStrip, 2), _rightToolBar(_variables),
+     _changeState(_variables)
 {
     _otherEvents.push_back([this](sf::Event e, sf::RenderWindow& w) {_rightToolBar.event(e, w);});
+    _otherEvents.push_back([this](sf::Event e, sf::RenderWindow& w) {_changeState.event(e, w);});
 }
 
 void nts::Sfml::run()
@@ -22,6 +24,7 @@ void nts::Sfml::run()
         _event.run(_otherEvents);
         _variables._window.clear(DARKBLUE);
         drawComponents(_variables._components);
+        drawChangeState();
         _rightToolBar.draw(_variables._window);
         _variables._window.display();
     }
@@ -58,4 +61,20 @@ void nts::Sfml::drawComponents(ComponentMap &components)
             rec.setFillColor(Utils::colorOffset(rec.getFillColor(), -50));
         }
     }
+}
+
+void nts::Sfml::drawChangeState()
+{
+    if (!_variables._selectChip.has_value()
+        || _variables._selectChip.value().second.has_value()
+        || _components.find(_variables._selectChip.value().first)->second.second != "input") {
+        _changeState.setShow(false);
+        _changeState.resetComponent();
+        return;
+    }
+    auto &component = Utils::getComponent(_components, _variables._selectChip.value().first);
+
+    _changeState.updateValue(*component);
+    _changeState.draw(_window);
+    _changeState.setShow(true);
 }

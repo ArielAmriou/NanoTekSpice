@@ -21,6 +21,8 @@ set(SRCS
     src/RightToolBar.cpp
     src/Slider.cpp
     src/Variables.cpp
+    src/TristateButton.cpp
+    src/ChangeState.cpp
 
     src/Components/AComponent.cpp
     src/Components/CInput.cpp

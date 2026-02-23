@@ -44,6 +44,7 @@ namespace nts {
 
             void draw(sf::RenderWindow &window);
             void drawPin(sf::RenderWindow &window);
+            virtual void drawComponent(sf::RenderWindow &window) {};
             
         protected:
             void initPin(std::vector<std::tuple<Mode, sf::Vector2f, std::string, Tristate>>, sf::Font &);
@@ -58,6 +59,7 @@ namespace nts {
             sf::Text _text;
             sf::Vector2f _pos;
             std::string _name;
+            sf::Vector2f _textOffset;
     };
 }
 

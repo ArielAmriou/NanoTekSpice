@@ -15,6 +15,7 @@
 #include "CNot.hpp"
 #include "COr.hpp"
 #include "CXor.hpp"
+#include "CLogger.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type, sf::Vector2f pos, sf::Font &font)
@@ -61,6 +62,10 @@ nts::ComponentFactory::componentFactories = {
     },{
         "xor", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
             return std::make_unique<nts::CXor>(pos, font, type);
+        }
+    },{
+        "logger", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::CLogger>(pos, font, type);
         }
     }
 };

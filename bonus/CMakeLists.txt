@@ -25,6 +25,7 @@ set(SRCS
     src/ChangeState.cpp
     src/SimulateButton.cpp
     src/SimulateToolBar.cpp
+    src/Parsing.cpp
 
     src/Components/AComponent.cpp
     src/Components/ABasicComponent.cpp
@@ -37,6 +38,7 @@ set(SRCS
     src/Components/CNot.cpp
     src/Components/COr.cpp
     src/Components/CXor.cpp
+    src/Components/CLogger.cpp
 )
 
 set(HEADERS

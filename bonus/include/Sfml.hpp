@@ -23,10 +23,12 @@ namespace nts
 
     class Sfml {
         public:
-            Sfml();
+            Sfml(sf::Font &font);
             ~Sfml() {};
 
             void run();
+
+            ComponentMap &getMap() {return _components;}
 
         private:
             void drawComponents(ComponentMap &components);

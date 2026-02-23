@@ -107,8 +107,9 @@ void nts::AComponent::draw(sf::RenderWindow &window)
     window.draw(_rec);
     _rec.setFillColor(GREY);
     _rec.setOutlineThickness(3);
-    _text.setPosition({_pos.x + _size.x / 2, _pos.y + _size.y / 2});
+    _text.setPosition({_pos.x + _size.x / 2 + _textOffset.x, _pos.y + _size.y / 2 + _textOffset.y});
     window.draw(_text);
+    drawComponent(window);
 }
 
 void nts::AComponent::drawPin(sf::RenderWindow &window)

@@ -9,9 +9,9 @@
 #include "NtsException.hpp"
 #include "Utils.hpp"
 
-nts::Sfml::Sfml()
+nts::Sfml::Sfml(sf::Font &font)
     : _window(sf::RenderWindow(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y, WINDOW_BITS), "NanoTeckSpice", sf::Style::Close)),
-     _variables(_window, _components), _event(_variables), _line(sf::LinesStrip, 2), _rightToolBar(_variables),
+     _variables(_window, _components, font), _event(_variables), _line(sf::LinesStrip, 2), _rightToolBar(_variables),
      _changeState(_variables), _simulateToolBar(_variables)
 {
     _otherEvents.push_back([this](sf::Event e, sf::RenderWindow& w) {_rightToolBar.event(e, w);});

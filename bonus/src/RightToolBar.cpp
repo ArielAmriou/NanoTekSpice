@@ -8,6 +8,7 @@
 #include "RightToolBar.hpp"
 #include "Utils.hpp"
 #include "ComponentButton.hpp"
+#include "ComponentFactory.hpp"
 
 nts::RightToolBar::RightToolBar(Variables &var)
     : AButton(ButtonType::DRAWER), _variables(var), _size({WIDTH, static_cast<float>(var._size.y)}),
@@ -24,14 +25,16 @@ nts::RightToolBar::RightToolBar(Variables &var)
 
 void nts::RightToolBar::initAddButton(unsigned int posx)
 {
-    float yGap = _size.y / (ChipsetsName.size());
+    float yGap = _size.y / (ComponentFactory::componentFactories.size());
     if (yGap < MINGAP)
         yGap = MINGAP;
     float yoffset = yGap / 2;
     float maxScroll = 0;
-    for (std::size_t i= 0; i < ChipsetsName.size(); i++) {
-        _buttons.push_back(std::make_unique<ComponentButton>(sf::Vector2f{static_cast<float>(posx - 125), yGap * i + yoffset}, ChipsetsName[i], _variables));
+    auto iter = ComponentFactory::componentFactories.begin();
+    for (std::size_t i= 0; i < ComponentFactory::componentFactories.size(); i++) {
+        _buttons.push_back(std::make_unique<ComponentButton>(sf::Vector2f{static_cast<float>(posx - 125), yGap * i + yoffset}, iter->first, _variables));
         maxScroll += yGap;
+        iter++;
     }
     maxScroll -= _size.y;
     _slider.setMaxScroll(maxScroll);

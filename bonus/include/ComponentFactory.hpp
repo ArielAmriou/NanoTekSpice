@@ -9,7 +9,7 @@
 #define COMPONENTFACTORY_HPP_
 
 #include <memory>
-#include <unordered_map>
+#include <map>
 #include <functional>
 #include "IComponent.hpp"
 
@@ -20,8 +20,7 @@ namespace nts {
                 std::function<std::unique_ptr<nts::IComponent>(sf::Vector2f pos, sf::Font &font, const std::string &type)>;
             static std::unique_ptr<nts::IComponent>
                 createComponent(const std::string &type, sf::Vector2f pos, sf::Font &font);
-        private:
-            static const std::unordered_map<std::string, ComponentCreator>
+            static const std::map<std::string, ComponentCreator>
                 componentFactories;
     };
 }

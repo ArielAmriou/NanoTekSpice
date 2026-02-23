@@ -11,6 +11,10 @@
 #include "CClock.hpp"
 #include "CTrue.hpp"
 #include "CFalse.hpp"
+#include "CAnd.hpp"
+#include "CNot.hpp"
+#include "COr.hpp"
+#include "CXor.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type, sf::Vector2f pos, sf::Font &font)
@@ -20,7 +24,7 @@ std::unique_ptr<nts::IComponent>
     return componentFactories.at(type)(pos, font, type);
 }
 
-const std::unordered_map<std::string, nts::ComponentFactory::ComponentCreator>
+const std::map<std::string, nts::ComponentFactory::ComponentCreator>
 nts::ComponentFactory::componentFactories = {
     {
         "input", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
@@ -41,6 +45,22 @@ nts::ComponentFactory::componentFactories = {
     },{
         "false", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
             return std::make_unique<nts::CFalse>(pos, font, type);
+        }
+    },{
+        "and", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::CAnd>(pos, font, type);
+        }
+    },{
+        "not", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::CNot>(pos, font, type);
+        }
+    },{
+        "or", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::COr>(pos, font, type);
+        }
+    },{
+        "xor", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::CXor>(pos, font, type);
         }
     }
 };

@@ -27,11 +27,16 @@ set(SRCS
     src/SimulateToolBar.cpp
 
     src/Components/AComponent.cpp
+    src/Components/ABasicComponent.cpp
     src/Components/CInput.cpp
     src/Components/COutput.cpp
     src/Components/CClock.cpp
     src/Components/CTrue.cpp
     src/Components/CFalse.cpp
+    src/Components/CAnd.cpp
+    src/Components/CNot.cpp
+    src/Components/COr.cpp
+    src/Components/CXor.cpp
 )
 
 set(HEADERS

@@ -50,13 +50,13 @@ namespace nts {
             static sf::Color colorOpacity(const sf::Color &rec, int opacity);
     };
 
-     static const std::vector<std::string> ChipsetsName = {
-        "input",
-        "output",
-        "clock",
-        "true",
-        "false"
-    };
+//     static const std::vector<std::string> ChipsetsName = {
+//         "input",
+//         "output",
+//         "clock",
+//         "true",
+//         "false"
+//     };
 }
 
 #endif

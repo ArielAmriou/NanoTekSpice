@@ -53,7 +53,9 @@ namespace nts {
      static const std::vector<std::string> ChipsetsName = {
         "input",
         "output",
-        "clock"
+        "clock",
+        "true",
+        "false"
     };
 }
 

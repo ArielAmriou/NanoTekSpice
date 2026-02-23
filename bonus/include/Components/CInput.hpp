@@ -11,6 +11,10 @@
 #include "AComponent.hpp"
 
 namespace nts {
+
+    constexpr int CINPUTX = 50;
+    constexpr int CINPUTY = 50;
+
     class CInput: public AComponent {
         public:
             CInput(sf::Vector2f pos, sf::Font &font, const std::string &name);

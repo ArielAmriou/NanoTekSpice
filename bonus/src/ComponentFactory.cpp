@@ -9,6 +9,8 @@
 #include "CInput.hpp"
 #include "COutput.hpp"
 #include "CClock.hpp"
+#include "CTrue.hpp"
+#include "CFalse.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type, sf::Vector2f pos, sf::Font &font)
@@ -31,6 +33,14 @@ nts::ComponentFactory::componentFactories = {
     },{
         "clock", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
             return std::make_unique<nts::CClock>(pos, font, type);
+        }
+    },{
+        "true", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::CTrue>(pos, font, type);
+        }
+    },{
+        "false", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::CFalse>(pos, font, type);
         }
     }
 };

@@ -17,6 +17,9 @@
 #include "Pin.hpp"
 
 namespace nts {
+
+    constexpr int SIDEOFFSET = 8;
+
     class AComponent: public IComponent {
         public:
             AComponent(const std::string &name, sf::Vector2f pos, sf::Vector2f size,

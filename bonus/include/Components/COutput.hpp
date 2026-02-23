@@ -11,6 +11,10 @@
 #include "AComponent.hpp"
 
 namespace nts {
+
+    constexpr int COUTPUTX = 50;
+    constexpr int COUTPUTY = 50;
+
     class COutput: public AComponent {
         public:
             COutput(sf::Vector2f pos, sf::Font &font, const std::string &name);

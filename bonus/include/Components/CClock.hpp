@@ -11,6 +11,10 @@
 #include "AComponent.hpp"
 
 namespace nts {
+
+    constexpr int CCLOCKX = 50;
+    constexpr int CCLOCKY = 50;
+
     class CClock: public AComponent {
         public:
             CClock(sf::Vector2f pos, sf::Font &font, const std::string &name);

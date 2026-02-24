@@ -16,7 +16,7 @@ namespace nts
 {
     class Variables {
         public:
-            Variables(sf::RenderWindow &window, ComponentMap &, sf::Font &font);
+            Variables(sf::RenderWindow &window, ComponentMap &, sf::Font &font, std::string filename);
             Variables(Variables &var);
 
             sf::Vector2u _size = {WINDOW_SIZE_X, WINDOW_SIZE_Y};
@@ -26,6 +26,7 @@ namespace nts
             std::optional<std::pair<std::string, std::optional<size_t>>> _selectChip = std::nullopt;
             bool _CDragged = false;
             bool _rightToolBar = true;
+            std::string _filename;
     };
 }
 

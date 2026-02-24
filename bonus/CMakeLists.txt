@@ -26,6 +26,7 @@ set(SRCS
     src/SimulateButton.cpp
     src/SimulateToolBar.cpp
     src/Parsing.cpp
+    src/Save.cpp
 
     src/Components/AComponent.cpp
     src/Components/ABasicComponent.cpp
@@ -50,4 +51,5 @@ find_package(SFML 2 COMPONENTS graphics window system REQUIRED)
 
 add_executable(bonus ${MAIN} ${SRCS})
 target_include_directories(bonus PRIVATE ${HEADERS})
+target_compile_options(bonus PRIVATE -g3)
 target_link_libraries(bonus sfml-graphics sfml-window sfml-system)

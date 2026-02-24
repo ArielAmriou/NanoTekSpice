@@ -7,6 +7,7 @@
 
 #include "Event.hpp"
 #include "Pin.hpp"
+#include "Save.hpp"
 
 void nts::Event::run(std::vector<std::function<void(sf::Event, sf::RenderWindow &)>> otherEvents)
 {
@@ -16,6 +17,8 @@ void nts::Event::run(std::vector<std::function<void(sf::Event, sf::RenderWindow 
         if (_event.type == sf::Event::Closed
             || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
             _variables._window.close();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::F5))
+            Save::run(_variables._components, _variables._filename);
         componentsEvents(_variables._components);
     }
 }

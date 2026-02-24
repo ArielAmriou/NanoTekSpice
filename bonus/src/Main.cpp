@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include <filesystem>
 #include "Sfml.hpp"
 #include "NtsException.hpp"
 #include "Parsing.hpp"
@@ -21,8 +22,9 @@ int main(int ac, char **av)
         return nts::EPIERROR;
     }
     try {
+        std::filesystem::path p(av[1]);
         std::string filename = av[1];
-        nts::Sfml sfml(font);
+        nts::Sfml sfml(font, p.filename());
         nts::Parsing parser(filename, sfml.getMap(), font);
         parser.parseFile();
         sfml.run();

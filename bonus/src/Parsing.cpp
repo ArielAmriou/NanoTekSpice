@@ -12,7 +12,7 @@
 nts::Parsing::Parsing(std::string &fileName, ComponentMap &map, sf::Font &font)
     : _file(fileName), _path(fileName), _map(map), _font(font)
 {
-    if (!fileName.ends_with(".nts")) {
+    if (!fileName.ends_with(".ntsg")) {
         _file.close();
         throw ParsingException(Error::WRONG_EXTENSION);
     }
@@ -32,6 +32,7 @@ void nts::Parsing::parsingChipset(std::string &str)
     float x;
     float y;
     std::istringstream stream(str);
+    static size_t id = 0;
     stream >> type >> name >> x >> y;
     if (type.empty() || name.empty() || stream.fail() || !stream.eof())
         throw ParsingException(nts::Error::LEXICALORSYNTATIC);

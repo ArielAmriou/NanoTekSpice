@@ -23,7 +23,7 @@ namespace nts
 
     class Sfml {
         public:
-            Sfml(sf::Font &font);
+            Sfml(sf::Font &font, std::string filename);
             ~Sfml() {};
 
             void run();

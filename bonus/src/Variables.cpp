@@ -8,8 +8,8 @@
 #include "Variables.hpp"
 #include "ComponentFactory.hpp"
 
-nts::Variables::Variables(sf::RenderWindow &window, ComponentMap &map, sf::Font &font)
-    : _window(window), _font(font), _components(map)
+nts::Variables::Variables(sf::RenderWindow &window, ComponentMap &map, sf::Font &font, std::string filename)
+    : _window(window), _font(font), _components(map), _filename(filename)
 {
 }
 

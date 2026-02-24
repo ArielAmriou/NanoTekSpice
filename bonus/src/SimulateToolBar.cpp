@@ -10,7 +10,7 @@
 #include "ComponentButton.hpp"
 
 nts::SimulateToolBar::SimulateToolBar(Variables &var)
-    : _variables(var), _rec(_size),
+    : _variables(var), _rec(_size), _push({false, false, false}),
     _buttons({SimulateButton(SIMULATEBUTTONNAME[TICK], _push[TICK], _variables, {25, 25}),
             SimulateButton(SIMULATEBUTTONNAME[PLAY], _push[PLAY], _variables, {150, 25}),
             SimulateButton(SIMULATEBUTTONNAME[MULTIPLICATEUR], _push[MULTIPLICATEUR], _variables, {275, 25})})

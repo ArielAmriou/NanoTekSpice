@@ -43,21 +43,15 @@ void nts::CRom::simulateComponent()
         }
         bit += state * static_cast<int>(std::pow(2, i));
     }
-    Tristate signal = _pins[CE].getValue() & !_lastClk;
-    _lastClk = _pins[CE].getValue();
-    if (signal & _pins[OE].getValue() == True && !undefined) {
-        for (std::size_t i = 0; i < BIT; i++) {
+    if ((!_pins[CE].getValue() & !_pins[OE].getValue()) == True
+        && !undefined) {
+        for (std::size_t i = 0; i < BIT; i++)
             _pins[_outputs[i]].setValue(_mem[bit][i]);
-        }
-    }
-    else if (!_pins[CE].getValue() & !_pins[OE].getValue() == True)
-        return;
-    else
-        for (std::size_t i = 0; i < BIT; i++) {
+    } else {
+        for (std::size_t i = 0; i < BIT; i++)
             _pins[_outputs[i]].setValue(Undefined);
-        }
+    }
 }
-
 const std::vector<nts::Pin> nts::CRom::_defaultPins = {
     nts::Mode::InputMode,
     nts::Mode::InputMode,

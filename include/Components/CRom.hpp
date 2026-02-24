@@ -52,7 +52,6 @@ namespace nts {
             static const std::vector<PinName> _outputs;
             static const std::vector<PinName> _address;
             std::array<std::array<Tristate, BIT>, ROMMEM> _mem;
-            Tristate _lastClk = Undefined;
     };
 }
 

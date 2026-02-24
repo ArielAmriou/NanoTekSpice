@@ -132,6 +132,6 @@ output(s):
   out_5: U
   out_6: U
   out_7: U
-  out_qe: 0
+  out_qe: U
   out_qs: 1
 > 

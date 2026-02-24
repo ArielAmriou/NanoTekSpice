@@ -88,7 +88,9 @@ void nts::AComponent::simulate(std::size_t tick) noexcept
             auto value =
                 con.value().getComponent().get().compute(con.value().getPin());
             this->_pins[i].setValue(value);
-        }
+        } else if (iter.base()->getMode() == nts::Mode::InputMode
+            || iter.base()->getMode() == nts::Mode::DualMode)
+            this->_pins[i].setValue(Undefined);
         ++iter;
     }
     this->simulateComponent();

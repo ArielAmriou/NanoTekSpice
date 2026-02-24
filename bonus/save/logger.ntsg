@@ -1,0 +1,16 @@
+.chipsets:
+clock clock0 591 488
+false false0 587 396
+logger logger0 1005 396
+true true0 591 296
+.links:
+logger0:1 true0:1
+logger0:2 false0:1
+logger0:3 false0:1
+logger0:4 false0:1
+logger0:5 false0:1
+logger0:6 false0:1
+logger0:7 true0:1
+logger0:8 false0:1
+logger0:9 clock0:1
+logger0:10 false0:1

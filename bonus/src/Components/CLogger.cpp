@@ -59,8 +59,10 @@ void nts::CLogger::simulateComponent()
     }
     Tristate append = !_pins[9].getValue() & (_pins[8].getValue() & !_lastClk);
     _lastClk = _pins[8].getValue();
-    if (undefined || append != True)
+    if (undefined || append != True) {
+        _loggerText.setString("");
         return;
+    }
     writeInFile(value);
 }
 
@@ -76,4 +78,3 @@ const std::vector<std::tuple<nts::Mode, sf::Vector2f, std::string, nts::Tristate
     {nts::Mode::InputMode, {SIDEOFFSET, CLOGGERY / 11 * 9}, "CLK", nts::Undefined},
     {nts::Mode::InputMode, {SIDEOFFSET, CLOGGERY / 11 * 10}, "inhibit", nts::Undefined},
 };
-

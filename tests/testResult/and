@@ -15,7 +15,7 @@ input(s):
   c: 0
   i: U
 output(s):
-  o: 0
+  o: U
 > > tick: 3
 input(s):
   c: 1

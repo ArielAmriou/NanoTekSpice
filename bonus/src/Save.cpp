@@ -21,7 +21,7 @@ std::vector<std::size_t> nts::Save::initCounter(ComponentMap &components)
     return counter;
 }
 
-std::size_t nts::Save::findId(std::string type, std::vector<std::size_t> counter)
+std::size_t nts::Save::findId(std::string type, std::vector<std::size_t> &counter)
 {
     size_t i = 0;
 

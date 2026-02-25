@@ -1,10 +1,11 @@
 .chipsets:
+input input0 594 295
 clock clock0 456 449
+false false0 835 483
 logger logger0 1165 337
 not not0 1048 253
-false false0 835 483
-xor xor0 841 283
 true true0 838 372
+xor xor0 841 283
 .links:
 logger0:1 not0:2
 logger0:2 xor0:3

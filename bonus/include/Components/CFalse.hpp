@@ -12,8 +12,8 @@
 
 namespace nts {
 
-    constexpr int CFALSEX = 50;
-    constexpr int CFALSEY = 70;
+    constexpr float CFALSEX = 50;
+    constexpr float CFALSEY = 70;
 
     class CFalse: public AComponent {
         public:

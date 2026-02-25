@@ -12,8 +12,8 @@
 
 namespace nts {
 
-    constexpr int COUTPUTX = 50;
-    constexpr int COUTPUTY = 50;
+    constexpr float COUTPUTX = 50;
+    constexpr float COUTPUTY = 50;
 
     class COutput: public AComponent {
         public:

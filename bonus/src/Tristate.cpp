@@ -11,8 +11,7 @@
 nts::Tristate operator*(const nts::Tristate a, const nts::Tristate b)
 {
     auto result = nts::True;
-    if ((a == nts::Undefined && (a == b || b == nts::True))
-        || (b == nts::Undefined && a == nts::True))
+    if (a == nts::Undefined || b == nts::Undefined)
         result = nts::Undefined;
     else if (a == b && a == nts::True)
         result = nts::False;
@@ -33,6 +32,8 @@ nts::Tristate operator&(const nts::Tristate a, const nts::Tristate b) {
 // | (or)
 nts::Tristate operator|(const nts::Tristate a, const nts::Tristate b)
 {
+    if (a == nts::True || b == nts::True)
+        return nts::True;
     return !a * !b;
 }
 

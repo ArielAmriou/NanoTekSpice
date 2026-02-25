@@ -12,8 +12,8 @@
 
 namespace nts {
 
-    constexpr int CCLOCKX = 50;
-    constexpr int CCLOCKY = 50;
+    constexpr float CCLOCKX = 50;
+    constexpr float CCLOCKY = 50;
 
     class CClock: public AComponent {
         public:

@@ -12,8 +12,8 @@
 
 namespace nts {
 
-    constexpr int CNOTX = 50;
-    constexpr int CNOTY = 50;
+    constexpr float CNOTX = 50;
+    constexpr float CNOTY = 50;
 
     class CNot: public AComponent {
         public:

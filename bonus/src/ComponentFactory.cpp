@@ -16,6 +16,11 @@
 #include "COr.hpp"
 #include "CXor.hpp"
 #include "CLogger.hpp"
+#include "C4And.hpp"
+#include "C4Nand.hpp"
+#include "C4Or.hpp"
+#include "C4Xor.hpp"
+#include "C4Nor.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type, sf::Vector2f pos, sf::Font &font)
@@ -66,6 +71,26 @@ nts::ComponentFactory::componentFactories = {
     },{
         "logger", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
             return std::make_unique<nts::CLogger>(pos, font, type);
+        }
+    },{
+        "4081", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::C4And>(pos, font, type);
+        }
+    },{
+        "4071", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::C4Or>(pos, font, type);
+        }
+    },{
+        "4030", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::C4Xor>(pos, font, type);
+        }
+    },{
+        "4001", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::C4Nor>(pos, font, type);
+        }
+    },{
+        "4011", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::C4Nand>(pos, font, type);
         }
     }
 };

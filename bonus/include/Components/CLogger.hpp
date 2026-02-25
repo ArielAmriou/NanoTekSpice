@@ -12,9 +12,9 @@
 
     constexpr std::size_t LOGGERBITS = 8;
     constexpr std::size_t MAXCHARSIZE = 256;
-    constexpr int CLOGGERX = 100;
-    constexpr int CLOGGERY = 150;
-    constexpr int CLOGGERTEXTOFFSET = 20;
+    constexpr float CLOGGERX = 100;
+    constexpr float CLOGGERY = 150;
+    constexpr float CLOGGERTEXTOFFSET = 20;
 
 namespace nts {
     class CLogger: public AComponent {

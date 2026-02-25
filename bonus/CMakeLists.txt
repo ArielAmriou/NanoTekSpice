@@ -30,6 +30,7 @@ set(SRCS
 
     src/Components/AComponent.cpp
     src/Components/ABasicComponent.cpp
+    src/Components/AGateComponent.cpp
     src/Components/CInput.cpp
     src/Components/COutput.cpp
     src/Components/CClock.cpp
@@ -40,6 +41,11 @@ set(SRCS
     src/Components/COr.cpp
     src/Components/CXor.cpp
     src/Components/CLogger.cpp
+    src/Components/C4And.cpp
+    src/Components/C4Nand.cpp
+    src/Components/C4Or.cpp
+    src/Components/C4Nor.cpp
+    src/Components/C4Xor.cpp
 )
 
 set(HEADERS

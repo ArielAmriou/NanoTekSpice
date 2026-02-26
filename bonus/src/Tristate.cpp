@@ -43,3 +43,15 @@ nts::Tristate operator^(const nts::Tristate a, const nts::Tristate b)
     auto tmp = a * b;
     return (tmp * a) * (tmp * b);
 }
+
+// / (nor)
+nts::Tristate operator/(const nts::Tristate a, const nts::Tristate b)
+{
+    nts::Tristate value = nts::False;
+
+    if (a == nts::False && b == nts::False)
+        value = nts::True;
+    if (a == nts::Undefined || b == nts::Undefined)
+        value = nts::Undefined;
+    return value;
+}

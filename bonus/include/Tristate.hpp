@@ -21,6 +21,5 @@ nts::Tristate operator!(const nts::Tristate a);
 nts::Tristate operator&(const nts::Tristate a, const nts::Tristate b);
 nts::Tristate operator|(const nts::Tristate a, const nts::Tristate b);
 nts::Tristate operator^(const nts::Tristate a, const nts::Tristate b);
-nts::Tristate operator/(const nts::Tristate a, const nts::Tristate b);
 
 #endif /* !TRISTATE_HPP_ */

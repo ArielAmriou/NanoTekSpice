@@ -26,7 +26,7 @@ bool nts::CShiftRegister::handleData()
     _pins[QS].setValue(_pins[Q7].getValue());
     for (std::size_t i = _outputs.size() - 1; i > 0; i--)
         _pins[_outputs[i]].setValue(_pins[_outputs[i - 1]].getValue());
-    _pins[Q0].setValue(data);
+    _pins[Q1].setValue(data);
     return true;
 }
 
@@ -109,7 +109,6 @@ const std::vector<nts::Pin> nts::CShiftRegister::_defaultPins = {
 
 const std::vector<nts::CShiftRegister::PinName>
     nts::CShiftRegister::_outputs = {
-    Q0,
     Q1,
     Q2,
     Q3,
@@ -117,4 +116,5 @@ const std::vector<nts::CShiftRegister::PinName>
     Q5,
     Q6,
     Q7,
+    Q8,
 };

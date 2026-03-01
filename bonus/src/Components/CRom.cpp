@@ -34,7 +34,6 @@ nts::CRom::CRom(sf::Vector2f pos, sf::Font &font, const std::string &name)
     }
     _text.setFont(font);
     _text.setCharacterSize(10);
-    _text.setString("o");
 }
 
 void nts::CRom::simulateComponent()
@@ -73,7 +72,7 @@ char nts::CRom::getChar(std::array<Tristate, BIT> byte)
 
     for (std::size_t i = 0; i < BIT; i++) {
         if (byte[i] == Undefined)
-            return 0;
+            return -1;
         c += byte[i] * static_cast<int>(std::pow(2, i));
     }
     return c;
@@ -90,7 +89,12 @@ void nts::CRom::drawComponent(sf::RenderWindow &window)
             _text.setFillColor(sf::Color::Black);
             if (i * CROMNBCOLUMN + (j + 1) == _bit)
                 _text.setFillColor(sf::Color::Red);
-            str += getChar(_mem[i * CROMNBCOLUMN + j]);
+            char c = getChar(_mem[i * CROMNBCOLUMN + j]);
+            if (c < 0) {
+                str = "U";
+                _text.setFillColor(sf::Color::White);
+            } else
+                str += c;
             _text.setString(str);
             _text.setPosition(_pos.x + x, _pos.y + y);
             window.draw(_text);

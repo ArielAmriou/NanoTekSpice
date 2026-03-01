@@ -8,6 +8,7 @@
 #include "Event.hpp"
 #include "Pin.hpp"
 #include "Save.hpp"
+#include "ComponentFactory.hpp"
 
 void nts::Event::run(std::vector<std::function<void(sf::Event, sf::RenderWindow &)>> otherEvents)
 {
@@ -29,6 +30,7 @@ void nts::Event::componentsEvents(ComponentMap &components)
     sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
     auto &selectChip = _variables._selectChip;
 
+    copyPaste(components, selectChip, mousePos);
     if (_event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
         window.close();
     
@@ -91,4 +93,25 @@ std::optional<std::pair<std::string, std::optional<size_t>>> nts::Event::hoverCh
         }
     }
     return std::nullopt;
+}
+
+void nts::Event::copyPaste(ComponentMap &components,
+    std::optional<std::pair<std::string, std::optional<size_t>>> selectChip,
+    sf::Vector2f mousePos)
+{
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)
+        || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl)) {
+
+        if (_event.type == sf::Event::KeyPressed && _event.key.code == sf::Keyboard::C
+            && selectChip.has_value() && !selectChip.value().second.has_value())
+            _variables._copy = components.find(selectChip.value().first)->second.second;
+        
+        if (_event.type == sf::Event::KeyPressed && _event.key.code == sf::Keyboard::V
+            && _variables._copy != "") {
+            _variables._components.emplace(std::to_string(_variables._id),
+                std::make_pair(ComponentFactory::createComponent(_variables._copy, mousePos, _variables._font), _variables._copy));
+            _variables._selectChip = std::make_pair(std::to_string(_variables._id), std::nullopt);
+            _variables._id++;
+        }
+    }
 }

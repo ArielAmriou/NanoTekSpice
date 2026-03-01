@@ -30,6 +30,7 @@ namespace nts {
             void componentsEvents(ComponentMap &list);
             std::optional<size_t> hoverPin(std::unique_ptr<IComponent> &chip, sf::Vector2f mousePos);
             std::optional<std::pair<std::string, std::optional<size_t>>> hoverChip(ComponentMap &list, sf::Vector2f mousePos);
+            void copyPaste(ComponentMap &list, std::optional<std::pair<std::string, std::optional<size_t>>> selectChip, sf::Vector2f mousePos);
 
             Variables &_variables;
             sf::Event _event;

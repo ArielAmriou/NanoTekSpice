@@ -27,6 +27,8 @@ namespace nts
             bool _CDragged = false;
             bool _rightToolBar = true;
             std::string _filename;
+            std::string _copy = "";
+            std::size_t _id = 0;
     };
 }
 

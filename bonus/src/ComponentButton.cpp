@@ -48,12 +48,11 @@ void nts::ComponentButton::changePos(sf::Vector2f offset)
 
 void nts::ComponentButton::func()
 {
-    static std::size_t id = 0;
     sf::Vector2f mousePos = _variables._window.mapPixelToCoords(sf::Mouse::getPosition(_variables._window));
-    _variables._components.emplace(std::to_string(id),
+    _variables._components.emplace(std::to_string(_variables._id),
         std::make_pair(ComponentFactory::createComponent(_name, mousePos, _variables._font), _name));
-    _variables._selectChip = std::make_pair(std::to_string(id), std::nullopt);
+    _variables._selectChip = std::make_pair(std::to_string(_variables._id), std::nullopt);
     _variables._CDragged = true;
     _variables._rightToolBar = false;
-    id++;
+    _variables._id++;
 }

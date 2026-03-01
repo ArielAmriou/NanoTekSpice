@@ -46,6 +46,7 @@ set(SRCS
     src/Components/C4Or.cpp
     src/Components/C4Nor.cpp
     src/Components/C4Xor.cpp
+    src/Components/CRom.cpp
 )
 
 set(HEADERS

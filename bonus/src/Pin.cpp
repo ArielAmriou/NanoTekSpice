@@ -59,7 +59,6 @@ void nts::Pin::draw(sf::RenderWindow &window, sf::Vector2f pos)
     sf::Color color(sf::Color::Black);
     sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 
-
     if (_value == False)
         color = sf::Color::Red;
     if (_value == True)
@@ -68,11 +67,20 @@ void nts::Pin::draw(sf::RenderWindow &window, sf::Vector2f pos)
     _circle.setPosition(pos);
     _rec.setPosition({pos.x, pos.y - 10});
     _text.setPosition({pos.x, pos.y - 10 - _size.y / 2});
-
     _circle.setFillColor(color);
     window.draw(_circle);
+}
+
+void nts::Pin::drawConnection(sf::RenderWindow &window, sf::Vector2f pos)
+{
     if (_con.has_value())
-        _con.value().draw(window, pos);
+        _con.value().draw(window, pos + _pos);
+}
+
+void nts::Pin::drawLabel(sf::RenderWindow &window)
+{
+    sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+
     if (getPin().getGlobalBounds().contains(mousePos)) {
         window.draw(_rec);
         window.draw(_text);

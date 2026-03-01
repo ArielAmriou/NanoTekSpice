@@ -29,6 +29,8 @@ namespace nts {
 
             // Sfml
             void draw(sf::RenderWindow &window, sf::Vector2f pos);
+            void drawConnection(sf::RenderWindow &window, sf::Vector2f pos);
+            void drawLabel(sf::RenderWindow &window);
 
             sf::CircleShape &getPin() {return _circle;};
             sf::Vector2f getPos() {return _pos;}

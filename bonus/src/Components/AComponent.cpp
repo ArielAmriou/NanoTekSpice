@@ -112,14 +112,29 @@ void nts::AComponent::draw(sf::RenderWindow &window)
     _text.setPosition({_pos.x + _size.x / 2 + _textOffset.x, _pos.y + _size.y / 2 + _textOffset.y});
     window.draw(_text);
     drawComponent(window);
-}
 
-void nts::AComponent::drawPin(sf::RenderWindow &window)
-{
     for (auto &pin : _pins) {
         if (pin.getMode() == Mode::UnusedMode)
             continue;
         pin.draw(window, _pos);
+    }
+}
+
+void nts::AComponent::drawConnection(sf::RenderWindow &window)
+{
+    for (auto &pin : _pins) {
+        if (pin.getMode() == Mode::UnusedMode)
+            continue;
+        pin.drawConnection(window, _pos);
+    }
+}
+
+void nts::AComponent::drawLabel(sf::RenderWindow &window)
+{
+    for (auto &pin : _pins) {
+        if (pin.getMode() == Mode::UnusedMode)
+            continue;
+        pin.drawLabel(window);
     }
 }
 

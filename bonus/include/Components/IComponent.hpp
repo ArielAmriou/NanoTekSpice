@@ -42,7 +42,8 @@ namespace nts {
             virtual sf::Vector2f getSize() = 0;
 
             virtual void draw(sf::RenderWindow &window) = 0;
-            virtual void drawPin(sf::RenderWindow &window) = 0;
+            virtual void drawConnection(sf::RenderWindow &window) = 0;
+            virtual void drawLabel(sf::RenderWindow &window) = 0;
     };
 }
 

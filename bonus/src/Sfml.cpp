@@ -43,7 +43,11 @@ void nts::Sfml::drawComponents(ComponentMap &components)
     }
 
     for (auto &chip : components) {
-        Utils::getComponent(components, chip.first)->drawPin(window);
+        Utils::getComponent(components, chip.first)->drawConnection(window);
+    }
+
+    for (auto &chip : components) {
+        Utils::getComponent(components, chip.first)->drawLabel(window);
     }
 
     if (selectChip.has_value()) {

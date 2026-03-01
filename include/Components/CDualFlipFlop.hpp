@@ -15,8 +15,6 @@ namespace nts {
         public:
             CDualFlipFlop();
             ~CDualFlipFlop() = default;
-
-        private:
             enum PinName {
                 Q1,
                 Q_1,
@@ -33,9 +31,13 @@ namespace nts {
                 Q2,
                 VDD,
             };
-            Tristate simulateFilpFlop(Tristate, Tristate, Tristate);
-            Tristate simulateCLock(Tristate, Tristate, Tristate, Tristate);
+
+        private:
             void simulateComponent();
+            bool handleAsync(PinName q, PinName nq,
+                PinName set, PinName reset);
+            void simulateFlipFlop(PinName q, PinName nq,
+                PinName clk, PinName data, Tristate &lastClk);
             static const std::vector<Pin> _defaultPins;
             Tristate _lastClk1 = Undefined;
             Tristate _lastClk2 = Undefined;

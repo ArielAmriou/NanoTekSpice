@@ -13,44 +13,40 @@ nts::CDualFlipFlop::CDualFlipFlop() : AComponent()
     this->_nbPins = this->_pins.size();
 }
 
-nts::Tristate nts::CDualFlipFlop::simulateCLock(
-    Tristate d, Tristate clk, Tristate lastClk, Tristate q)
+bool nts::CDualFlipFlop::handleAsync(PinName q, PinName nq,
+    PinName set, PinName reset)
 {
-    Tristate signal = clk & !lastClk;
-    return (d & signal) | (q & signal);
+    Tristate s = _pins[set].getValue();
+    Tristate r = _pins[reset].getValue();
+    bool value = true;
+
+    if (s != True && r != True)
+        value = false;
+    _pins[q].setValue(s);
+    _pins[nq].setValue(r);
+    return value;
 }
 
-nts::Tristate nts::CDualFlipFlop::simulateFilpFlop(
-    Tristate clkSignal, Tristate r, Tristate s)
+void nts::CDualFlipFlop::simulateFlipFlop(PinName q, PinName nq,
+    PinName clk, PinName data, Tristate &lastClk)
 {
-    Tristate set = s & !r;
-    Tristate reset = r & !s;
-    Tristate both = r & s;
-    Tristate none = !r & !s;
-    Tristate setOrReset = set | (False & reset);
-    Tristate bothOrNone = (both & Undefined) | (clkSignal & none);
-    return setOrReset | bothOrNone;
+    Tristate c    = _pins[clk].getValue();
+    Tristate rise = c & !lastClk;
+    lastClk = c;
+
+    if (rise == True) {
+        Tristate d = _pins[data].getValue();
+        _pins[q].setValue(d);
+        _pins[nq].setValue(!d);
+    }
 }
 
 void nts::CDualFlipFlop::simulateComponent()
 {
-    Tristate sClk1 = simulateCLock(
-        _pins[PinName::D1].getValue(), _pins[PinName::CLK1].getValue(),
-        _lastClk1, _pins[PinName::Q1].getValue());
-    Tristate result1 = simulateFilpFlop(sClk1,
-        _pins[PinName::R1].getValue(), _pins[PinName::S1].getValue());
-    _pins[PinName::Q1].setValue(result1);
-    _pins[PinName::Q_1].setValue(!result1);
-    _lastClk1 = _pins[PinName::CLK1].getValue();
-
-    Tristate sClk2 = simulateCLock(
-        _pins[PinName::D2].getValue(), _pins[PinName::CLK2].getValue(),
-        _lastClk2, _pins[PinName::Q2].getValue());
-    Tristate result2 = simulateFilpFlop(sClk2,
-        _pins[PinName::R2].getValue(), _pins[PinName::S2].getValue());
-    _pins[PinName::Q2].setValue(result2);
-    _pins[PinName::Q_2].setValue(!result2);
-    _lastClk2 = _pins[PinName::CLK2].getValue();
+    if (!handleAsync(Q1, Q_1, S1, R1))
+        simulateFlipFlop(Q1, Q_1, CLK1, D1, _lastClk1);
+    if (!handleAsync(Q2, Q_2, S2, R2))
+        simulateFlipFlop(Q2, Q_2, CLK2, D2, _lastClk2);
 }
 
 const std::vector<nts::Pin> nts::CDualFlipFlop::_defaultPins = {
@@ -67,5 +63,5 @@ const std::vector<nts::Pin> nts::CDualFlipFlop::_defaultPins = {
     nts::Mode::InputMode,
     nts::Mode::OutputMode,
     nts::Mode::OutputMode,
-    nts::Mode::UnusedMode
+    nts::Mode::UnusedMode,
 };

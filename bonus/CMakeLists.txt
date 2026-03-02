@@ -50,6 +50,7 @@ set(SRCS
     src/Components/CRam.cpp
     src/Components/CCounter.cpp
     src/Components/C6Not.cpp
+    src/Components/C7Seg.cpp
 )
 
 set(HEADERS

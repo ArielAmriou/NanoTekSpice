@@ -25,6 +25,7 @@
 #include "CRam.hpp"
 #include "CCounter.hpp"
 #include "C6Not.hpp"
+#include "C7Seg.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type, sf::Vector2f pos, sf::Font &font)
@@ -111,6 +112,10 @@ nts::ComponentFactory::componentFactories = {
     },{
         "4069", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
             return std::make_unique<nts::C6Not>(pos, font, type);
+        }
+    },{
+        "7Seg", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::C7Seg>(pos, font, type);
         }
     }
 };

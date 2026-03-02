@@ -23,6 +23,7 @@
 #include "C4Nor.hpp"
 #include "CRom.hpp"
 #include "CRam.hpp"
+#include "CCounter.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type, sf::Vector2f pos, sf::Font &font)
@@ -101,6 +102,10 @@ nts::ComponentFactory::componentFactories = {
     },{
         "ram", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
             return std::make_unique<nts::CRam>(pos, font, type);
+        }
+    },{
+        "4040", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::CCounter>(pos, font, type);
         }
     }
 };

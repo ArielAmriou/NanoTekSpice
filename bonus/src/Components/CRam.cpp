@@ -81,7 +81,7 @@ void nts::CRam::drawComponent(sf::RenderWindow &window)
         for (std::size_t j = 0; j < CRAMNBCOLUMN; j++) {
             std::string str = "";
             _text.setFillColor(sf::Color::Black);
-            if (i * CRAMNBCOLUMN + (j + 1) == _bit)
+            if (i * CRAMNBCOLUMN + j == _bit)
                 _text.setFillColor(sf::Color::Red);
             char c = getChar(_mem[i * CRAMNBCOLUMN + j]);
             if (c < 0) {

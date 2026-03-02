@@ -87,7 +87,7 @@ void nts::CRom::drawComponent(sf::RenderWindow &window)
         for (std::size_t j = 0; j < CROMNBCOLUMN; j++) {
             std::string str = "";
             _text.setFillColor(sf::Color::Black);
-            if (i * CROMNBCOLUMN + (j + 1) == _bit)
+            if (i * CROMNBCOLUMN + j == _bit)
                 _text.setFillColor(sf::Color::Red);
             char c = getChar(_mem[i * CROMNBCOLUMN + j]);
             if (c < 0) {

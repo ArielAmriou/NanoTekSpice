@@ -49,6 +49,7 @@ set(SRCS
     src/Components/CRom.cpp
     src/Components/CRam.cpp
     src/Components/CCounter.cpp
+    src/Components/C6Not.cpp
 )
 
 set(HEADERS

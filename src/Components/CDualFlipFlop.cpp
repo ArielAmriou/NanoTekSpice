@@ -20,10 +20,16 @@ bool nts::CDualFlipFlop::handleAsync(PinName q, PinName nq,
     Tristate r = _pins[reset].getValue();
     bool value = true;
 
-    if (s != True && r != True)
+    if (!s & !r == True)
         value = false;
-    _pins[q].setValue(s);
-    _pins[nq].setValue(r);
+    if (s == Undefined || r == Undefined) {
+        value = true;
+        _pins[q].setValue(Undefined);
+        _pins[nq].setValue(Undefined);
+    } else {
+        _pins[q].setValue(s);
+        _pins[nq].setValue(r);
+    }
     return value;
 }
 
@@ -34,7 +40,7 @@ void nts::CDualFlipFlop::simulateFlipFlop(PinName q, PinName nq,
     Tristate rise = c & !lastClk;
     lastClk = c;
 
-    if (rise == True) {
+    if (rise == True ) {
         Tristate d = _pins[data].getValue();
         _pins[q].setValue(d);
         _pins[nq].setValue(!d);

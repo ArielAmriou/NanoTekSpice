@@ -58,7 +58,7 @@ void nts::CJohnson::simulateComponent()
     nts::Tristate ctr = this->_pins[CP].getValue();
     nts::Tristate c = this->_pins[CLK].getValue();
     nts::Tristate v = c & !this->_prevC;
-    if (mr != nts::Tristate::False || ctr != nts::Tristate::True
+    if (mr != nts::Tristate::False || ctr != nts::Tristate::False
         || v != nts::Tristate::True) {
         if (ctr == nts::Tristate::Undefined || v == nts::Tristate::Undefined)
             this->resetOutputs();

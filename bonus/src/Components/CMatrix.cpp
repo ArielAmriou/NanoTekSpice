@@ -47,10 +47,9 @@ sf::Color nts::CMatrix::getColor(std::array<Tristate, BIT> byte)
             return sf::Color::White;
         value += byte[i] * static_cast<int>(std::pow(2, i));
     }
-    uint8_t red = (value >> 5) * 32;
-    uint8_t green = ((value & 28) >> 2) * 32;
-    uint8_t blue = (value & 3) * 64;
-
+    uint8_t red   = ((value & 0xE0) >> 5) * 32;
+    uint8_t green = ((value & 0x1C) >> 2) * 32;
+    uint8_t blue  = ((value & 0x03) >> 0) * 64;
     return {red, green, blue};
 }
 

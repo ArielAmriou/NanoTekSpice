@@ -52,6 +52,7 @@ set(SRCS
     src/Components/C6Not.cpp
     src/Components/C7Seg.cpp
     src/Components/CMatrix.cpp
+    src/Components/CPictures.cpp
 )
 
 set(HEADERS

@@ -1,0 +1,31 @@
+.chipsets:
+4040 40400 523 317
+4040 40401 521 527
+clock clock0 143 396
+input input0 127 530
+matrix matrix0 615 315
+.links:
+40400:10 clock0:1
+40400:11 input0:1
+40401:10 clock0:1
+40401:11 input0:1
+matrix0:1 40400:9
+matrix0:2 40400:7
+matrix0:3 40400:6
+matrix0:4 40400:5
+matrix0:5 40400:3
+matrix0:6 40400:2
+matrix0:7 40400:4
+matrix0:8 40400:13
+matrix0:9 40400:12
+matrix0:10 40400:14
+matrix0:11 40400:15
+matrix0:12 40400:1
+matrix0:13 40401:9
+matrix0:14 40401:7
+matrix0:15 40401:6
+matrix0:16 40401:5
+matrix0:17 40401:3
+matrix0:18 40401:2
+matrix0:19 40401:4
+matrix0:20 40401:13

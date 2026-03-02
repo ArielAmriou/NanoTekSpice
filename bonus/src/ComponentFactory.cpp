@@ -26,6 +26,7 @@
 #include "CCounter.hpp"
 #include "C6Not.hpp"
 #include "C7Seg.hpp"
+#include "CMatrix.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type, sf::Vector2f pos, sf::Font &font)
@@ -116,6 +117,10 @@ nts::ComponentFactory::componentFactories = {
     },{
         "7Seg", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
             return std::make_unique<nts::C7Seg>(pos, font, type);
+        }
+    },{
+        "matrix", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::CMatrix>(pos, font, type);
         }
     }
 };

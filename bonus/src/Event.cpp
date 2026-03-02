@@ -96,7 +96,7 @@ std::optional<std::pair<std::string, std::optional<size_t>>> nts::Event::hoverCh
 }
 
 void nts::Event::copyPaste(ComponentMap &components,
-    std::optional<std::pair<std::string, std::optional<size_t>>> selectChip,
+    std::optional<std::pair<std::string, std::optional<size_t>>> &selectChip,
     sf::Vector2f mousePos)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)
@@ -112,6 +112,14 @@ void nts::Event::copyPaste(ComponentMap &components,
                 std::make_pair(ComponentFactory::createComponent(_variables._copy, mousePos, _variables._font), _variables._copy));
             _variables._selectChip = std::make_pair(std::to_string(_variables._id), std::nullopt);
             _variables._id++;
+        }
+
+        if (_event.type == sf::Event::KeyPressed && _event.key.code == sf::Keyboard::X
+            && selectChip.has_value() && !selectChip.value().second.has_value()) {
+            _variables._copy = components.find(selectChip.value().first)->second.second;
+            Utils::removeCon(components, selectChip.value().first);
+            components.erase(selectChip.value().first);
+            selectChip = std::nullopt;
         }
     }
 }

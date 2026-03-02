@@ -20,6 +20,8 @@ namespace nts {
         X5,
         X10,
         X50,
+        X100,
+        X1000,
         END,
     };
 
@@ -29,6 +31,8 @@ namespace nts {
         "x5",
         "x10",
         "x50",
+        "x100",
+        "x1000"
     };
 
     static const std::vector<std::size_t> SIMULATEMULTIPLICATEURVALUE = {
@@ -37,6 +41,8 @@ namespace nts {
         5,
         10,
         50,
+        100,
+        1000
     };
 
     enum SimulateButtonType {

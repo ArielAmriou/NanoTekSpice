@@ -47,7 +47,7 @@ namespace nts {
                 VCC,
             };
         private:
-            void simulateComponent();
+            void simulateComponent() override;
             static const std::vector<Pin> _defaultPins;
             static const std::vector<PinName> _outputs;
             static const std::vector<PinName> _address;

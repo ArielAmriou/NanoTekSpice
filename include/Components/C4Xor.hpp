@@ -16,7 +16,7 @@ namespace nts {
             C4Xor();
             ~C4Xor() = default;
         private:
-            void simulateComponent();
+            void simulateComponent() override;
             static const std::vector<Pin> _defaultPins;
     };
 }

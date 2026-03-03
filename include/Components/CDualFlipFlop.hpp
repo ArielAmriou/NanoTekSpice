@@ -33,7 +33,7 @@ namespace nts {
             };
 
         private:
-            void simulateComponent();
+            void simulateComponent() override;
             bool handleAsync(PinName q, PinName nq,
                 PinName set, PinName reset);
             void simulateFlipFlop(PinName q, PinName nq,

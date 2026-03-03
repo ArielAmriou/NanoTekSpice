@@ -17,7 +17,7 @@ namespace nts {
             CJohnson();
             ~CJohnson() = default;
         private:
-            void simulateComponent();
+            void simulateComponent() override;
             void incrementValues();
             void searchTrue();
             nts::Tristate _prevC = nts::Tristate::Undefined;

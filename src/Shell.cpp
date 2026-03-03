@@ -9,6 +9,8 @@
 #include <iomanip>
 #include "Shell.hpp"
 #include "Pin.hpp"
+#include "CInput.hpp"
+#include "CClock.hpp"
 
 nts::Shell::Shell() : _tick(0)
 {
@@ -152,12 +154,14 @@ void nts::Shell::changeState()
 {
     while (!_change.empty()) {
         std::pair<std::string, nts::Tristate> change = _change.front();
-        auto &tmp = _map.find(change.first)->second;
-        tmp.first->getPin(0).setValue(change.second);
-        if (tmp.second == "clock" && change.second == nts::True)
-            tmp.first->getPin(0).setValue(nts::False);
-        else if (tmp.second == "clock" && change.second == nts::False)
-            tmp.first->getPin(0).setValue(nts::True);
+        auto &pair = _map.find(change.first)->second;
+        auto &tmp = dynamic_cast<AComponent&>(*pair.first.get());
+        if (pair.second == "input")
+            tmp.getPin(0).setValue(change.second);
+        if (pair.second == "clock" && change.second == nts::True)
+            tmp.getPin(0).setValue(nts::False);
+        else if (pair.second == "clock" && change.second == nts::False)
+            tmp.getPin(0).setValue(nts::True);
         _change.pop();
     }
 }

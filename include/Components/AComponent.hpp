@@ -27,7 +27,7 @@ namespace nts {
                 const nts::Tristate value = nts::Tristate::Undefined);
 
         protected:
-            virtual void simulateComponent() = 0;
+            virtual void simulateComponent() {};
             std::vector<Pin> _pins;
             std::size_t _nbPins;
             std::size_t _lastUpdateTick = 0;

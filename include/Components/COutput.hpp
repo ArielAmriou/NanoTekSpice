@@ -16,7 +16,7 @@ namespace nts {
             COutput();
             ~COutput() = default;
         private:
-            void simulateComponent();
+            void simulateComponent() override;
             static const std::vector<Pin> _defaultPins;
     };
 }

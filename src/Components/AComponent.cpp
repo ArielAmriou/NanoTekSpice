@@ -13,8 +13,9 @@ void nts::AComponent::setLink(std::size_t pin,
 {
     if (pin >= _nbPins)
         throw NoSuchPin();
+    auto &tmp = dynamic_cast<AComponent&>(other);
     Mode first = getPin(pin).getMode();
-    Mode second = other.getPin(otherPin).getMode();
+    Mode second = tmp.getPin(otherPin).getMode();
     if (first == second
         || first == Mode::UnusedMode
         || second == Mode::UnusedMode)
@@ -24,7 +25,7 @@ void nts::AComponent::setLink(std::size_t pin,
             || (first == Mode::DualMode && second == Mode::OutputMode))
             _pins[pin].setConnection(other, otherPin);
         else
-            other.getPin(otherPin).setConnection(*this, pin);
+            tmp.getPin(otherPin).setConnection(*this, pin);
     } catch (NoSuchPin &e) {
         throw e;
     }

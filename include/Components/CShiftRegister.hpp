@@ -34,7 +34,7 @@ namespace nts {
                     VDD,
                 };
         private:
-            void simulateComponent();
+            void simulateComponent() override;
             bool handleRaseSignal();
             bool handleLowerSignal();
             bool handleData();

@@ -32,6 +32,7 @@ namespace nts {
             std::array<TristateButton, 3> _buttons;
             bool _show = false;
             std::optional<std::reference_wrapper<IComponent>> _component = std::nullopt;
+            Variables _var;
     };
 }
 

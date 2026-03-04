@@ -42,8 +42,8 @@ namespace nts {
                 const Tristate b, Tristate &carry);
             static Tristate fullAdder(const Tristate a,
                 const Tristate b, Tristate &carry);
-            static void removeCon(ComponentMap &components, std::string name);
-
+            static void removeConnections(ComponentMap &components, std::string name);
+            static void removeConnection(ComponentMap &components, std::unique_ptr<IComponent> &component, Pin &pin);
             // SFML
             static std::string toUpper(const std::string &);
             static sf::Color colorOffset(const sf::Color &rec, int offset);

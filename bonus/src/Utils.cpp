@@ -47,24 +47,29 @@ std::unique_ptr<nts::IComponent> &nts::Utils::getComponent(ComponentMap &map, st
     return map.find(name)->second.first;
 }
 
-void nts::Utils::removeCon(ComponentMap &components, std::string name)
+void nts::Utils::removeConnections(ComponentMap &components, std::string name)
 {
-    auto component = getComponent(components, name).get();
+    auto &component = getComponent(components, name);
 
-    for (size_t i = 0; i < component->getNbPin(); i++) {
-        auto pin = component->getPin(i);
-        if (pin.getMode() == Mode::InputMode || pin.getMode() == Mode::UnusedMode)
+    for (size_t i = 0; i < component->getNbPin(); i++)
+        removeConnection(components, component, component->getPin(i));
+}
+
+void nts::Utils::removeConnection(ComponentMap &components, std::unique_ptr<IComponent> &component, Pin &pin)
+{
+    if (pin.getMode() == Mode::InputMode || pin.getMode() == Mode::UnusedMode) {
+        pin.resetCon();
+        return;
+    }
+    for (auto iter = components.begin(); iter != components.end(); iter++) {
+        auto &other = Utils::getComponent(components, iter->first);
+        if (other.get() == component.get())
             continue;
-        for (auto iter = components.begin(); iter != components.end(); iter++) {
-            auto &other = Utils::getComponent(components, iter->first);
-            if (other.get() == component)
-                continue;
-            for (size_t i = 0; i < other->getNbPin(); i++) {
-                auto &otherPin = other->getPin(i);
-                if (otherPin.getConnection().has_value()
-                    && std::addressof(otherPin.getConnection().value().getComponent().get()) == component)
-                    otherPin.resetCon();
-            }
+        for (size_t i = 0; i < other->getNbPin(); i++) {
+            auto &otherPin = other->getPin(i);
+            if (otherPin.getConnection().has_value()
+                && std::addressof(otherPin.getConnection().value().getComponent().get()) == component.get())
+                otherPin.resetCon();
         }
     }
 }

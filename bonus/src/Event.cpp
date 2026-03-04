@@ -49,9 +49,14 @@ void nts::Event::componentsEvents(ComponentMap &components)
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) && selectChip.has_value() && !selectChip.value().second.has_value()) {
-        Utils::removeCon(components, selectChip.value().first);
+        Utils::removeConnections(components, selectChip.value().first);
         components.erase(selectChip.value().first);
         selectChip = std::nullopt;
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) && selectChip.has_value() && selectChip.value().second.has_value()) {
+        auto &component = Utils::getComponent(components, selectChip.value().first);
+        Utils::removeConnection(components, component, component->getNPin(selectChip.value().second.value()));
     }
 
     if (_event.type == sf::Event::MouseButtonReleased && _event.mouseButton.button == sf::Mouse::Left) {
@@ -117,7 +122,7 @@ void nts::Event::copyPaste(ComponentMap &components,
         if (_event.type == sf::Event::KeyPressed && _event.key.code == sf::Keyboard::X
             && selectChip.has_value() && !selectChip.value().second.has_value()) {
             _variables._copy = components.find(selectChip.value().first)->second.second;
-            Utils::removeCon(components, selectChip.value().first);
+            Utils::removeConnections(components, selectChip.value().first);
             components.erase(selectChip.value().first);
             selectChip = std::nullopt;
         }

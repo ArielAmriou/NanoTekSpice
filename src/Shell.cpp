@@ -156,8 +156,7 @@ void nts::Shell::changeState()
         std::pair<std::string, nts::Tristate> change = _change.front();
         auto &pair = _map.find(change.first)->second;
         auto &tmp = dynamic_cast<AComponent&>(*pair.first.get());
-        if (pair.second == "input")
-            tmp.getPin(0).setValue(change.second);
+        tmp.getPin(0).setValue(change.second);
         if (pair.second == "clock" && change.second == nts::True)
             tmp.getPin(0).setValue(nts::False);
         else if (pair.second == "clock" && change.second == nts::False)

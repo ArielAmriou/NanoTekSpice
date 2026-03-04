@@ -20,7 +20,9 @@ namespace nts {
             void simulateComponent() override;
             void incrementValues();
             void searchTrue();
+            void setValues(nts::Tristate c, nts::Tristate mr);
             nts::Tristate _prevC = nts::Tristate::Undefined;
+            nts::Tristate _prevCp = nts::Tristate::Undefined;
             static const std::vector<Pin> _defaultPins;
             static const std::list<std::size_t> _outputOrder;
 

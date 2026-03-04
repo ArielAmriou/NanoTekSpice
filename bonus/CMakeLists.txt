@@ -54,6 +54,7 @@ set(SRCS
     src/Components/CMatrix.cpp
     src/Components/CPictures.cpp
     src/Components/CJohnson.cpp
+    src/Components/CDualFlipFlop.cpp
 )
 
 set(HEADERS

@@ -29,6 +29,7 @@
 #include "CMatrix.hpp"
 #include "CPictures.hpp"
 #include "CJohnson.hpp"
+#include "CDualFlipFlop.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type, sf::Vector2f pos, sf::Font &font)
@@ -131,6 +132,10 @@ nts::ComponentFactory::componentFactories = {
     },{
         "4017", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
             return std::make_unique<nts::CJohnson>(pos, font, type);
+        }
+    },{
+        "4013", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::CDualFlipFlop>(pos, font, type);
         }
     }
 };

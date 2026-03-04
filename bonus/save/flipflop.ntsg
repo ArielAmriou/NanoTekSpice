@@ -1,0 +1,15 @@
+.chipsets:
+4013 40130 848 273
+clock clock0 688 207
+input input0 688 331
+output output0 1000 251
+output output1 1002 320
+input input1 692 394
+input input2 688 265
+.links:
+40130:3 clock0:1
+40130:4 input2:1
+40130:5 input0:1
+40130:6 input1:1
+output0:1 40130:1
+output1:1 40130:2

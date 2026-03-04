@@ -26,7 +26,7 @@ bool nts::CDualFlipFlop::handleAsync(PinName q, PinName nq,
         value = true;
         _pins[q].setValue(Undefined);
         _pins[nq].setValue(Undefined);
-    } else {
+    } else if (value) {
         _pins[q].setValue(s);
         _pins[nq].setValue(r);
     }

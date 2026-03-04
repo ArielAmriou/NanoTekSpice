@@ -10,32 +10,41 @@
 #include "Utils.hpp"
 
 nts::Sfml::Sfml(sf::Font &font, std::string filename)
-    : _window(sf::RenderWindow(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y, WINDOW_BITS), "NanoTeckSpice", sf::Style::Close)),
+    : _window(sf::RenderWindow(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y, WINDOW_BITS), "NanoTeckSpice", sf::Style::Close | sf::Style::Resize)),
      _variables(_window, _components, font, filename), _event(_variables), _line(sf::LinesStrip, 2), _rightToolBar(_variables),
-     _changeState(_variables), _simulateToolBar(_variables)
+     _changeState(_variables), _simulateToolBar(_variables),
+     _gameView(sf::FloatRect(0.0, 0.0, WINDOW_SIZE_X, WINDOW_SIZE_Y))
 {
+    _window.setView(_gameView);
+    _background.setSize({WINDOW_SIZE_X, WINDOW_SIZE_Y});
+    _background.setFillColor(DARKBLUE);
     _otherEvents.push_back([this](sf::Event e, sf::RenderWindow& w) {_rightToolBar.event(e, w);});
     _otherEvents.push_back([this](sf::Event e, sf::RenderWindow& w) {_changeState.event(e, w);});
     _otherEvents.push_back([this](sf::Event e, sf::RenderWindow& w) {_simulateToolBar.event(e, w);});
+    _otherEvents.push_back([this](sf::Event e, sf::RenderWindow &w) {handleResize(e, w);});
 }
 
 void nts::Sfml::run()
 {
-    while (_variables._window.isOpen()) {
+    auto &window = _variables._window;
+
+    while (window.isOpen()) {
         _event.run(_otherEvents);
-        _variables._window.clear(DARKBLUE);
+        window.clear(sf::Color::Black);
+        window.setView(_gameView);
+        window.draw(_background);
         drawComponents(_variables._components);
         drawChangeState();
-        _rightToolBar.draw(_variables._window);
-        _simulateToolBar.draw(_variables._window);
-        _variables._window.display();
+        _rightToolBar.draw(window);
+        _simulateToolBar.draw(window);
+        window.display();
     }
 }
 
 void nts::Sfml::drawComponents(ComponentMap &components)
 {
     sf::RenderWindow &window = _variables._window;
-    sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+    sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window), _gameView);
     auto selectChip = _variables._selectChip;
 
     for (auto &chip : components) {
@@ -84,4 +93,27 @@ void nts::Sfml::drawChangeState()
     _changeState.updateValue(*component);
     _changeState.draw(_window);
     _changeState.setShow(true);
+}
+
+void nts::Sfml::handleResize(sf::Event event, sf::RenderWindow &window)
+{
+    if (event.type != sf::Event::Resized)
+        return;
+
+    const float gameW = static_cast<float>(WINDOW_SIZE_X);
+    const float gameH = static_cast<float>(WINDOW_SIZE_Y);
+    float windowRatio = static_cast<float>(window.getSize().x) / static_cast<float>(window.getSize().y);
+    float viewRatio   = gameW / gameH;
+    sf::Vector2f size = {1, 1};
+    sf::Vector2f pos = {0, 0};
+
+    if (windowRatio >= viewRatio) {
+        size.x = viewRatio / windowRatio;
+        pos.x  = (1.0 - size.x) / 2.0;
+    } else {
+        size.y = windowRatio / viewRatio;
+        pos.y  = (1.0 - size.y) / 2.0;
+    }
+    _gameView.setViewport(sf::FloatRect(pos.x, pos.y, size.x, size.y));
+    window.setView(_gameView);
 }

@@ -33,6 +33,7 @@ namespace nts
         private:
             void drawComponents(ComponentMap &components);
             void drawChangeState();
+            void handleResize(sf::Event event, sf::RenderWindow &window);
             sf::RenderWindow _window;
             ComponentMap _components;
             Variables _variables;
@@ -42,6 +43,8 @@ namespace nts
             RightToolBar _rightToolBar;
             ChangeState _changeState;
             SimulateToolBar _simulateToolBar;
+            sf::View _gameView;
+            sf::RectangleShape _background;
     };
 }
 

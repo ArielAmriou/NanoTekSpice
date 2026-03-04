@@ -26,8 +26,8 @@ namespace nts {
     inline const sf::Color LIGHTBLUE = sf::Color(173, 216, 230);
     inline const sf::Color WHITHETHROUGH = sf::Color(255, 255, 255, 200);
 
-    constexpr unsigned int WINDOW_SIZE_X = 1778;
-    constexpr unsigned int WINDOW_SIZE_Y = 1000;
+    constexpr unsigned int WINDOW_SIZE_X = 1920;
+    constexpr unsigned int WINDOW_SIZE_Y = 1080;
     constexpr unsigned int WINDOW_BITS = 144;
 
     constexpr int BIT = 8;

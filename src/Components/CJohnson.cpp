@@ -52,33 +52,34 @@ void nts::CJohnson::incrementValues()
     }
 }
 
-void nts::CJohnson::setValues(nts::Tristate c, nts::Tristate cp)
+void nts::CJohnson::setValues(nts::Tristate cp0, nts::Tristate cp1)
 {
     this->searchTrue();
-    this->_prevC = c;
-    this->_prevCp = cp;
+    this->_prevCp0 = cp0;
+    this->_prevCp1 = cp1;
 }
 
 void nts::CJohnson::simulateComponent()
 {
     nts::Tristate mr = this->_pins[MR].getValue();
-    nts::Tristate cp = this->_pins[CP].getValue();
-    nts::Tristate cpLower = !cp & this->_prevCp;
-    nts::Tristate c = this->_pins[CLK].getValue();
-    nts::Tristate v = c & !this->_prevC;
-    if (mr != nts::Tristate::False || cpLower != nts::Tristate::True
-        || v != nts::Tristate::True) {
-        if (cpLower == nts::Tristate::Undefined || v == nts::Tristate::Undefined)
+    nts::Tristate cp0 = this->_pins[CP0].getValue();
+    nts::Tristate cp0Raise = cp0 & !this->_prevCp0;
+    nts::Tristate cp1 = this->_pins[CP1].getValue();
+    nts::Tristate cp1Lower = !cp1 & this->_prevCp1;
+    if (mr != nts::Tristate::False || 
+        (!(cp1Lower == nts::Tristate::True && cp0 == nts::Tristate::True) &&
+        !(cp0Raise == nts::Tristate::True && cp1 == nts::Tristate::False))) {
+        if (cp1Lower == nts::Tristate::Undefined || cp0Raise == nts::Tristate::Undefined)
             this->resetOutputs();
         if (mr != nts::Tristate::False)
             this->resetOutputs(!mr);
         if (mr == nts::Tristate::True)
             this->_pins[Q0].setValue(nts::Tristate::True);
-        this->setValues(c, cp);
+        this->setValues(cp0, cp1);
         return;
     }
     this->incrementValues();
-    this->setValues(c, cp);
+    this->setValues(cp0, cp1);
 }
 
 const std::vector<nts::Pin> nts::CJohnson::_defaultPins = {

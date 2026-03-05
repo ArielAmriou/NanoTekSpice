@@ -26,7 +26,7 @@ nts::SimulateButton::SimulateButton(std::string name, bool &push, Variables &var
 void nts::SimulateButton::draw(sf::RenderWindow &window)
 {
     if (_hover)
-        _rec.setFillColor(Utils::colorOffset(GREY, -50));
+        _rec.setFillColor(Utils::colorOffset(DARKGREY, -50));
     else if (!_push)
         _rec.setFillColor(DARKGREY);
     else

@@ -12,7 +12,7 @@
 
 nts::RightToolBar::RightToolBar(Variables &var)
     : AButton(ButtonType::DRAWER), _variables(var), _size({WIDTH, static_cast<float>(var._size.y)}),
-    _rec(_size), _slider({var._size.x - SLIDERWIDTH, 0}, {SLIDERWIDTH, _size.y}, sf::Color::White)
+    _rec(_size), _slider({var._size.x - SLIDERWIDTH, 0}, {SLIDERWIDTH, _size.y}, nts::DARKGREY)
 {
     _rec.setPosition({var._size.x - WIDTH, 0});
     _rec.setOutlineColor(sf::Color::Black);

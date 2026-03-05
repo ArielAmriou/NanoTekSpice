@@ -60,9 +60,9 @@ void nts::Pin::draw(sf::RenderWindow &window, sf::Vector2f pos)
     sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 
     if (_value == False)
-        color = sf::Color::Red;
+        color = nts::RED;
     if (_value == True)
-        color = sf::Color::Green;
+        color = nts::GREEN;
     pos += _pos;
     _circle.setPosition(pos);
     _rec.setPosition({pos.x, pos.y - 10});

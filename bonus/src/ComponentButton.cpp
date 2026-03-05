@@ -12,7 +12,6 @@ nts::ComponentButton::ComponentButton(
     sf::Vector2f pos, std::string name, Variables &var)
     : AButton(ButtonType::COMPONENT), _variables(var), _rec(_size), _name(name)
 {
-    _rec.setFillColor(GREY);
     _rec.setOutlineThickness(OUTLINE);
     _rec.setOutlineColor(sf::Color::Black);
     _rec.setOrigin(0, _size.y / 2);
@@ -36,7 +35,7 @@ void nts::ComponentButton::draw(sf::RenderWindow &window)
     }
     window.draw(_rec);
     window.draw(_text);
-    _rec.setFillColor(GREY);
+    _rec.setFillColor(DARKGREY);
 }
 
 void nts::ComponentButton::changePos(sf::Vector2f offset)

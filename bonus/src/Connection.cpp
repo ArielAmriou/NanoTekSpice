@@ -6,6 +6,7 @@
 */
 
 #include "Connection.hpp"
+#include "Utils.hpp"
 #include "Pin.hpp"
 
 void nts::Connection::draw(sf::RenderWindow &window, sf::Vector2f pos)
@@ -14,9 +15,9 @@ void nts::Connection::draw(sf::RenderWindow &window, sf::Vector2f pos)
     Tristate state = _component.get().getNPin(_pin).getValue();
 
     if (state == False)
-        color = sf::Color::Red;
+        color = nts::RED;
     if (state == True)
-        color = sf::Color::Green;
+        color = nts::GREEN;
     _line[0].position = pos;
     _line[0].color = color;
     _line[1].position = _component.get().getNPinPos(_pin);

@@ -22,9 +22,11 @@ namespace nts {
     // SFML
     inline const sf::Color GREY = sf::Color(150, 150, 150);
     inline const sf::Color DARKGREY = sf::Color(50, 50, 50);
-    inline const sf::Color DARKBLUE = sf::Color(0, 0, 139);
-    inline const sf::Color LIGHTBLUE = sf::Color(173, 216, 230);
+    inline const sf::Color DARKBLUE = sf::Color(51, 75, 99);
+    inline const sf::Color LIGHTBLUE = sf::Color(192, 220, 230);
     inline const sf::Color WHITHETHROUGH = sf::Color(255, 255, 255, 200);
+    inline const sf::Color RED = sf::Color(235, 87, 87);
+    inline const sf::Color GREEN = sf::Color(157, 235, 150);
 
     constexpr unsigned int WINDOW_SIZE_X = 1920;
     constexpr unsigned int WINDOW_SIZE_Y = 1080;
@@ -49,14 +51,6 @@ namespace nts {
             static sf::Color colorOffset(const sf::Color &rec, int offset);
             static sf::Color colorOpacity(const sf::Color &rec, int opacity);
     };
-
-//     static const std::vector<std::string> ChipsetsName = {
-//         "input",
-//         "output",
-//         "clock",
-//         "true",
-//         "false"
-//     };
 }
 
 #endif

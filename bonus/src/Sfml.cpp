@@ -8,6 +8,7 @@
 #include "Sfml.hpp"
 #include "NtsException.hpp"
 #include "Utils.hpp"
+#include "Pin.hpp"
 
 nts::Sfml::Sfml(sf::Font &font, std::string filename)
     : _window(sf::RenderWindow(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y, WINDOW_BITS), "NanoTeckSpice", sf::Style::Close | sf::Style::Resize)),
@@ -65,8 +66,15 @@ void nts::Sfml::drawComponents(ComponentMap &components)
             if (!selectChip.value().second.has_value()) {
                 component->setPos(mousePos - _event.getCDraggedOffset() + sf::Vector2f(component->getSize().x / 2, component->getSize().y / 2));
             } else {
+                sf::Color color(sf::Color::White);
                 _line[0] = component->getNPinPos(selectChip.value().second.value());
                 _line[1] = mousePos;
+                if (component->getNPin(selectChip.value().second.value()).getValue() == nts::Tristate::True)
+                    color = nts::GREEN;
+                if (component->getNPin(selectChip.value().second.value()).getValue() == nts::Tristate::False)
+                    color = nts::RED;
+                _line[0].color = color;
+                _line[1].color = color;
                 window.draw(_line);
             }
         }

@@ -25,8 +25,8 @@ namespace nts {
             void incrementValues();
             void searchTrue();
             void setValues(nts::Tristate c, nts::Tristate cp);
-            nts::Tristate _prevC = nts::Tristate::Undefined;
-            nts::Tristate _prevCp = nts::Tristate::Undefined;
+            nts::Tristate _prevCp0 = nts::Tristate::Undefined;
+            nts::Tristate _prevCp1 = nts::Tristate::Undefined;
             static const std::vector<std::tuple<nts::Mode, sf::Vector2f, std::string, nts::Tristate>> _defaultPins;
             static const std::list<std::size_t> _outputOrder;
 
@@ -43,8 +43,8 @@ namespace nts {
                 Q4,
                 Q9,
                 CO,
-                CP,
-                CLK,
+                CP1,
+                CP0,
                 MR,
                 VDD,
             };

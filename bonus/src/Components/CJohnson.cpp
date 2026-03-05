@@ -52,33 +52,34 @@ void nts::CJohnson::incrementValues()
     }
 }
 
-void nts::CJohnson::setValues(nts::Tristate c, nts::Tristate cp)
+void nts::CJohnson::setValues(nts::Tristate cp0, nts::Tristate cp1)
 {
     this->searchTrue();
-    this->_prevC = c;
-    this->_prevCp = cp;
+    this->_prevCp0 = cp0;
+    this->_prevCp1 = cp1;
 }
 
 void nts::CJohnson::simulateComponent()
 {
     nts::Tristate mr = this->_pins[MR].getValue();
-    nts::Tristate cp = this->_pins[CP].getValue();
-    nts::Tristate cpLower = !cp & this->_prevCp;
-    nts::Tristate c = this->_pins[CLK].getValue();
-    nts::Tristate v = c & !this->_prevC;
-    if (mr != nts::Tristate::False || cpLower != nts::Tristate::True
-        || v != nts::Tristate::True) {
-        if (cpLower == nts::Tristate::Undefined || v == nts::Tristate::Undefined)
+    nts::Tristate cp0 = this->_pins[CP0].getValue();
+    nts::Tristate cp0Raise = cp0 & !this->_prevCp0;
+    nts::Tristate cp1 = this->_pins[CP1].getValue();
+    nts::Tristate cp1Lower = !cp1 & this->_prevCp1;
+    if (mr != nts::Tristate::False || 
+        (!(cp1Lower == nts::Tristate::True && cp0 == nts::Tristate::True) &&
+        !(cp0Raise == nts::Tristate::True && cp1 == nts::Tristate::False))) {
+        if (cp1Lower == nts::Tristate::Undefined || cp0Raise == nts::Tristate::Undefined)
             this->resetOutputs();
         if (mr != nts::Tristate::False)
             this->resetOutputs(!mr);
         if (mr == nts::Tristate::True)
             this->_pins[Q0].setValue(nts::Tristate::True);
-        this->setValues(c, cp);
+        this->setValues(cp0, cp1);
         return;
     }
     this->incrementValues();
-    this->setValues(c, cp);
+    this->setValues(cp0, cp1);
 }
 
 const std::vector<std::tuple<nts::Mode, sf::Vector2f, std::string, nts::Tristate>> nts::CJohnson::_defaultPins = {
@@ -94,8 +95,8 @@ const std::vector<std::tuple<nts::Mode, sf::Vector2f, std::string, nts::Tristate
     {nts::Mode::OutputMode, {CJOHNSONX - SIDEOFFSET, CJOHNSONY / 12 * 5}, "Q4", nts::Undefined},
     {nts::Mode::OutputMode, {CJOHNSONX - SIDEOFFSET, CJOHNSONY / 12 * 10}, "Q9", nts::Undefined},
     {nts::Mode::OutputMode, {CJOHNSONX - SIDEOFFSET, CJOHNSONY / 12 * 11}, "C0", nts::Undefined},
-    {nts::Mode::InputMode, {SIDEOFFSET, CJOHNSONY / 4 * 1}, "CP", nts::Undefined},
-    {nts::Mode::InputMode, {SIDEOFFSET, CJOHNSONY / 4 * 2}, "CLK", nts::Undefined},
+    {nts::Mode::InputMode, {SIDEOFFSET, CJOHNSONY / 4 * 2}, "CP1", nts::Undefined},
+    {nts::Mode::InputMode, {SIDEOFFSET, CJOHNSONY / 4 * 1}, "CP0", nts::Undefined},
     {nts::Mode::InputMode, {SIDEOFFSET, CJOHNSONY / 4 * 3}, "MR", nts::Undefined},
     {nts::Mode::UnusedMode, {0, 0}, "VDD", nts::Undefined},
 };

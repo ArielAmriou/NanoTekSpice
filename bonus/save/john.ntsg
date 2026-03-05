@@ -1,22 +1,22 @@
 .chipsets:
-output output0 895 484
-or or0 429 503
+false false0 279 326
 4017 40170 639 392
 4017 40171 696 681
 4017 40172 583 120
-clock clock0 327 361
-input input0 320 172
-input input1 284 512
+clock clock0 282.44 177
+input input0 284 512
+or or0 452.48 727.464
+output output0 840.32 779.289
 .links:
-output0:1 40170:1
-or0:1 40170:5
-or0:2 input1:1
-40170:13 input0:1
+40170:13 false0:1
 40170:14 40172:12
-40170:15 or0:3
-40171:13 input0:1
+40170:15 input0:1
+40171:13 false0:1
 40171:14 40170:12
-40171:15 input1:1
-40172:13 input0:1
+40171:15 or0:3
+40172:13 false0:1
 40172:14 clock0:1
-40172:15 input1:1
+40172:15 input0:1
+or0:1 40171:5
+or0:2 input0:1
+output0:1 40171:1

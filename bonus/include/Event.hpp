@@ -16,6 +16,10 @@
 #include "Variables.hpp"
 
 namespace nts {
+
+    constexpr int MAXOFFSET = 10000;
+    constexpr int OFFSETSTEP = 10;
+
     class Event {
         public:
             Event(Variables &var) : _variables(var) {};
@@ -28,6 +32,7 @@ namespace nts {
 
         private:
             void componentsEvents(ComponentMap &list);
+            void moveComponents(ComponentMap &components);
             std::optional<size_t> hoverPin(std::unique_ptr<IComponent> &chip, sf::Vector2f mousePos);
             std::optional<std::pair<std::string, std::optional<size_t>>> hoverChip(ComponentMap &list, sf::Vector2f mousePos);
             void copyPaste(ComponentMap &list, std::optional<std::pair<std::string, std::optional<size_t>>> &selectChip, sf::Vector2f mousePos);

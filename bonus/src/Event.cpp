@@ -19,8 +19,31 @@ void nts::Event::run(std::vector<std::function<void(sf::Event, sf::RenderWindow 
             || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
             _variables._window.close();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::F5))
-            Save::run(_variables._components, _variables._filename);
+            Save::run(_variables._components, _variables._filename, _variables);
         componentsEvents(_variables._components);
+    }
+}
+
+void nts::Event::moveComponents(ComponentMap &components)
+{
+    if (!_event.type == sf::Event::KeyPressed)
+        return;
+    sf::Vector2f incr(0, 0);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && this->_variables._offset.y > -MAXOFFSET)
+        incr.y -= OFFSETSTEP;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && this->_variables._offset.y < MAXOFFSET)
+        incr.y += OFFSETSTEP;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && this->_variables._offset.x > -MAXOFFSET)
+        incr.x -= OFFSETSTEP;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && this->_variables._offset.x < MAXOFFSET)
+        incr.x += OFFSETSTEP;
+    this->_variables._offset += incr;
+    auto end = components.end();
+    for (auto iter = components.begin(); iter != end; ++iter) {
+        sf::Vector2f pos = iter->second.first.get()->getPos() + incr;
+        sf::Vector2f size = iter->second.first.get()->getSize();
+        sf::Vector2f tmp(pos.x + size.x / 2, pos.y + size.y / 2);
+        iter->second.first.get()->setPos(tmp);
     }
 }
 
@@ -31,6 +54,7 @@ void nts::Event::componentsEvents(ComponentMap &components)
     auto &selectChip = _variables._selectChip;
 
     copyPaste(components, selectChip, mousePos);
+    moveComponents(components);
     if (_event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
         window.close();
     

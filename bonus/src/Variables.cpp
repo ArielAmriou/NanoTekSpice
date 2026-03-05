@@ -9,7 +9,7 @@
 #include "ComponentFactory.hpp"
 
 nts::Variables::Variables(sf::RenderWindow &window, ComponentMap &map, sf::Font &font, std::string filename)
-    : _window(window), _font(font), _components(map), _filename(filename)
+    : _window(window), _font(font), _components(map), _filename(filename), _offset(0, 0)
 {
 }
 

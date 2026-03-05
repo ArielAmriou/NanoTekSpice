@@ -46,7 +46,7 @@ std::string nts::Save::findLinkName(ComponentMap &components, std::vector<std::s
     return "";
 }
 
-void nts::Save::run(ComponentMap &components, std::string name)
+void nts::Save::run(ComponentMap &components, std::string name, Variables &variables)
 {
     auto iter = ComponentFactory::componentFactories.begin();
     std::vector<std::size_t> counter = initCounter(components);
@@ -61,8 +61,8 @@ void nts::Save::run(ComponentMap &components, std::string name)
         id.push_back(findId(iter->second.second, counter));
         file << iter->second.second << " " << iter->second.second
             << id[i] << " "
-            << iter->second.first->getPos().x << " "
-            << iter->second.first->getPos().y << "\n";
+            << (iter->second.first->getPos().x - variables._offset.x) << " "
+            << (iter->second.first->getPos().y - variables._offset.y) << "\n";
         i++;
     }
     file << ".links:\n";

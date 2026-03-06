@@ -4,11 +4,11 @@
 
 NanotekSpice is an Epitech project whose goal is to simulate an electronical circuit of chipsets.
 
-https://github.com/user-attachments/assets/e1e36918-e653-440d-b467-3a0720b68901 \
-[Basic installation](#installation)
+![BasicUsage](https://github.com/user-attachments/assets/c90c69ba-ec26-408c-b66b-6326e2098f93) \
+[See Basic installation](#installation)
 
-https://github.com/user-attachments/assets/995c21de-2328-41b8-b350-70e163a867b1 \
-[Graphic installation](#graphic-usage)
+![GraphicUsage](https://github.com/user-attachments/assets/139f178c-fbb8-46a6-9bdc-1d7dee7121e2) \
+[See Graphic installation](#graphic-usage)
 
 ## Features
 

@@ -249,3 +249,157 @@ Test(TestFiles, CPN_shift, .init = redirect_all_std)
     fflush(stdout);
     cr_assert_stdout_eq_str(result.c_str());
 }
+
+Test(TestFiles, CPN_simpleLink4081, .init = redirect_all_std)
+{
+    std::string test = "simpleLink4081";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), "basicCommandGateComponent"), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}
+
+Test(TestFiles, CPN_simpleLink4011, .init = redirect_all_std)
+{
+    std::string test = "simpleLink4011";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), "basicCommandGateComponent"), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}
+
+Test(TestFiles, TestFiles_CPN_simpleLink4001_extra, .init = redirect_all_std)
+{
+    std::string test = "simpleLink4001";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), "basicCommandGateComponent"), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}
+
+Test(TestFiles, CPN_simpleLink4071, .init = redirect_all_std)
+{
+    std::string test = "simpleLink4071";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), "basicCommandGateComponent"), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}
+
+Test(TestFiles, CPN_simpleLink4030, .init = redirect_all_std)
+{
+    std::string test = "simpleLink4030";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), "basicCommandGateComponent"), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}
+
+Test(TestFiles, CPN_simpleLink4069, .init = redirect_all_std)
+{
+    std::string test = "simpleLink4069";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), "basicCommand4069"), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}
+
+Test(TestFiles, CPN_simple4013, .init = redirect_all_std)
+{
+    std::string test = "simpleLink4013";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), "basicCommand4013"), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}
+
+Test(TestFiles, CPN_hardLink4081, .init = redirect_all_std)
+{
+    std::string test = "hardLink4081";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), "basicCommandGateComponent"), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}
+
+Test(TestFiles, CPN_hardLink4011, .init = redirect_all_std)
+{
+    std::string test = "hardLink4011";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), "basicCommandGateComponent"), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}
+
+Test(TestFiles, TestFiles_CPN_hardLink4001_extra, .init = redirect_all_std)
+{
+    std::string test = "hardLink4001";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), "basicCommandGateComponent"), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}
+
+Test(TestFiles, CPN_hardLink4071, .init = redirect_all_std)
+{
+    std::string test = "hardLink4071";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), "basicCommandGateComponent"), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}
+
+Test(TestFiles, CPN_hardLink4030, .init = redirect_all_std)
+{
+    std::string test = "hardLink4030";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), "basicCommandGateComponent"), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}
+
+Test(TestFiles, CPN_hard4069, .init = redirect_all_std)
+{
+    std::string test = "hardLink4069";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), "basicCommand4069"), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}
+
+Test(TestFiles, CPN_hard4013, .init = redirect_all_std)
+{
+    std::string test = "hardLink4013";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), "basicCommand4013"), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}

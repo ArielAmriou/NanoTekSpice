@@ -1,0 +1,22 @@
+.chipsets:
+output nq1
+output nq2
+output q1
+output q2
+clock clk
+input data
+false sr
+4013 ff
+.links:
+ff:3 clk:1
+ff:11 clk:1
+ff:5 data:1
+ff:9 data:1
+ff:6 sr:1
+ff:8 sr:1
+ff:4 sr:1
+ff:10 sr:1
+nq1:1 ff:2
+nq2:1 ff:12
+q1:1 ff:1
+q2:1 ff:13

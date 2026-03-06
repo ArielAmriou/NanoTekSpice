@@ -1,0 +1,86 @@
+> > > > > tick: 1
+input(s):
+  clk0: 0
+  clk1: 1
+  in_r: 0
+output(s):
+  out_0: U
+  out_1: U
+  out_2: U
+  out_3: U
+  out_4: U
+  out_5: U
+  out_6: U
+  out_7: U
+  out_8: U
+  out_9: U
+  out_s: U
+> > > > > tick: 3
+input(s):
+  clk0: 0
+  clk1: 1
+  in_r: 0
+output(s):
+  out_0: 0
+  out_1: 1
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > tick: 4
+input(s):
+  clk0: 1
+  clk1: 1
+  in_r: 0
+output(s):
+  out_0: 0
+  out_1: 1
+  out_2: 0
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > tick: 5
+input(s):
+  clk0: 0
+  clk1: 1
+  in_r: 0
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 1
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> > tick: 6
+input(s):
+  clk0: 1
+  clk1: 1
+  in_r: 0
+output(s):
+  out_0: 0
+  out_1: 0
+  out_2: 1
+  out_3: 0
+  out_4: 0
+  out_5: 0
+  out_6: 0
+  out_7: 0
+  out_8: 0
+  out_9: 0
+  out_s: 1
+> 

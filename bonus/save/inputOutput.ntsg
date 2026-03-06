@@ -1,0 +1,5 @@
+.chipsets:
+input input0 400 500
+output output0 701 471
+.links:
+output0:1 input0:1

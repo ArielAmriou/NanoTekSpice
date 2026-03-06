@@ -1,0 +1,42 @@
+.chipsets:
+pictures pictures0 892 441
+matrix matrix0 1096 236
+4040 40400 568 239
+input input0 369 350
+clock clock0 368 266
+.links:
+pictures0:1 40400:9
+pictures0:2 40400:7
+pictures0:3 40400:6
+pictures0:4 40400:5
+pictures0:5 40400:3
+pictures0:6 40400:2
+pictures0:7 40400:4
+pictures0:8 40400:13
+pictures0:9 40400:12
+pictures0:10 40400:14
+pictures0:11 40400:15
+pictures0:12 40400:1
+pictures0:13 40400:1
+matrix0:1 40400:9
+matrix0:2 40400:7
+matrix0:3 40400:6
+matrix0:4 40400:5
+matrix0:5 40400:3
+matrix0:6 40400:2
+matrix0:7 40400:4
+matrix0:8 40400:13
+matrix0:9 40400:12
+matrix0:10 40400:14
+matrix0:11 40400:15
+matrix0:12 40400:1
+matrix0:13 pictures0:14
+matrix0:14 pictures0:15
+matrix0:15 pictures0:16
+matrix0:16 pictures0:17
+matrix0:17 pictures0:18
+matrix0:18 pictures0:19
+matrix0:19 pictures0:20
+matrix0:20 pictures0:21
+40400:10 clock0:1
+40400:11 input0:1

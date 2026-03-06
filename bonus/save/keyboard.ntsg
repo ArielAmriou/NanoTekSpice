@@ -1,0 +1,19 @@
+.chipsets:
+Keyboard Keyboard0 769.48 404.161
+clock clock0 807.28 593.365
+input input0 594 447
+logger logger0 1020 414.005
+not not0 921.76 601.564
+.links:
+Keyboard0:1 input0:1
+logger0:1 Keyboard0:2
+logger0:2 Keyboard0:3
+logger0:3 Keyboard0:4
+logger0:4 Keyboard0:5
+logger0:5 Keyboard0:6
+logger0:6 Keyboard0:7
+logger0:7 Keyboard0:8
+logger0:8 Keyboard0:9
+logger0:9 clock0:1
+logger0:10 not0:2
+not0:1 Keyboard0:10

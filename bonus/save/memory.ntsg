@@ -1,0 +1,63 @@
+.chipsets:
+4040 40400 718 560
+4040 40401 434 154
+clock clock0 144 575
+false false0 445 887
+input input0 109 384
+logger logger0 1464 782
+not not0 1110 941
+not not1 534 778
+ram ram0 953 551
+rom rom0 634 73.0001
+true true0 392 361
+.links:
+40400:10 clock0:1
+40400:11 input0:1
+40401:10 clock0:1
+40401:11 input0:1
+logger0:1 ram0:9
+logger0:2 ram0:10
+logger0:3 ram0:11
+logger0:4 ram0:13
+logger0:5 ram0:14
+logger0:6 ram0:15
+logger0:7 ram0:16
+logger0:8 ram0:17
+logger0:9 not0:2
+logger0:10 false0:1
+not0:1 not1:2
+not1:1 clock0:1
+ram0:1 40400:13
+ram0:2 40400:4
+ram0:3 40400:2
+ram0:4 40400:3
+ram0:5 40400:5
+ram0:6 40400:6
+ram0:7 40400:7
+ram0:8 40400:9
+ram0:9 rom0:9
+ram0:10 rom0:10
+ram0:11 rom0:11
+ram0:13 rom0:13
+ram0:14 rom0:14
+ram0:15 rom0:15
+ram0:16 rom0:16
+ram0:17 rom0:17
+ram0:18 false0:1
+ram0:20 false0:1
+ram0:21 not1:2
+ram0:22 40400:14
+ram0:23 40400:12
+rom0:1 40401:13
+rom0:2 40401:4
+rom0:3 40401:2
+rom0:4 40401:3
+rom0:5 40401:5
+rom0:6 40401:6
+rom0:7 40401:7
+rom0:8 40401:9
+rom0:18 clock0:1
+rom0:19 40401:15
+rom0:20 true0:1
+rom0:22 40401:14
+rom0:23 40401:12

@@ -1,0 +1,12 @@
+.chipsets:
+7Seg 7Seg0 1289 367
+4040 40400 1098 387
+false false0 873 497
+clock clock0 876 423
+.links:
+7Seg0:1 40400:9
+7Seg0:2 40400:7
+7Seg0:3 40400:6
+7Seg0:4 40400:5
+40400:10 clock0:1
+40400:11 false0:1

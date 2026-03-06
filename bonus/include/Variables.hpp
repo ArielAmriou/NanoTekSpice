@@ -30,6 +30,7 @@ namespace nts
             std::string _copy = "";
             std::size_t _id = 0;
             sf::Vector2f _offset;
+            bool _showMap = false;
     };
 }
 

@@ -26,17 +26,28 @@ void nts::Event::run(std::vector<std::function<void(sf::Event, sf::RenderWindow 
 
 void nts::Event::moveComponents(ComponentMap &components)
 {
+    _variables._showMap = false;
     if (!_event.type == sf::Event::KeyPressed)
         return;
     sf::Vector2f incr(0, 0);
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && this->_variables._offset.y > -MAXOFFSET)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && this->_variables._offset.y > -MAXOFFSET_Y) {
         incr.y -= OFFSETSTEP;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && this->_variables._offset.y < MAXOFFSET)
+        _variables._showMap = true;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && this->_variables._offset.y < MAXOFFSET_Y) {
         incr.y += OFFSETSTEP;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && this->_variables._offset.x > -MAXOFFSET)
+        _variables._showMap = true;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && this->_variables._offset.x > -MAXOFFSET_X) {
         incr.x -= OFFSETSTEP;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && this->_variables._offset.x < MAXOFFSET)
+        _variables._showMap = true;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && this->_variables._offset.x < MAXOFFSET_X) {
         incr.x += OFFSETSTEP;
+        _variables._showMap = true;
+    }
+    if (incr == sf::Vector2f{0, 0})
+        return;
     this->_variables._offset += incr;
     auto end = components.end();
     for (auto iter = components.begin(); iter != end; ++iter) {

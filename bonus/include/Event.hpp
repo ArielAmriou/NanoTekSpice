@@ -17,9 +17,6 @@
 
 namespace nts {
 
-    constexpr int MAXOFFSET = 10000;
-    constexpr int OFFSETSTEP = 10;
-
     class Event {
         public:
             Event(Variables &var) : _variables(var) {};

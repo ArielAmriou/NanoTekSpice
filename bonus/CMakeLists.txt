@@ -27,6 +27,7 @@ set(SRCS
     src/SimulateToolBar.cpp
     src/Parsing.cpp
     src/Save.cpp
+    src/Map.cpp
 
     src/Components/AComponent.cpp
     src/Components/APartComponent.cpp

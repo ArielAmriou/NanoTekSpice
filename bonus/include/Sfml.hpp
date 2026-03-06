@@ -15,6 +15,7 @@
 #include "Variables.hpp"
 #include "ChangeState.hpp"
 #include "SimulateToolBar.hpp"
+#include "Map.hpp"
 
 namespace nts
 {
@@ -45,6 +46,7 @@ namespace nts
             SimulateToolBar _simulateToolBar;
             sf::View _gameView;
             sf::RectangleShape _background;
+            Map _map;
     };
 }
 

@@ -14,7 +14,8 @@ nts::Sfml::Sfml(sf::Font &font, std::string filename)
     : _window(sf::RenderWindow(sf::VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y, WINDOW_BITS), "NanoTeckSpice", sf::Style::Close | sf::Style::Resize)),
      _variables(_window, _components, font, filename), _event(_variables), _line(sf::LinesStrip, 2), _rightToolBar(_variables),
      _changeState(_variables), _simulateToolBar(_variables),
-     _gameView(sf::FloatRect(0.0, 0.0, WINDOW_SIZE_X, WINDOW_SIZE_Y))
+     _gameView(sf::FloatRect(0.0, 0.0, WINDOW_SIZE_X, WINDOW_SIZE_Y)),
+     _map(_variables)
 {
     _window.setView(_gameView);
     _background.setSize({WINDOW_SIZE_X, WINDOW_SIZE_Y});
@@ -38,6 +39,7 @@ void nts::Sfml::run()
         drawChangeState();
         _rightToolBar.draw(window);
         _simulateToolBar.draw(window);
+        _map.draw(window);
         window.display();
     }
 }

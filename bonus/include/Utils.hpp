@@ -32,6 +32,10 @@ namespace nts {
     constexpr unsigned int WINDOW_SIZE_Y = 1080;
     constexpr unsigned int WINDOW_BITS = 144;
 
+    constexpr int OFFSETSTEP = 10;
+    constexpr int MAXOFFSET_X = WINDOW_SIZE_X * 2;
+    constexpr int MAXOFFSET_Y = WINDOW_SIZE_Y * 2;
+
     constexpr int BIT = 8;
 
     using ComponentMap = std::map<std::string, std::pair<

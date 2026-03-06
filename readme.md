@@ -4,11 +4,11 @@
 
 NanotekSpice is an Epitech project whose goal is to simulate an electronical circuit of chipsets.
 
-![BasicUsage](https://github.com/user-attachments/assets/c90c69ba-ec26-408c-b66b-6326e2098f93) \
+![Basic usagae](https://github.com/user-attachments/assets/155d51a7-7de0-4785-a0f6-f3d0c2203314) \
 [See Basic installation](#installation)
 
-![GraphicUsage](https://github.com/user-attachments/assets/139f178c-fbb8-46a6-9bdc-1d7dee7121e2) \
-[See Graphic installation](#graphic-usage)
+![Graphical Usage](https://github.com/user-attachments/assets/25d5724c-f4eb-4291-b8cf-1fa91a03a088) \
+[See Graphical installation](#graphical-usage)
 
 ## Features
 
@@ -24,7 +24,7 @@ This project requires the following dependencies:
 
 - **Programming Language:** C++
 - **Package Manager:** Cmake
-- **Graphic Library:** Sfml
+- **Graphical Library:** Sfml
 
 ### Installation
 
@@ -92,7 +92,7 @@ output(s):
 > exit
 ```
 
-### Graphic usage
+### Graphical usage
 
 1. **Move to bonus directory:**
 ```sh

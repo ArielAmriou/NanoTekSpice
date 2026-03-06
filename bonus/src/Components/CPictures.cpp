@@ -96,7 +96,7 @@ void nts::CPictures::simulateComponent()
     }
     if (!undefined) {
         for (std::size_t i = NBPICTURESADR + 1; i < NBPICTURESADR + 1 + NBPICTURESCOLOR; i++) {
-            auto tmp = _pictures.find(_current)->second[adr][i - NBPICTURESADR];
+            auto tmp = _pictures.find(_current)->second[adr][i - NBPICTURESADR - 1];
             _pins[i].setValue(tmp);
         }
     }

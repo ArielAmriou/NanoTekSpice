@@ -55,7 +55,6 @@ namespace nts {
             static const std::vector<std::size_t> _outputs;
             Tristate _lastClk1 = Undefined;
             Tristate _lastClk2 = Undefined;
-            std::array<std::size_t, 2> _tickFlipFlop = {0, 0};
     };
 }
 

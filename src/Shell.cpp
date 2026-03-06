@@ -89,7 +89,11 @@ void nts::Shell::simulate()
     changeState();
     auto iter = _map.begin();
     while (iter != _map.end()) {
-        iter->second.first->simulate(_tick);
+        if (iter->second.second == "output"
+            || iter->second.second == "clock"
+            || iter->second.second == "logger") {
+            iter->second.first->simulate(_tick);
+        }
         iter++;
     }
 }

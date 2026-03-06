@@ -30,6 +30,7 @@
 #include "CPictures.hpp"
 #include "CJohnson.hpp"
 #include "CDualFlipFlop.hpp"
+#include "CKeyboard.hpp"
 
 std::unique_ptr<nts::IComponent>
     nts::ComponentFactory::createComponent(const std::string &type, sf::Vector2f pos, sf::Font &font)
@@ -136,6 +137,10 @@ nts::ComponentFactory::componentFactories = {
     },{
         "4013", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
             return std::make_unique<nts::CDualFlipFlop>(pos, font, type);
+        }
+    },{
+        "Keyboard", [](sf::Vector2f pos, sf::Font &font, const std::string &type){
+            return std::make_unique<nts::CKeyboard>(pos, font, type);
         }
     }
 };

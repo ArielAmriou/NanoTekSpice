@@ -55,6 +55,7 @@ set(SRCS
     src/Components/CPictures.cpp
     src/Components/CJohnson.cpp
     src/Components/CDualFlipFlop.cpp
+    src/Components/CKeyboard.cpp
 )
 
 set(HEADERS

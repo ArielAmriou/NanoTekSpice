@@ -36,13 +36,13 @@ void nts::SimulateToolBar::event(sf::Event event, sf::RenderWindow &window)
 {
     sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 
-    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space)
+    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
         _push[PLAY] = !_push[PLAY];
 
-    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter)
+    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
         _push[TICK] = !_push[TICK];
 
-    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Tab)
+    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Tab && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
         _push[MULTIPLICATEUR] = !_push[MULTIPLICATEUR];
 
     for (auto &button : _buttons)

@@ -25,6 +25,8 @@ void nts::ChangeState::draw(sf::RenderWindow &window)
 
 void nts::ChangeState::event(sf::Event event, sf::RenderWindow &window)
 {
+    if (!_var._selectChip.has_value())
+        return;
     if (_show) {
         sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
         for (auto &button: _buttons)

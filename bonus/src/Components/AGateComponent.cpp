@@ -7,8 +7,8 @@
 
 #include "AGateComponent.hpp"
 
-nts::AGateComponent::AGateComponent(sf::Vector2f pos, sf::Font &font, const std::string &name)
-    : AComponent(name, pos, {AGATECOMPONENTX, AGATECOMPONENTY}, font, _defaultPins)
+nts::AGateComponent::AGateComponent(sf::Vector2f pos, sf::Font &font, const std::string &name, std::function<Tristate(Tristate, Tristate)> func)
+    : APartComponent(name, pos, {AGATECOMPONENTX, AGATECOMPONENTY}, font, _defaultPins, GATECOMPONENTNBPART, GATECOMPONENTNBIN, GATECOMPONENTNBOUT), _func(func)
 {
     this->_nbPins = this->_pins.size();
 }
@@ -28,4 +28,30 @@ const std::vector<std::tuple<nts::Mode, sf::Vector2f, std::string, nts::Tristate
     {nts::Mode::InputMode, {SIDEOFFSET, AGATECOMPONENTY / 9 * 7}, "d7", nts::Undefined},
     {nts::Mode::InputMode, {SIDEOFFSET, AGATECOMPONENTY / 9 * 8}, "d8", nts::Undefined},
     {nts::Mode::UnusedMode, {0, 0}, "VDD", nts::Undefined},
+};
+
+void nts::AGateComponent::computePart(std::size_t id)
+{
+    this->_pins[_outputs[id]].setValue(_func(
+        this->_pins[_inputs[id * 2]].getValue(),
+        this->_pins[_inputs[id * 2 + 1]].getValue()
+    ));
+}
+
+const std::vector<std::size_t> nts::AGateComponent::_inputs = {
+    D1,
+    D2,
+    D3,
+    D4,
+    D5,
+    D6,
+    D7,
+    D8
+};
+
+const std::vector<std::size_t> nts::AGateComponent::_outputs = {
+    Q1,
+    Q2,
+    Q3,
+    Q4,
 };

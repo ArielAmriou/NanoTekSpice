@@ -25,7 +25,7 @@ namespace nts {
             AComponent(const std::string &name, sf::Vector2f pos, sf::Vector2f size,
                 sf::Font &font, std::vector<std::tuple<Mode, sf::Vector2f, std::string, Tristate>>);
 
-            void simulate(std::size_t tick) noexcept;
+            virtual void simulate(std::size_t tick) noexcept;
             void setLink(std::size_t pin, nts::IComponent &other,
                 std::size_t otherPin);
             Pin &getPin(std::size_t);
@@ -49,7 +49,7 @@ namespace nts {
             
         protected:
             void initPin(std::vector<std::tuple<Mode, sf::Vector2f, std::string, Tristate>>, sf::Font &);
-            virtual void simulateComponent() = 0;
+            virtual void simulateComponent() {};
             std::vector<Pin> _pins;
             std::size_t _nbPins;
             std::size_t _lastUpdateTick = 0;

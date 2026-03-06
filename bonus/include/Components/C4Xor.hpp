@@ -15,8 +15,6 @@ namespace nts {
         public:
             C4Xor(sf::Vector2f pos, sf::Font &font, const std::string &name);
             ~C4Xor() = default;
-        private:
-            void simulateComponent() override;
     };
 }
 

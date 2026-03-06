@@ -16,7 +16,7 @@ namespace nts {
             C4Nor(sf::Vector2f pos, sf::Font &font, const std::string &name);
             ~C4Nor() = default;
         private:
-            void simulateComponent() override;
+            static const Tristate function(Tristate, Tristate);
     };
 }
 

@@ -29,6 +29,7 @@ set(SRCS
     src/Save.cpp
 
     src/Components/AComponent.cpp
+    src/Components/APartComponent.cpp
     src/Components/ABasicComponent.cpp
     src/Components/AGateComponent.cpp
     src/Components/CInput.cpp

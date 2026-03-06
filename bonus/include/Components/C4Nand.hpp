@@ -15,8 +15,6 @@ namespace nts {
         public:
             C4Nand(sf::Vector2f pos, sf::Font &font, const std::string &name);
             ~C4Nand() = default;
-        private:
-            void simulateComponent() override;
     };
 }
 

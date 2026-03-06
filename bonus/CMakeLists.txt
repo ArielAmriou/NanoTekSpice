@@ -71,5 +71,5 @@ find_package(SFML 2 COMPONENTS graphics window system REQUIRED)
 
 add_executable(bonus ${MAIN} ${SRCS})
 target_include_directories(bonus PRIVATE ${HEADERS})
-target_compile_options(bonus PRIVATE -g3)
+target_compile_options(bonus PRIVATE -O)
 target_link_libraries(bonus sfml-graphics sfml-window sfml-system)

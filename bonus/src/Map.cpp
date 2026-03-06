@@ -28,8 +28,8 @@ void nts::Map::draw(sf::RenderWindow &window)
         return;
     window.draw(_recMap);
     _recScreen.setPosition(
-        OFFSETRATIO_X + POSRATIO_X(_var._offset.x),
-        OFFSETRATIO_Y + POSRATIO_Y(_var._offset.y)
+        OFFSETRATIO_X - POSRATIO_X(_var._offset.x),
+        OFFSETRATIO_Y - POSRATIO_Y(_var._offset.y)
     );
     window.draw(_recScreen);
     for (auto iter = _var._components.begin(); iter != _var._components.end(); iter++) {

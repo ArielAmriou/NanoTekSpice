@@ -35,19 +35,19 @@ void nts::Event::moveComponents(ComponentMap &components)
         return;
     sf::Vector2f incr(0, 0);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && this->_variables._offset.y > -MAXOFFSET_Y) {
-        incr.y -= OFFSETSTEP;
-        _variables._showMap = true;
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && this->_variables._offset.y < MAXOFFSET_Y) {
         incr.y += OFFSETSTEP;
         _variables._showMap = true;
     }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && this->_variables._offset.y < MAXOFFSET_Y) {
+        incr.y -= OFFSETSTEP;
+        _variables._showMap = true;
+    }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && this->_variables._offset.x > -MAXOFFSET_X) {
-        incr.x -= OFFSETSTEP;
+        incr.x += OFFSETSTEP;
         _variables._showMap = true;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && this->_variables._offset.x < MAXOFFSET_X) {
-        incr.x += OFFSETSTEP;
+        incr.x -= OFFSETSTEP;
         _variables._showMap = true;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::O)) {

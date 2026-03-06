@@ -1,40 +1,42 @@
 /*
 ** EPITECH PROJECT, 2026
-** NanoTekSpice
+** main
 ** File description:
-** ComponentC6Not
+** AGateComponent
 */
 
-#ifndef COMPONENTC6NOT_HPP_
-#define COMPONENTC6NOT_HPP_
+#ifndef AGATECOMPONENT_HPP_
+    #define AGATECOMPONENT_HPP_
 
+#include <functional>
 #include "APartComponent.hpp"
 
 namespace nts {
 
-    constexpr std::size_t C6NOTNBPART = 6;
-    constexpr std::size_t C6NOTNBIN = 1;
-    constexpr std::size_t C6NOTNBOUT = 1;
+    constexpr std::size_t GATECOMPONENTNBPART = 4;
+    constexpr std::size_t GATECOMPONENTNBIN = 2;
+    constexpr std::size_t GATECOMPONENTNBOUT = 1;
 
-    class C6Not: public APartComponent {
+    class AGateComponent : public APartComponent {
         public:
-            C6Not();
-            ~C6Not() = default;
+            AGateComponent(std::function<Tristate(Tristate, Tristate)>);
+            ~AGateComponent() = default;
 
             enum PinName {
                 D1,
-                Q1,
                 D2,
+                Q1,
                 Q2,
                 D3,
-                Q3,
-                VSS,
-                Q4,
                 D4,
-                Q5,
+                VSS,
                 D5,
-                Q6,
-                D6
+                D6,
+                Q3,
+                Q4,
+                D7,
+                D8,
+                VDD,
             };
 
         protected:
@@ -48,7 +50,8 @@ namespace nts {
             static const std::vector<Pin> _defaultPins;
             static const std::vector<std::size_t> _inputs;
             static const std::vector<std::size_t> _outputs;
+            std::function<Tristate(Tristate, Tristate)> _func;
     };
 }
 
-#endif /* !COMPONENTC6NOT_HPP_ */
+#endif

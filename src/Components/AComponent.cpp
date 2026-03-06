@@ -50,10 +50,9 @@ void nts::AComponent::simulate(std::size_t tick) noexcept
     auto iter = this->_pins.begin();
     auto end = this->_pins.end();
 
-    if (this->_lastUpdateTick < tick)
-        this->_lastUpdateTick = tick;
-    else
+    if (this->_lastUpdateTick == tick)
         return;
+    this->_lastUpdateTick = tick;
     for (std::size_t i = 0; iter != end; ++i) {
         std::optional<nts::Connection> &con = iter.base()->getConnection();
         if ((iter.base()->getMode() == nts::Mode::InputMode

@@ -12,6 +12,8 @@ set(SRCS
     src/Parsing.cpp
     src/ComponentFactory.cpp
     src/Components/AComponent.cpp
+    src/Components/AGateComponent.cpp
+    src/Components/APartComponent.cpp
     src/Components/CInput.cpp
     src/Components/COutput.cpp
     src/Components/CTrue.cpp

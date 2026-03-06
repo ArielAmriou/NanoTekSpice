@@ -8,16 +8,15 @@
 #ifndef COMPONENTC4NOR_HPP_
 #define COMPONENTC4NOR_HPP_
 
-#include "AComponent.hpp"
+#include "AGateComponent.hpp"
 
 namespace nts {
-    class C4Nor: public AComponent {
+    class C4Nor: public AGateComponent {
         public:
             C4Nor();
             ~C4Nor() = default;
         private:
-            void simulateComponent() override;
-            static const std::vector<Pin> _defaultPins;
+            static const Tristate function(Tristate, Tristate);
     };
 }
 

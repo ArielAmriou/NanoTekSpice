@@ -7,7 +7,9 @@
 
 #include "CDualFlipFlop.hpp"
 
-nts::CDualFlipFlop::CDualFlipFlop() : AComponent()
+nts::CDualFlipFlop::CDualFlipFlop()
+    : APartComponent(CFLIPFLOPNBPART, CFLIPFLOPNBIN,
+        CFLIPFLOPNBOUT)
 {
     this->_pins = this->_defaultPins;
     this->_nbPins = this->_pins.size();
@@ -47,13 +49,17 @@ void nts::CDualFlipFlop::simulateFlipFlop(PinName q, PinName nq,
     }
 }
 
-void nts::CDualFlipFlop::simulateComponent()
+void nts::CDualFlipFlop::computePart(std::size_t id)
 {
-    if (!handleAsync(Q1, Q_1, S1, R1))
-        simulateFlipFlop(Q1, Q_1, CLK1, D1, _lastClk1);
-    if (!handleAsync(Q2, Q_2, S2, R2))
-        simulateFlipFlop(Q2, Q_2, CLK2, D2, _lastClk2);
+    if (id == 0) {
+        if (!handleAsync(Q1, Q_1, S1, R1))
+            simulateFlipFlop(Q1, Q_1, CLK1, D1, _lastClk1);
+    } else {
+        if (!handleAsync(Q2, Q_2, S2, R2))
+            simulateFlipFlop(Q2, Q_2, CLK2, D2, _lastClk2);
+    }
 }
+
 
 const std::vector<nts::Pin> nts::CDualFlipFlop::_defaultPins = {
     nts::Mode::OutputMode,
@@ -70,4 +76,22 @@ const std::vector<nts::Pin> nts::CDualFlipFlop::_defaultPins = {
     nts::Mode::OutputMode,
     nts::Mode::OutputMode,
     nts::Mode::UnusedMode,
+};
+
+const std::vector<std::size_t> nts::CDualFlipFlop::_inputs = {
+    CLK1,
+    D1,
+    S1,
+    R1,
+    CLK2,
+    D2,
+    S2,
+    R2,
+};
+
+const std::vector<std::size_t> nts::CDualFlipFlop::_outputs = {
+    Q1,
+    Q_1,
+    Q2,
+    Q_2,
 };

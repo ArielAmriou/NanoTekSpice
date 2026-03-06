@@ -8,17 +8,15 @@
 #ifndef COMPONENTC4NAND_HPP_
 #define COMPONENTC4NAND_HPP_
 
-#include "AComponent.hpp"
+#include "AGateComponent.hpp"
 
 namespace nts {
-    class C4Nand: public AComponent {
+    class C4Nand: public AGateComponent {
         public:
             C4Nand();
             ~C4Nand() = default;
-        private:
-            void simulateComponent() override;
-            static const std::vector<Pin> _defaultPins;
     };
 }
+
 
 #endif /* !COMPONENTC4NAND_HPP_ */

@@ -8,16 +8,13 @@
 #ifndef COMPONENTC4AND_HPP_
 #define COMPONENTC4AND_HPP_
 
-#include "AComponent.hpp"
+#include "AGateComponent.hpp"
 
 namespace nts {
-    class C4And: public AComponent {
+    class C4And: public AGateComponent {
         public:
             C4And();
             ~C4And() = default;
-        private:
-            void simulateComponent() override;
-            static const std::vector<Pin> _defaultPins;
     };
 }
 

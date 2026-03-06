@@ -8,10 +8,16 @@
 #ifndef COMPONENTCFLIPFLOP_HPP_
     #define COMPONENTCFLIPFLOP_HPP_
 
-#include "AComponent.hpp"
+#include <array>
+#include "APartComponent.hpp"
 
 namespace nts {
-    class CDualFlipFlop: public AComponent {
+
+    constexpr std::size_t CFLIPFLOPNBPART = 2;
+    constexpr std::size_t CFLIPFLOPNBIN = 4;
+    constexpr std::size_t CFLIPFLOPNBOUT = 2;
+
+    class CDualFlipFlop: public APartComponent {
         public:
             CDualFlipFlop();
             ~CDualFlipFlop() = default;
@@ -32,15 +38,24 @@ namespace nts {
                 VDD,
             };
 
+        protected:
+            const std::vector<std::size_t> getInputPins() override
+                {return _inputs;}
+            const std::vector<std::size_t> getOutputPins() override
+                {return _outputs;}
+            void computePart(std::size_t partId) override;
+
         private:
-            void simulateComponent() override;
             bool handleAsync(PinName q, PinName nq,
                 PinName set, PinName reset);
             void simulateFlipFlop(PinName q, PinName nq,
                 PinName clk, PinName data, Tristate &lastClk);
             static const std::vector<Pin> _defaultPins;
+            static const std::vector<std::size_t> _inputs;
+            static const std::vector<std::size_t> _outputs;
             Tristate _lastClk1 = Undefined;
             Tristate _lastClk2 = Undefined;
+            std::array<std::size_t, 2> _tickFlipFlop = {0, 0};
     };
 }
 

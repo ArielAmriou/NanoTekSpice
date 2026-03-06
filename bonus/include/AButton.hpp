@@ -17,7 +17,8 @@ namespace nts {
         COMPONENT,
         DRAWER,
         TRISTATE,
-        SIMULATE
+        SIMULATE,
+        QUIT
     };
 
     class AButton {

@@ -16,6 +16,7 @@
 #include "ChangeState.hpp"
 #include "SimulateToolBar.hpp"
 #include "Map.hpp"
+#include "QuitScreen.hpp"
 
 namespace nts
 {
@@ -47,6 +48,7 @@ namespace nts
             sf::View _gameView;
             sf::RectangleShape _background;
             Map _map;
+            QuitScreen _quitScreen;
     };
 }
 

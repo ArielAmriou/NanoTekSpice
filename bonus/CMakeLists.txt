@@ -28,6 +28,8 @@ set(SRCS
     src/Parsing.cpp
     src/Save.cpp
     src/Map.cpp
+    src/QuitButton.cpp
+    src/QuitScreen.cpp
 
     src/Components/AComponent.cpp
     src/Components/APartComponent.cpp

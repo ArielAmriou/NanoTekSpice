@@ -16,7 +16,6 @@ nts::Map::Map(Variables &var)
     _recMap.setOutlineColor(sf::Color::Black);
     _recMap.setFillColor(nts::LIGHTBLUE);
     _recScreen.setOrigin(_sizeScreen.x / 2, _sizeScreen.y / 2);
-    _recScreen.setPosition(100, WINDOW_SIZE_Y - 100);
     _recScreen.setFillColor(sf::Color::Transparent);
     _recScreen.setOutlineThickness(2);
     _recScreen.setOutlineColor(nts::RED);

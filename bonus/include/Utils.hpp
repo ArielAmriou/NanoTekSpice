@@ -36,6 +36,9 @@ namespace nts {
     constexpr int MAXOFFSET_X = WINDOW_SIZE_X * 2;
     constexpr int MAXOFFSET_Y = WINDOW_SIZE_Y * 2;
 
+    constexpr float BUTTONSIZE = 30;
+    constexpr int HOVEROFFSET = 25;
+
     constexpr int BIT = 8;
 
     using ComponentMap = std::map<std::string, std::pair<

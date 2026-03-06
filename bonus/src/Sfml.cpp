@@ -15,7 +15,7 @@ nts::Sfml::Sfml(sf::Font &font, std::string filename)
      _variables(_window, _components, font, filename), _event(_variables), _line(sf::LinesStrip, 2), _rightToolBar(_variables),
      _changeState(_variables), _simulateToolBar(_variables),
      _gameView(sf::FloatRect(0.0, 0.0, WINDOW_SIZE_X, WINDOW_SIZE_Y)),
-     _map(_variables)
+     _map(_variables), _quitScreen(_variables)
 {
     _window.setView(_gameView);
     _background.setSize({WINDOW_SIZE_X, WINDOW_SIZE_Y});
@@ -24,6 +24,7 @@ nts::Sfml::Sfml(sf::Font &font, std::string filename)
     _otherEvents.push_back([this](sf::Event e, sf::RenderWindow& w) {_changeState.event(e, w);});
     _otherEvents.push_back([this](sf::Event e, sf::RenderWindow& w) {_simulateToolBar.event(e, w);});
     _otherEvents.push_back([this](sf::Event e, sf::RenderWindow &w) {handleResize(e, w);});
+    _otherEvents.push_back([this](sf::Event e, sf::RenderWindow &w) {_quitScreen.event(e, w);});
 }
 
 void nts::Sfml::run()
@@ -40,6 +41,7 @@ void nts::Sfml::run()
         _rightToolBar.draw(window);
         _simulateToolBar.draw(window);
         _map.draw(window);
+        _quitScreen.draw(window);            
         window.display();
     }
 }

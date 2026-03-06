@@ -33,6 +33,8 @@ void nts::ChangeState::updateState()
 
 void nts::ChangeState::event(sf::Event event, sf::RenderWindow &window)
 {
+    if (_var._quit)
+        return;
     if (_show) {
         sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
         for (auto &button: _buttons)

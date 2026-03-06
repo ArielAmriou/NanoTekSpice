@@ -88,6 +88,8 @@ void nts::RightToolBar::event(sf::Event event, sf::RenderWindow &window)
 {
     sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 
+    if (_variables._quit)
+        return;
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::E && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
         _variables._rightToolBar = !_variables._rightToolBar;
 

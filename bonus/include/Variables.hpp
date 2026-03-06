@@ -32,6 +32,9 @@ namespace nts
             sf::Vector2f _offset;
             bool _showMap = false;
             bool _updateState = false;
+            bool _quit = false;
+            sf::Clock _clock;
+            sf::Time _lastSave;
     };
 }
 

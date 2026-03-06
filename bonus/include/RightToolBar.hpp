@@ -19,8 +19,6 @@
     constexpr float SLIDERWIDTH = 10;
     constexpr float MINGAP = 75;
     constexpr float BUTTONY = 15;
-    constexpr float BUTTONSIZE = 30;
-    constexpr int HOVEROFFSET = 25;
 
 namespace nts {
 

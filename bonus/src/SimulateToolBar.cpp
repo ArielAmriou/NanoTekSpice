@@ -23,6 +23,20 @@ nts::SimulateToolBar::SimulateToolBar(Variables &var)
 
 void nts::SimulateToolBar::draw(sf::RenderWindow &window)
 {
+    if (_variables._quit)
+        for (auto &push: _push)
+            push = false;
+    if (_push[PLAY])
+        _buttons[PLAY].changeName("pause");
+    else
+        _buttons[PLAY].changeName("play");
+    if (_push[MULTIPLICATEUR]) {
+        _push[MULTIPLICATEUR] = false;
+        _multiplicateur++;
+        if (_multiplicateur == SimulateMultiplicateur::END)
+            _multiplicateur = 0;
+        _buttons[MULTIPLICATEUR].changeName(SIMULATEMULTIPLICATEURNAME[_multiplicateur]);
+    }
     if (_push[PLAY] && _clk.getElapsedTime().asMilliseconds() > _simulate / SIMULATEMULTIPLICATEURVALUE[_multiplicateur]) {
         _clk.restart();
         simulate();
@@ -36,6 +50,8 @@ void nts::SimulateToolBar::event(sf::Event event, sf::RenderWindow &window)
 {
     sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 
+    if (_variables._quit)
+        return;
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
         _push[PLAY] = !_push[PLAY];
 
@@ -51,17 +67,6 @@ void nts::SimulateToolBar::event(sf::Event event, sf::RenderWindow &window)
         simulate();
         for (auto &push: _push)
             push = false;
-    }
-    if (_push[PLAY])
-        _buttons[PLAY].changeName("pause");
-    else
-        _buttons[PLAY].changeName("play");
-    if (_push[MULTIPLICATEUR]) {
-        _push[MULTIPLICATEUR] = false;
-        _multiplicateur++;
-        if (_multiplicateur == SimulateMultiplicateur::END)
-            _multiplicateur = 0;
-        _buttons[MULTIPLICATEUR].changeName(SIMULATEMULTIPLICATEURNAME[_multiplicateur]);
     }
 }
 

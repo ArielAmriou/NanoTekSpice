@@ -17,9 +17,13 @@ void nts::Event::run(std::vector<std::function<void(sf::Event, sf::RenderWindow 
             other(_event, _variables._window);
         if (_event.type == sf::Event::Closed
             || (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)))
-            _variables._window.close();
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::F5))
+                _variables._quit = true;
+        if (_variables._quit)
+            continue;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::F5)) {
             Save::run(_variables._components, _variables._filename, _variables);
+            _variables._lastSave = _variables._clock.getElapsedTime();
+        }
         componentsEvents(_variables._components);
     }
 }
@@ -70,8 +74,6 @@ void nts::Event::componentsEvents(ComponentMap &components)
 
     copyPaste(components, selectChip, mousePos);
     moveComponents(components);
-    if (_event.type == sf::Event::Closed || (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)))
-        window.close();
     
     if (_event.type == sf::Event::MouseButtonPressed && _event.mouseButton.button == sf::Mouse::Left) {
 

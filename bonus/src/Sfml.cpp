@@ -90,6 +90,7 @@ void nts::Sfml::drawComponents(ComponentMap &components)
 
 void nts::Sfml::drawChangeState()
 {
+    _changeState.updateState();
     if (!_variables._selectChip.has_value()
         || _variables._selectChip.value().second.has_value()
         || (_components.find(_variables._selectChip.value().first)->second.second != "input"
@@ -98,9 +99,7 @@ void nts::Sfml::drawChangeState()
         _changeState.resetComponent();
         return;
     }
-    auto &component = Utils::getComponent(_components, _variables._selectChip.value().first);
-
-    _changeState.updateValue(*component);
+    _changeState.updateValue(_variables._selectChip.value().first);
     _changeState.draw(_window);
     _changeState.setShow(true);
 }

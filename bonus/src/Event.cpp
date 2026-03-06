@@ -46,6 +46,10 @@ void nts::Event::moveComponents(ComponentMap &components)
         incr.x += OFFSETSTEP;
         _variables._showMap = true;
     }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) && sf::Keyboard::isKeyPressed(sf::Keyboard::O)) {
+        incr = -_variables._offset;
+        _variables._showMap = true;
+    }
     if (incr == sf::Vector2f{0, 0})
         return;
     this->_variables._offset += incr;

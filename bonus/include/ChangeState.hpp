@@ -20,7 +20,8 @@ namespace nts {
 
             void draw(sf::RenderWindow &window);
             void event(sf::Event event, sf::RenderWindow &window);
-            void updateValue(IComponent &component);
+            void updateValue(std::string);
+            void updateState();
 
             void setShow(bool show) {_show = show;}
             bool getShow() {return _show;}
@@ -31,7 +32,7 @@ namespace nts {
             std::array<bool, 3> _push;
             std::array<TristateButton, 3> _buttons;
             bool _show = false;
-            std::optional<std::reference_wrapper<IComponent>> _component = std::nullopt;
+            std::optional<std::string> _component = std::nullopt;
             Variables _var;
     };
 }

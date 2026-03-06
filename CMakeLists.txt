@@ -12,6 +12,8 @@ set(SRCS
     src/Parsing.cpp
     src/ComponentFactory.cpp
     src/Components/AComponent.cpp
+    src/Components/AGateComponent.cpp
+    src/Components/APartComponent.cpp
     src/Components/CInput.cpp
     src/Components/COutput.cpp
     src/Components/CTrue.cpp
@@ -54,7 +56,6 @@ target_include_directories(nanotekspice PRIVATE ${HEADERS})
 find_library(CRITERION criterion REQUIRED)
 
 set(SRCS_TESTS
-    tests/tests_init.cpp
     tests/tests_parsing.cpp
     tests/tests_component.cpp
 )

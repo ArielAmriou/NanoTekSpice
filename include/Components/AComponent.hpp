@@ -9,6 +9,7 @@
 #define ACOMPONENT_HPP_
 
 #include <vector>
+#include <array>
 #include <utility>
 #include <memory>
 #include "IComponent.hpp"
@@ -18,7 +19,7 @@
 namespace nts {
     class AComponent: public IComponent {
         public:
-            void simulate(std::size_t tick) noexcept;
+            virtual void simulate(std::size_t tick) noexcept;
             void setLink(std::size_t pin, nts::IComponent &other,
                 std::size_t otherPin);
             Pin &getPin(std::size_t);
@@ -27,10 +28,11 @@ namespace nts {
                 const nts::Tristate value = nts::Tristate::Undefined);
 
         protected:
-            virtual void simulateComponent() = 0;
+            virtual void simulateComponent() {};
             std::vector<Pin> _pins;
             std::size_t _nbPins;
             std::size_t _lastUpdateTick = 0;
+            bool _isSimulating = false;
     };
 }
 

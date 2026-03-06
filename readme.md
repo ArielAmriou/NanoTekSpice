@@ -4,6 +4,12 @@
 
 NanotekSpice is an Epitech project whose goal is to simulate an electronical circuit of chipsets.
 
+![BasicUsage](https://github.com/user-attachments/assets/c90c69ba-ec26-408c-b66b-6326e2098f93) \
+[See Basic installation](#installation)
+
+![GraphicUsage](https://github.com/user-attachments/assets/139f178c-fbb8-46a6-9bdc-1d7dee7121e2) \
+[See Graphic installation](#graphic-usage)
+
 ## Features
 
 This project present the next features:
@@ -18,6 +24,7 @@ This project requires the following dependencies:
 
 - **Programming Language:** C++
 - **Package Manager:** Cmake
+- **Graphic Library:** Sfml
 
 ### Installation
 
@@ -35,7 +42,7 @@ git clone https://github.com/ArielAmriou/NanoTekSpice
 cd NanoTekSpice
 ```
 
-3. **Install the dependencies:**
+3. **Compile:**
 
 ```sh
 cmake . && make
@@ -85,6 +92,41 @@ output(s):
 > exit
 ```
 
+### Graphic usage
+
+1. **Move to bonus directory:**
+```sh
+cd bonus/
+```
+
+2. **Compile:**
+
+```sh
+cmake . && make
+```
+
+3. **Execute:**
+
+```sh
+./bonus save/[file].ntsg
+```
+
+For exemple
+
+```sh
+./bonus save/matrix.ntsg
+```
+
+**Keyboard shortcuts:**
+
+- Ctr + Q: Quit
+- Ctr + E: Open/Close sidebar
+- Ctr + O: Center view-point
+- Ctr + Tab: Increment speed
+- Ctr + Enter: Pause/Play
+- F5: Save current component's states
+- Arrows: Change the current view-point position
+
 ### Testing
 Run the tests with:
 
@@ -93,7 +135,7 @@ cmake . && make tests_run
 ```
 ## Project organisation
 
-├── CMakeLists.txt \
+. \
 ├── src/ \
 │   ├── Components/ \
 │   ├── ComponentFactory.cpp \
@@ -114,18 +156,14 @@ cmake . && make tests_run
 │   ├── Shell.hpp \
 │   ├── Tristate.hpp \
 │   └── Utils.hpp \
+├── CMakeLists.txt \
+├── readme.md \
 └── tests/ \
-    ├── testCommands/ \
-    ├── testfiles/ \
-    ├── testResult/ \
-    ├── tests_component.cpp \
-    ├── tests_init.cpp \
-    └── tests_parsing.cpp \
 
 ## Roadmap
 
 - ✅ **`Architechture`**: Implement architechture to accomodate simulation and components creation.
-- 📋 **`Components`**: Create the 25 required components.
-- 📋 **`Graphical`**: Produce a graphical version of the program.
+- ✅ **`Components`**: Create the 25 required components.
+- ✅ **`Graphical`**: Produce a graphical version of the program.
 
 ---

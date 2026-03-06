@@ -17,10 +17,12 @@ namespace nts {
             CJohnson();
             ~CJohnson() = default;
         private:
-            void simulateComponent();
+            void simulateComponent() override;
             void incrementValues();
             void searchTrue();
-            nts::Tristate _prevC = nts::Tristate::Undefined;
+            void setValues(nts::Tristate c, nts::Tristate mr);
+            nts::Tristate _prevCp0 = nts::Tristate::Undefined;
+            nts::Tristate _prevCp1 = nts::Tristate::Undefined;
             static const std::vector<Pin> _defaultPins;
             static const std::list<std::size_t> _outputOrder;
 
@@ -37,8 +39,8 @@ namespace nts {
                 Q4,
                 Q9,
                 CO,
-                CP,
-                CLK,
+                CP1,
+                CP0,
                 MR,
                 VDD,
             };

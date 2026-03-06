@@ -20,7 +20,7 @@ namespace nts {
             ~CLogger() = default;
         private:
             void writeInFile(char value);
-            void simulateComponent();
+            void simulateComponent() override;
             static const std::vector<Pin> _defaultPins;
             Tristate _lastClk = Undefined;
     };

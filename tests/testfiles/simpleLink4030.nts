@@ -1,0 +1,21 @@
+.chipsets:
+output out1
+output out2
+output out3
+output out4
+clock c
+input i
+4030 components
+.links:
+c:1 components:1
+c:1 components:5
+c:1 components:8
+c:1 components:12
+i:1 components:2
+i:1 components:6
+i:1 components:9
+i:1 components:13
+out1:1 components:3
+out2:1 components:4
+out3:1 components:10
+out4:1 components:11

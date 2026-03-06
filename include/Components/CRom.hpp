@@ -47,12 +47,11 @@ namespace nts {
                 VCC,
             };
         private:
-            void simulateComponent();
+            void simulateComponent() override;
             static const std::vector<Pin> _defaultPins;
             static const std::vector<PinName> _outputs;
             static const std::vector<PinName> _address;
             std::array<std::array<Tristate, BIT>, ROMMEM> _mem;
-            Tristate _lastClk = Undefined;
     };
 }
 

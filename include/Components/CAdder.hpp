@@ -17,7 +17,7 @@ namespace nts {
             CAdder();
             ~CAdder() = default;
         private:
-            void simulateComponent();
+            void simulateComponent() override;
             static const std::vector<Pin> _defaultPins;
             static const std::list<std::size_t> _mustValues;
 

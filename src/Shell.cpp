@@ -9,6 +9,8 @@
 #include <iomanip>
 #include "Shell.hpp"
 #include "Pin.hpp"
+#include "CInput.hpp"
+#include "CClock.hpp"
 
 nts::Shell::Shell() : _tick(0)
 {
@@ -87,11 +89,7 @@ void nts::Shell::simulate()
     changeState();
     auto iter = _map.begin();
     while (iter != _map.end()) {
-        if (iter->second.second == "output"
-            || iter->second.second == "clock"
-            || iter->second.second == "logger") {
-            iter->second.first->simulate(_tick);
-        }
+        iter->second.first->simulate(_tick);
         iter++;
     }
 }
@@ -152,12 +150,13 @@ void nts::Shell::changeState()
 {
     while (!_change.empty()) {
         std::pair<std::string, nts::Tristate> change = _change.front();
-        auto &tmp = _map.find(change.first)->second;
-        tmp.first->getPin(0).setValue(change.second);
-        if (tmp.second == "clock" && change.second == nts::True)
-            tmp.first->getPin(0).setValue(nts::False);
-        else if (tmp.second == "clock" && change.second == nts::False)
-            tmp.first->getPin(0).setValue(nts::True);
+        auto &pair = _map.find(change.first)->second;
+        auto &tmp = dynamic_cast<AComponent&>(*pair.first.get());
+        tmp.getPin(0).setValue(change.second);
+        if (pair.second == "clock" && change.second == nts::True)
+            tmp.getPin(0).setValue(nts::False);
+        else if (pair.second == "clock" && change.second == nts::False)
+            tmp.getPin(0).setValue(nts::True);
         _change.pop();
     }
 }

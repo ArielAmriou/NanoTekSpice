@@ -26,7 +26,8 @@ nts::Tristate operator!(const nts::Tristate a)
 }
 
 // & (and)
-nts::Tristate operator&(const nts::Tristate a, const nts::Tristate b) {
+nts::Tristate operator&(const nts::Tristate a, const nts::Tristate b)
+{
     return !(a * b);
 }
 

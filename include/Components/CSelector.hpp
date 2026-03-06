@@ -35,7 +35,7 @@ namespace nts {
                 OE,
                 VDD
             };
-            void simulateComponent();
+            void simulateComponent() override;
             static const std::vector<Pin> _defaultPins;
     };
 }

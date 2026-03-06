@@ -30,7 +30,6 @@
 #include "CRom.hpp"
 #include "CRam.hpp"
 #include "CShiftRegister.hpp"
-
 #include "CJohnson.hpp"
 
 std::unique_ptr<nts::IComponent>

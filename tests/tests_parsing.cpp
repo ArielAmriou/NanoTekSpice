@@ -12,6 +12,7 @@
 #include "Parsing.hpp"
 #include "NtsException.hpp"
 #include "Utils.hpp"
+#include "ComponentFactory.hpp"
 
 #define DEBUG(value) std::cout << "\e[0;35m" << "DEBUG: " <<  "\e[0;37m" << "\t" << value << std::endl;
 
@@ -101,4 +102,14 @@ Test(ParsingTest, comment)
 Test(ParsingTest, new_line)
 {
     cr_assert_str_eq(test_main("goodNL.nts"), "No Error");
+}
+
+Test(ParsingTest, unknown_component)
+{
+    cr_assert_throw(nts::ComponentFactory::createComponent("Le composant il existe pas"), nts::UnknownComponentException);
+}
+
+Test(ParsingTest, known_component)
+{
+    cr_assert_not_null(nts::ComponentFactory::createComponent("4008").get());
 }

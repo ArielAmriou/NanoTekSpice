@@ -1,6 +1,13 @@
 cl_clock=0
+in_reset=1
+display
+simulate
 in_reset=0
 display
+simulate
+simulate
+simulate
+simulate
 simulate
 simulate
 simulate

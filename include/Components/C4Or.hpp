@@ -8,16 +8,13 @@
 #ifndef COMPONENTC4OR_HPP_
 #define COMPONENTC4OR_HPP_
 
-#include "AComponent.hpp"
+#include "AGateComponent.hpp"
 
 namespace nts {
-    class C4Or: public AComponent {
+    class C4Or: public AGateComponent {
         public:
             C4Or();
             ~C4Or() = default;
-        private:
-            void simulateComponent();
-            static const std::vector<Pin> _defaultPins;
     };
 }
 

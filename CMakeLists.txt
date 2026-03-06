@@ -56,7 +56,6 @@ target_include_directories(nanotekspice PRIVATE ${HEADERS})
 find_library(CRITERION criterion REQUIRED)
 
 set(SRCS_TESTS
-    tests/tests_init.cpp
     tests/tests_parsing.cpp
     tests/tests_component.cpp
 )

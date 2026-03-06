@@ -16,6 +16,7 @@
 #include "Parsing.hpp"
 #include "Shell.hpp"
 #include "NtsException.hpp"
+#include "Pin.hpp"
 
 #define FINE "No Error"
 
@@ -78,6 +79,16 @@ static std::string readFile(const char *name, bool test)
     }
     file.close();
     return content;
+}
+
+Test(TestFiles, pin_dup)
+{
+    nts::Pin a(nts::Mode::OutputMode, nts::Tristate::True);
+    nts::Pin b(nts::Mode::InputMode, nts::Tristate::False);
+
+    b = a;
+    cr_assert_eq(a.getValue(), b.getValue());
+    cr_assert_eq(a.getMode(), b.getMode());
 }
 
 Test(TestFiles, wrongCommand, .init = redirect_all_std)
@@ -417,6 +428,17 @@ Test(TestFiles, CPN_counter, .init = redirect_all_std)
 Test(TestFiles, CPN_johnson, .init = redirect_all_std)
 {
     std::string test = "4017";
+    std::string ext = test + ".nts";
+    
+    auto result = readFile(test.c_str(), true);
+    cr_assert_str_eq(test_main(ext.c_str(), test.c_str()), FINE);
+    fflush(stdout);
+    cr_assert_stdout_eq_str(result.c_str());
+}
+
+Test(TestFiles, CPN_adder, .init = redirect_all_std)
+{
+    std::string test = "4008";
     std::string ext = test + ".nts";
     
     auto result = readFile(test.c_str(), true);
